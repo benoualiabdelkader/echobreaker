@@ -1461,53 +1461,51 @@ code {
 
 /* ============ LABORATORY DIVERSITY GAUGE ============ */
 .diversity-gauge {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
   font-family: 'Inter', sans-serif;
   background: var(--news-bg-raised);
-  padding: 4px 8px;
-  border-radius: var(--radius-card);
-  border: 1px solid var(--news-border);
-  box-shadow: var(--shadow-flat);
-  height: 28px;
+  padding: 5px 12px 5px 12px;
+  border-radius: 20px;
+  border: 1.5px solid var(--news-border);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  height: 32px;
 }
 
 .gauge-label {
-  font-size: 9px;
-  font-weight: 700;
-  letter-spacing: 0.5px;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.8px;
   color: var(--news-ink-muted);
+  text-transform: uppercase;
 }
 
 .gauge-track {
   position: relative;
-  width: 80px;
+  width: 90px;
   height: 8px;
-  background: repeating-linear-gradient(
-    90deg,
-    var(--news-border) 0px, var(--news-border) 2px,
-    transparent 2px, transparent 15px
-  );
-  border-bottom: 2px solid var(--news-ink);
+  background: rgba(0, 0, 0, 0.08);
+  border-radius: 4px;
+  overflow: hidden;
 }
 
 .gauge-needle {
   position: absolute;
-  bottom: 0;
-  width: 3px;
-  height: 14px;
-  background: var(--news-ink);
-  transition: left var(--transition-calm), background-color var(--transition-calm);
-  transform: translateX(-1.5px);
+  top: 0;
+  left: 0;
+  height: 100%;
+  border-radius: 4px;
+  background: #27ae60;
+  transition: width 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), background-color 0.4s ease;
 }
 
 .gauge-readout {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 11px;
-  font-weight: 700;
+  font-size: 12px;
+  font-weight: 800;
   color: var(--news-ink);
-  min-width: 26px;
+  min-width: 32px;
 }
 
 /* ============ CURTAIN INNER ELEMENTS — colors handled above, only keep overrides needed ============ */

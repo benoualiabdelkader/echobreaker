@@ -23,23 +23,24 @@ const Diversity = {
   _render(percent) {
     if (!this._needleEl || !this._readoutEl) return;
 
-    // Update needle position
-    this._needleEl.style.left = percent + "%";
+    // Update needle width cleanly as a progress fill bar
+    this._needleEl.style.width = Math.max(5, Math.min(100, percent)) + "%";
+    this._needleEl.style.left = "0";
 
     // Update color based on level
     let color;
     if (percent > 60) {
-      color = "var(--diversity-healthy)";   // Newsroom OK
-    } else if (percent >= 30) {
-      color = "var(--diversity-warning)";   // News Gold
+      color = "#27ae60";   // Healthy Green
+    } else if (percent >= 35) {
+      color = "#d35400";   // Warning Amber
     } else {
-      color = "var(--diversity-danger)";    // Newsroom Alert
+      color = "#a8412e";   // Echo Chamber Red Alert
     }
 
     this._needleEl.style.backgroundColor = color;
     
-    // Update readout to be raw number only
-    this._readoutEl.textContent = percent;
+    // Update readout text with percentage symbol
+    this._readoutEl.textContent = percent + "%";
   }
 };
 
