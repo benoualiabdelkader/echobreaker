@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 240" width="800" height="240">
+  <rect width="180" height="180" x="20" y="30" rx="40" fill="#A8412E"/>
+  <path d="M110 60L55 88l55 28 55-28-55-28zM55 144l55 28 55-28M55 116l55 28 55-28" 
+        fill="none" stroke="#FFFFFF" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="230" y="145" font-family="Inter, Helvetica, Arial, sans-serif" font-weight="900" font-size="96" fill="#FFFFFF" letter-spacing="-1">ECHO<tspan fill="#A8412E">BREAKER</tspan></text>
+</svg>
