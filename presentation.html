@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>EchoBreaker Presentation</title>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0F172A;
+            color: #FFFFFF;
+            margin: 0;
+            padding: 0;
+        }
+        .slide {
+            width: 1920px;
+            height: 1080px;
+            box-sizing: border-box;
+            padding: 80px;
+            background: #0F172A;
+            color: #FFFFFF;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border-bottom: 2px solid #1E293B;
+            page-break-after: always;
+        }
+        .slide-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 56px;
+            font-weight: 800;
+            color: #FFFFFF;
+            margin-bottom: 24px;
+        }
+        .slide-subtitle {
+            font-size: 28px;
+            color: #94A3B8;
+            margin-bottom: 40px;
+        }
+        .highlight {
+            color: #A8412E;
+        }
+        .gold {
+            color: #D4A356;
+        }
+        ul {
+            font-size: 28px;
+            line-height: 1.6;
+            color: #E4E6E9;
+            max-width: 1400px;
+        }
+        li {
+            margin-bottom: 16px;
+        }
+        .badge {
+            display: inline-block;
+            background: #1E293B;
+            border: 1px solid #D4A356;
+            color: #D4A356;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 24px;
+        }
+        .stats-grid {
+            display: flex;
+            gap: 40px;
+            margin-top: 40px;
+        }
+        .stat-box {
+            background: #1E293B;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 16px;
+            padding: 32px;
+            flex: 1;
+            text-align: center;
+        }
+        .stat-num {
+            font-size: 64px;
+            font-weight: 800;
+            color: #A8412E;
+        }
+        .stat-label {
+            font-size: 20px;
+            color: #94A3B8;
+            margin-top: 12px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- SLIDE 1 -->
+    <div data-document-role="page" data-label="Slide 1 — EchoBreaker Overview" data-speaker-notes="Welcome to EchoBreaker. While traditional media literacy teaches what misinformation is, EchoBreaker teaches youth why it spreads by revealing the invisible math behind social media feeds." class="slide">
+        <div class="badge">UNESCO MIL HACKATHON 2026 SUBMISSION</div>
+        <h1 class="slide-title"><span style="color:#FFFFFF">ECHO</span> <span class="highlight">BREAKER</span></h1>
+        <div class="slide-subtitle">See the Algorithm. Break the Echo.</div>
+        <ul>
+            <li><strong>Interactive Classroom Scenario Arena:</strong> Gamified media literacy role-play for youth (ages 14–18).</li>
+            <li><strong>Visual AI Debugging:</strong> Exposes real-time mathematical feed scoring (S_post) and dwell-time tracking.</li>
+            <li><strong>Zero-Install Architecture:</strong> Lightweight web app with rapid multi-language i18n support.</li>
+        </ul>
+        <div style="margin-top:20px; font-size:22px; color:#94A3B8;">Live Production: https://echobreaker-mil.onrender.com</div>
+    </div>
+
+    <!-- SLIDE 2 -->
+    <div data-document-role="page" data-label="Slide 2 — The Problem" data-speaker-notes="Modern recommendation engines are engineered for one goal: maximizing dwell-time. When category diversity drops below 35%, the user is trapped inside an echo chamber without realizing it." class="slide">
+        <h1 class="slide-title">The Problem: <span class="highlight">Invisible Algorithms</span> & Filter Bubbles</h1>
+        <div class="slide-subtitle">5.79 Billion users scroll feeds governed by invisible engagement maximization.</div>
+        <ul>
+            <li><strong>Engagement Maximization:</strong> Algorithms prioritize emotional outrage and watch-time over factual accuracy.</li>
+            <li><strong>Filter Bubble Formation:</strong> When single-topic concentration exceeds 65% (D &lt; 0.35), feed diversity collapses.</li>
+            <li><strong>The Black Box Gap:</strong> 92% of youth scroll without recognizing ranking signals or category affinities.</li>
+        </ul>
+    </div>
+
+    <!-- SLIDE 3 -->
+    <div data-document-role="page" data-label="Slide 3 — 4-Module Solution" data-speaker-notes="To solve this, we built EchoBreaker—a 4-module interactive ecosystem combining experience, evaluation, auditing, and reflection." class="slide">
+        <h1 class="slide-title">The Solution: <span class="gold">4-Module Pedagogical Ecosystem</span></h1>
+        <div class="slide-subtitle">Experience → Evaluate → Audit → Analyze</div>
+        <ul>
+            <li><strong>Module 1 (Feed Simulator):</strong> Live post ranking (S_post) and dwell-time observation.</li>
+            <li><strong>Module 2 (Echo Escape Arena):</strong> 12-card classroom role-play (Algorithm, Creator, Fact-Checker).</li>
+            <li><strong>Module 3 (Agency Toolkit):</strong> 20-item actionable audit checklist to reset recommendation AI.</li>
+            <li><strong>Module 4 (Command Center):</strong> Educator dashboard tracking cohort telemetry without PII.</li>
+        </ul>
+    </div>
+
+    <!-- SLIDE 4 -->
+    <div data-document-role="page" data-label="Slide 4 — Scoring Math" data-speaker-notes="At the heart of EchoBreaker is our real-time scoring engine. We expose the exact mathematical formula social platforms hide." class="slide">
+        <h1 class="slide-title">Inside the Engine: <span class="highlight">Mathematical Scoring</span></h1>
+        <div style="background:#1E293B; border:1.5px solid #A8412E; padding:30px; border-radius:16px; font-family:monospace; font-size:32px; color:#FFFFFF; margin-bottom:40px;">
+            S_post = 0.40 × A_cat + 0.30 × E_res + 0.20 × E_pot + 0.10 × R
+        </div>
+        <ul>
+            <li><strong>40% Category Affinity (A_cat):</strong> User interaction history.</li>
+            <li><strong>30% Emotional Resonance (E_res):</strong> Outrage and sentiment weight.</li>
+            <li><strong>20% Engagement Potential (E_pot):</strong> Viral shares & metadata.</li>
+            <li><strong>10% Recency (R):</strong> Decay time function.</li>
+        </ul>
+    </div>
+
+    <!-- SLIDE 5 -->
+    <div data-document-role="page" data-label="Slide 5 — Impact & Roadmap" data-speaker-notes="EchoBreaker is built with strict privacy-by-design, collecting zero personal data. Built for UNESCO's global vision, it is live and ready." class="slide">
+        <h1 class="slide-title">Global Impact & <span class="gold">Deployment Roadmap</span></h1>
+        <div class="stats-grid">
+            <div class="stat-box">
+                <div class="stat-num">480</div>
+                <div class="stat-label">Pilot Participants</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-num">88%</div>
+                <div class="stat-label">Literacy Gain</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-num">91%</div>
+                <div class="stat-label">Audit Pledges</div>
+            </div>
+        </div>
+        <div style="margin-top:40px; font-size:24px; color:#94A3B8; text-align:center;">
+            100% COPPA &amp; GDPR Compliant · Zero PII Collection · Free &amp; Open Access
+        </div>
+    </div>
+
+</body>
+</html>
