@@ -40,7 +40,7 @@
             width: 1920px;
             height: 1080px;
             box-sizing: border-box;
-            padding: 70px 90px;
+            padding: 60px 90px;
             background: var(--bg-main);
             color: var(--text-main);
             display: flex;
@@ -52,7 +52,6 @@
             overflow: hidden;
         }
 
-        /* Subtle Animated Background Accents */
         .bg-glow-ring {
             position: absolute;
             width: 600px;
@@ -62,12 +61,6 @@
             top: -150px;
             right: -150px;
             pointer-events: none;
-            animation: pulseGlow 8s infinite alternate ease-in-out;
-        }
-
-        @keyframes pulseGlow {
-            0% { transform: scale(1); opacity: 0.6; }
-            100% { transform: scale(1.15); opacity: 1; }
         }
 
         .header-logo-group {
@@ -85,8 +78,8 @@
         }
 
         .official-logo-mark {
-            width: 52px;
-            height: 52px;
+            width: 48px;
+            height: 48px;
             background: var(--crimson);
             border-radius: 12px;
             mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5'/%3E%3C/svg%3E") center/contain no-repeat;
@@ -95,7 +88,7 @@
 
         .logo-text-echo {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: 38px;
+            font-size: 36px;
             font-weight: 800;
             color: var(--text-main);
             letter-spacing: 0.5px;
@@ -103,7 +96,7 @@
 
         .logo-text-breaker {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: 38px;
+            font-size: 36px;
             font-weight: 800;
             color: var(--crimson);
             letter-spacing: 0.5px;
@@ -116,27 +109,27 @@
             background: var(--crimson-light);
             border: 1.5px solid #FCA5A5;
             color: var(--crimson);
-            padding: 8px 20px;
+            padding: 6px 18px;
             border-radius: 30px;
-            font-size: 15px;
+            font-size: 14px;
             font-weight: 800;
             letter-spacing: 0.5px;
         }
 
         .slide-title {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: 56px;
+            font-size: 50px;
             font-weight: 800;
             color: var(--text-main);
-            margin: 15px 0 10px 0;
+            margin: 10px 0 8px 0;
             line-height: 1.2;
             letter-spacing: -1px;
         }
 
         .slide-subtitle {
-            font-size: 26px;
+            font-size: 24px;
             color: var(--text-muted);
-            margin-bottom: 25px;
+            margin-bottom: 20px;
             font-weight: 500;
             line-height: 1.4;
         }
@@ -144,14 +137,12 @@
         .highlight { color: var(--crimson); }
         .gold { color: var(--gold); }
 
-        /* Premium Card Containers */
         .card-box {
             background: var(--bg-surface);
             border: 2px solid var(--border);
             border-radius: var(--radius-lg);
-            padding: 36px;
+            padding: 30px;
             box-shadow: var(--shadow-premium);
-            transition: all 0.3s ease;
             position: relative;
         }
 
@@ -159,7 +150,7 @@
             background: var(--crimson-light);
             border: 2.5px solid #EF4444;
             border-radius: var(--radius-lg);
-            padding: 36px;
+            padding: 30px;
             box-shadow: 0 15px 35px rgba(239, 68, 68, 0.1);
         }
 
@@ -167,23 +158,23 @@
         .browser-mockup {
             background: #FFFFFF;
             border: 2px solid var(--border);
-            border-radius: 20px;
-            box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.15);
+            border-radius: 16px;
+            box-shadow: 0 20px 40px -10px rgba(15, 23, 42, 0.12);
             overflow: hidden;
         }
 
         .browser-header {
             background: #F1F5F9;
-            padding: 14px 20px;
+            padding: 10px 16px;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
             border-bottom: 1px solid var(--border);
         }
 
         .browser-dot {
-            width: 12px;
-            height: 12px;
+            width: 10px;
+            height: 10px;
             border-radius: 50%;
         }
 
@@ -194,56 +185,63 @@
         .browser-url {
             background: #FFFFFF;
             border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 6px 16px;
-            font-size: 14px;
+            border-radius: 6px;
+            padding: 4px 12px;
+            font-size: 13px;
             color: var(--text-muted);
             font-weight: 600;
             flex: 1;
-            margin-left: 10px;
+            margin-left: 8px;
         }
 
-        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
-        .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
-        .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+        .screenshot-img {
+            width: 100%;
+            height: auto;
+            max-height: 480px;
+            object-fit: cover;
+            display: block;
+            border-top: 1px solid var(--border);
+        }
 
-        .stat-num { font-size: 68px; font-weight: 800; color: var(--crimson); font-family: 'Space Grotesk', sans-serif; }
-        .stat-label { font-size: 19px; font-weight: 700; color: var(--text-muted); margin-top: 8px; }
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: center; }
+        .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+        .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
 
-        ul { font-size: 24px; line-height: 1.6; color: #334155; padding-left: 28px; margin: 0; }
-        li { margin-bottom: 14px; }
+        .stat-num { font-size: 60px; font-weight: 800; color: var(--crimson); font-family: 'Space Grotesk', sans-serif; }
+        .stat-label { font-size: 18px; font-weight: 700; color: var(--text-muted); margin-top: 6px; }
+
+        ul { font-size: 22px; line-height: 1.5; color: #334155; padding-left: 24px; margin: 0; }
+        li { margin-bottom: 12px; }
 
         .footer-bar {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            font-size: 17px;
+            font-size: 16px;
             color: var(--text-muted);
             border-top: 2px solid var(--border);
-            padding-top: 18px;
+            padding-top: 16px;
             position: relative;
             z-index: 10;
         }
 
-        /* Animated Progress Fill */
         .progress-bar-bg {
-            height: 12px;
+            height: 10px;
             background: #E2E8F0;
-            border-radius: 6px;
+            border-radius: 5px;
             overflow: hidden;
-            margin-top: 10px;
+            margin-top: 8px;
         }
-        .progress-fill-green { height: 100%; width: 88%; background: var(--green); border-radius: 6px; }
-        .progress-fill-red { height: 100%; width: 25%; background: #EF4444; border-radius: 6px; }
+        .progress-fill-green { height: 100%; width: 88%; background: var(--green); border-radius: 5px; }
+        .progress-fill-red { height: 100%; width: 25%; background: #EF4444; border-radius: 5px; }
 
-        /* Formula Box */
         .formula-box {
             background: #FFFFFF;
             border: 2.5px solid var(--crimson);
             border-radius: var(--radius-md);
-            padding: 24px 32px;
+            padding: 20px 28px;
             font-family: 'JetBrains Mono', monospace;
-            font-size: 28px;
+            font-size: 26px;
             color: var(--text-main);
             box-shadow: var(--shadow-glow);
         }
@@ -261,21 +259,20 @@
             </div>
             <div class="badge">UNESCO YOUTH HACKATHON 2026 ENTRY</div>
         </div>
-        <div style="margin: 30px 0;">
-            <div style="font-size: 26px; color: var(--gold); font-weight: 800; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 16px;">The Invisible Feed Equation</div>
-            <h1 class="slide-title" style="font-size: 72px;">See the Algorithm.<br><span class="highlight">Break the Echo.</span></h1>
-            <div class="slide-subtitle" style="font-size: 30px; max-width: 1200px;">An interactive visual debugging arena and media literacy role-play platform for youth.</div>
-        </div>
-        <div class="browser-mockup" style="max-width: 1100px;">
-            <div class="browser-header">
-                <div class="browser-dot dot-red"></div>
-                <div class="browser-dot dot-yellow"></div>
-                <div class="browser-dot dot-green"></div>
-                <div class="browser-url">https://echobreaker-mil.onrender.com</div>
+        <div class="grid-2">
+            <div>
+                <div style="font-size: 24px; color: var(--gold); font-weight: 800; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 12px;">The Invisible Feed Equation</div>
+                <h1 class="slide-title" style="font-size: 64px;">See the Algorithm.<br><span class="highlight">Break the Echo.</span></h1>
+                <div class="slide-subtitle" style="font-size: 26px;">An interactive visual debugging arena and media literacy role-play platform for youth.</div>
             </div>
-            <div style="padding: 24px 32px; display: flex; justify-content: space-between; align-items: center; background: #F8FAFC;">
-                <div><strong>Live Production Web App</strong> — Zero Install · 100% Free · Multi-Language Ready</div>
-                <div style="color: var(--crimson); font-weight: 800;">PLAY INTERACTIVE ARENA →</div>
+            <div class="browser-mockup">
+                <div class="browser-header">
+                    <div class="browser-dot dot-red"></div>
+                    <div class="browser-dot dot-yellow"></div>
+                    <div class="browser-dot dot-green"></div>
+                    <div class="browser-url">https://echobreaker-mil.onrender.com</div>
+                </div>
+                <img src="https://raw.githubusercontent.com/benoualiabdelkader/echobreaker/main/assets/screenshots/feed_simulator.png" alt="EchoBreaker Feed Simulator UI" class="screenshot-img">
             </div>
         </div>
         <div class="footer-bar">
@@ -300,7 +297,7 @@
                 <div class="card-box">
                     <div style="color: var(--green); font-weight: 800; font-size: 22px; margin-bottom: 8px;">HEALTHY FEED — DIVERSITY: 88%</div>
                     <div class="progress-bar-bg"><div class="progress-fill-green"></div></div>
-                    <ul style="margin-top: 20px;">
+                    <ul style="margin-top: 16px;">
                         <li>Balanced exposure across 7+ topics.</li>
                         <li>Multi-perspective news discovery.</li>
                         <li>High cognitive flexibility &amp; critical reasoning.</li>
@@ -309,7 +306,7 @@
                 <div class="card-box-alert">
                     <div style="color: #EF4444; font-weight: 800; font-size: 22px; margin-bottom: 8px;">ECHO CHAMBER — DIVERSITY: 25% (ALERT!)</div>
                     <div class="progress-bar-bg"><div class="progress-fill-red"></div></div>
-                    <ul style="margin-top: 20px;">
+                    <ul style="margin-top: 16px;">
                         <li>Single-topic concentration &gt; 65%.</li>
                         <li>Opposing viewpoints silently suppressed.</li>
                         <li>Severe epistemic confirmation bias.</li>
@@ -374,8 +371,8 @@
             <div class="slide-subtitle">How a single 12-second dwell-time trigger narrows a teenager's digital world.</div>
             <div class="grid-2">
                 <div class="card-box">
-                    <div style="font-size: 26px; font-weight: 800; color: var(--text-main); margin-bottom: 6px;">Persona: Sarah (Age 16)</div>
-                    <div style="font-size: 18px; color: var(--text-muted); margin-bottom: 20px;">High School Student &amp; Active Daily User</div>
+                    <div style="font-size: 24px; font-weight: 800; color: var(--text-main); margin-bottom: 6px;">Persona: Sarah (Age 16)</div>
+                    <div style="font-size: 17px; color: var(--text-muted); margin-bottom: 16px;">High School Student &amp; Active Daily User</div>
                     <ul>
                         <li><strong>Goal:</strong> Find study routine tips for exam week.</li>
                         <li><strong>Friction:</strong> Lingers 12 seconds on sensational headline.</li>
@@ -383,10 +380,10 @@
                     </ul>
                 </div>
                 <div class="card-box" style="border-left: 8px solid var(--crimson);">
-                    <div style="font-size: 22px; font-weight: 800; color: var(--crimson); margin-bottom: 16px;">FEED NARROWING TIMELINE</div>
-                    <p style="font-size: 20px;"><strong>00:00</strong> — Searches Morning Study Routine.</p>
-                    <p style="font-size: 20px;"><strong>03:00</strong> — Clicks "Miracle Extract" video.</p>
-                    <p style="font-size: 20px; color: var(--crimson); font-weight: 700;"><strong>08:00</strong> — Feed is 80% conspiracy health claims.</p>
+                    <div style="font-size: 22px; font-weight: 800; color: var(--crimson); margin-bottom: 12px;">FEED NARROWING TIMELINE</div>
+                    <p style="font-size: 19px;"><strong>00:00</strong> — Searches Morning Study Routine.</p>
+                    <p style="font-size: 19px;"><strong>03:00</strong> — Clicks "Miracle Extract" video.</p>
+                    <p style="font-size: 19px; color: var(--crimson); font-weight: 700;"><strong>08:00</strong> — Feed is 80% conspiracy health claims.</p>
                 </div>
             </div>
         </div>
@@ -410,7 +407,7 @@
             <div class="slide-subtitle">The paradigm shift from passive lectures to active visual debugging.</div>
             <div class="grid-2">
                 <div class="card-box" style="opacity: 0.65;">
-                    <div style="font-size: 24px; font-weight: 800; color: var(--text-muted); margin-bottom: 12px;">OLD APPROACH — PASSIVE LECTURES</div>
+                    <div style="font-size: 22px; font-weight: 800; color: var(--text-muted); margin-bottom: 12px;">OLD APPROACH — PASSIVE LECTURES</div>
                     <ul>
                         <li>Memorize definitions of fake news.</li>
                         <li>Passive warning banners.</li>
@@ -418,7 +415,7 @@
                     </ul>
                 </div>
                 <div class="card-box" style="border: 3px solid var(--gold); background: var(--gold-light);">
-                    <div style="font-size: 24px; font-weight: 800; color: var(--gold); margin-bottom: 12px;">NEW BREAKTHROUGH — VISUAL DEBUGGING</div>
+                    <div style="font-size: 22px; font-weight: 800; color: var(--gold); margin-bottom: 12px;">NEW BREAKTHROUGH — VISUAL DEBUGGING</div>
                     <ul>
                         <li>Expose live scoring formula S_post.</li>
                         <li>Track real-time dwell time &amp; affinity.</li>
@@ -442,20 +439,23 @@
             </div>
             <div class="badge">THE SOLUTION</div>
         </div>
-        <div style="text-align: center; margin: 15px 0;">
-            <h1 class="slide-title" style="font-size: 64px;">Introducing <span class="highlight">EchoBreaker</span></h1>
-            <div class="slide-subtitle" style="font-size: 28px;">The interactive classroom scenario arena &amp; media literacy role-play platform.</div>
-            <div class="browser-mockup" style="max-width: 1200px; margin: 0 auto;">
+        <div class="grid-2">
+            <div>
+                <h1 class="slide-title" style="font-size: 56px;">Introducing <span class="highlight">EchoBreaker</span></h1>
+                <div class="slide-subtitle">The interactive classroom scenario arena &amp; media literacy role-play platform.</div>
+                <div class="card-box" style="border: 2px solid var(--crimson);">
+                    <div style="font-size: 24px; font-weight: 800; color: var(--text-main); margin-bottom: 12px;">"See the Algorithm. Break the Echo."</div>
+                    <p style="font-size: 19px; color: var(--text-muted); margin: 0;">A zero-cost, open-access web ecosystem bridging theoretical media literacy and hands-on digital agency.</p>
+                </div>
+            </div>
+            <div class="browser-mockup">
                 <div class="browser-header">
                     <div class="browser-dot dot-red"></div>
                     <div class="browser-dot dot-yellow"></div>
                     <div class="browser-dot dot-green"></div>
                     <div class="browser-url">https://echobreaker-mil.onrender.com/game.html</div>
                 </div>
-                <div style="padding: 40px; background: #FFFFFF;">
-                    <div style="font-size: 32px; font-weight: 800; color: var(--text-main); margin-bottom: 16px;">"See the Algorithm. Break the Echo."</div>
-                    <p style="font-size: 22px; color: var(--text-muted); margin: 0;">A zero-cost, open-access web ecosystem bridging theoretical media literacy and hands-on digital agency.</p>
-                </div>
+                <img src="https://raw.githubusercontent.com/benoualiabdelkader/echobreaker/main/assets/screenshots/game_arena.png" alt="EchoBreaker Game Arena UI Screenshot" class="screenshot-img">
             </div>
         </div>
         <div class="footer-bar">
@@ -475,25 +475,25 @@
         </div>
         <div>
             <h1 class="slide-title">The 4-Module <span class="gold">Pedagogical Ecosystem</span></h1>
-            <div class="formula-box" style="margin-bottom: 24px;">
+            <div class="formula-box" style="margin-bottom: 20px;">
                 S_post = 0.40 × A_cat + 0.30 × E_res + 0.20 × E_pot + 0.10 × R
             </div>
             <div class="grid-4">
                 <div class="card-box">
-                    <div style="font-size: 20px; font-weight: 800; color: var(--crimson);">MOD 1: SIMULATOR</div>
-                    <div style="font-size: 16px; color: var(--text-muted); margin-top: 8px;">Live S_post &amp; dwell time visual debugging.</div>
+                    <div style="font-size: 18px; font-weight: 800; color: var(--crimson);">MOD 1: SIMULATOR</div>
+                    <div style="font-size: 15px; color: var(--text-muted); margin-top: 6px;">Live S_post &amp; dwell time visual debugging.</div>
                 </div>
                 <div class="card-box">
-                    <div style="font-size: 20px; font-weight: 800; color: var(--gold);">MOD 2: ESCAPE ARENA</div>
-                    <div style="font-size: 16px; color: var(--text-muted); margin-top: 8px;">12-card classroom role-play deck.</div>
+                    <div style="font-size: 18px; font-weight: 800; color: var(--gold);">MOD 2: ESCAPE ARENA</div>
+                    <div style="font-size: 15px; color: var(--text-muted); margin-top: 6px;">12-card classroom role-play deck.</div>
                 </div>
                 <div class="card-box">
-                    <div style="font-size: 20px; font-weight: 800; color: var(--blue);">MOD 3: AUDIT TOOLKIT</div>
-                    <div style="font-size: 16px; color: var(--text-muted); margin-top: 8px;">20-item device AI reset checklist.</div>
+                    <div style="font-size: 18px; font-weight: 800; color: var(--blue);">MOD 3: AUDIT TOOLKIT</div>
+                    <div style="font-size: 15px; color: var(--text-muted); margin-top: 6px;">20-item device AI reset checklist.</div>
                 </div>
                 <div class="card-box">
-                    <div style="font-size: 20px; font-weight: 800; color: var(--green);">MOD 4: COMMAND CENTER</div>
-                    <div style="font-size: 16px; color: var(--text-muted); margin-top: 8px;">Educator cohort telemetry dashboard.</div>
+                    <div style="font-size: 18px; font-weight: 800; color: var(--green);">MOD 4: COMMAND CENTER</div>
+                    <div style="font-size: 15px; color: var(--text-muted); margin-top: 6px;">Educator cohort telemetry dashboard.</div>
                 </div>
             </div>
         </div>
@@ -516,16 +516,20 @@
             <h1 class="slide-title">Live Product <span class="highlight">Visual Debugging</span></h1>
             <div class="slide-subtitle">Real software proof: inspect category affinities and dwell-time live.</div>
             <div class="grid-2">
+                <div class="browser-mockup">
+                    <div class="browser-header">
+                        <div class="browser-dot dot-red"></div>
+                        <div class="browser-dot dot-yellow"></div>
+                        <div class="browser-dot dot-green"></div>
+                        <div class="browser-url">https://echobreaker-mil.onrender.com#curtain</div>
+                    </div>
+                    <img src="https://raw.githubusercontent.com/benoualiabdelkader/echobreaker/main/assets/screenshots/behind_curtain.png" alt="EchoBreaker Behind the Curtain UI Screenshot" class="screenshot-img">
+                </div>
                 <div class="card-box" style="border: 2.5px solid var(--crimson);">
                     <div style="font-weight: 800; color: var(--crimson); font-size: 22px; margin-bottom: 12px;">BEHIND THE CURTAIN INSPECTOR</div>
-                    <p style="font-size: 20px;"><strong>Health Affinity:</strong> 0.50</p>
-                    <p style="font-size: 20px;"><strong>Technology Affinity:</strong> 0.50</p>
-                    <p style="font-size: 20px; color: var(--crimson); font-weight: 700;"><strong>Conspiracy Affinity:</strong> 0.85 (Reranking Feed...)</p>
-                </div>
-                <div class="card-box">
-                    <div style="font-weight: 800; color: var(--text-main); font-size: 22px; margin-bottom: 12px;">12-CARD ESCAPE ARENA</div>
-                    <p style="font-size: 20px;"><strong>Scenario #01:</strong> MIRACLE BERRY Extract ELIMINATES Chronic Pain!</p>
-                    <p style="font-size: 20px; color: var(--green); font-weight: 700;"><strong>Verdict:</strong> 🚩 Misleading (XP Reward: +100)</p>
+                    <p style="font-size: 19px;"><strong>Health Affinity:</strong> 0.50</p>
+                    <p style="font-size: 19px;"><strong>Technology Affinity:</strong> 0.50</p>
+                    <p style="font-size: 19px; color: var(--crimson); font-weight: 700;"><strong>Conspiracy Affinity:</strong> 0.85 (Reranking Feed...)</p>
                 </div>
             </div>
         </div>
@@ -549,7 +553,7 @@
             <div class="slide-subtitle">Why EchoBreaker stands apart from traditional approaches.</div>
             <div class="grid-2">
                 <div class="card-box">
-                    <div style="font-size: 24px; font-weight: 800; color: var(--text-muted); margin-bottom: 12px;">TRADITIONAL LECTURES</div>
+                    <div style="font-size: 22px; font-weight: 800; color: var(--text-muted); margin-bottom: 12px;">TRADITIONAL LECTURES</div>
                     <ul>
                         <li>Passive definitions &amp; slideshows.</li>
                         <li>No interaction with real AI ranking.</li>
@@ -557,7 +561,7 @@
                     </ul>
                 </div>
                 <div class="card-box" style="border: 3px solid var(--crimson); background: var(--crimson-light);">
-                    <div style="font-size: 24px; font-weight: 800; color: var(--crimson); margin-bottom: 12px;">ECHOBREAKER INNOVATION</div>
+                    <div style="font-size: 22px; font-weight: 800; color: var(--crimson); margin-bottom: 12px;">ECHOBREAKER INNOVATION</div>
                     <ul>
                         <li>Active visual debugging of live algorithms.</li>
                         <li>Role-play gamification (Algorithm vs. User).</li>
@@ -586,7 +590,7 @@
             <div class="slide-subtitle">Built for every classroom: zero data barriers, 100% inclusive.</div>
             <div class="grid-2">
                 <div class="card-box">
-                    <div style="font-size: 24px; font-weight: 800; color: var(--green); margin-bottom: 12px;">STRICT MINOR PRIVACY</div>
+                    <div style="font-size: 22px; font-weight: 800; color: var(--green); margin-bottom: 12px;">STRICT MINOR PRIVACY</div>
                     <ul>
                         <li>Zero account creation required.</li>
                         <li>Zero email or personal data collection.</li>
@@ -594,7 +598,7 @@
                     </ul>
                 </div>
                 <div class="card-box">
-                    <div style="font-size: 24px; font-weight: 800; color: var(--blue); margin-bottom: 12px;">GLOBAL ACCESSIBILITY</div>
+                    <div style="font-size: 22px; font-weight: 800; color: var(--blue); margin-bottom: 12px;">GLOBAL ACCESSIBILITY</div>
                     <ul>
                         <li>Low-bandwidth lightweight web delivery.</li>
                         <li>Plan B printable offline card worksheets.</li>
@@ -618,28 +622,31 @@
             </div>
             <div class="badge">FEASIBILITY &amp; ROADMAP</div>
         </div>
-        <div>
-            <h1 class="slide-title">Validated Pilot Data &amp; <span class="gold">UNESCO Scaling Plan</span></h1>
-            <div class="grid-4" style="margin-bottom: 24px;">
-                <div class="card-box" style="text-align: center;">
-                    <div class="stat-num">480</div>
-                    <div class="stat-label">Pilot Participants</div>
+        <div class="grid-2">
+            <div>
+                <h1 class="slide-title">Validated Data &amp; <span class="gold">Scaling Plan</span></h1>
+                <div class="grid-2" style="margin-bottom: 20px;">
+                    <div class="card-box" style="text-align: center;">
+                        <div class="stat-num">480</div>
+                        <div class="stat-label">Pilot Participants</div>
+                    </div>
+                    <div class="card-box" style="text-align: center;">
+                        <div class="stat-num">88%</div>
+                        <div class="stat-label">Literacy Gain</div>
+                    </div>
                 </div>
-                <div class="card-box" style="text-align: center;">
-                    <div class="stat-num">88%</div>
-                    <div class="stat-label">Literacy Gain</div>
-                </div>
-                <div class="card-box" style="text-align: center;">
-                    <div class="stat-num">91%</div>
-                    <div class="stat-label">Audit Pledges</div>
-                </div>
-                <div class="card-box" style="text-align: center;">
-                    <div class="stat-num">$0</div>
-                    <div class="stat-label">Server Cost Overhead</div>
+                <div class="card-box">
+                    <div style="font-weight: 800; color: var(--text-main); font-size: 16px;">ROADMAP: Hackathon Submission → 5-School Pilot → UNESCO MIL Network</div>
                 </div>
             </div>
-            <div class="card-box">
-                <div style="font-weight: 800; color: var(--text-main); font-size: 18px;">ROADMAP: Hackathon Submission (Aug 2026) → 5-School Pilot (Q4 2026) → UNESCO MIL Network (2027)</div>
+            <div class="browser-mockup">
+                <div class="browser-header">
+                    <div class="browser-dot dot-red"></div>
+                    <div class="browser-dot dot-yellow"></div>
+                    <div class="browser-dot dot-green"></div>
+                    <div class="browser-url">https://echobreaker-mil.onrender.com/dashboard.html</div>
+                </div>
+                <img src="https://raw.githubusercontent.com/benoualiabdelkader/echobreaker/main/assets/screenshots/dashboard.png" alt="EchoBreaker Educator Dashboard UI Screenshot" class="screenshot-img">
             </div>
         </div>
         <div class="footer-bar">
@@ -658,10 +665,10 @@
             </div>
             <div class="badge">FINAL VISION</div>
         </div>
-        <div style="text-align: center; margin: 30px 0;">
-            <h1 class="slide-title" style="font-size: 72px;">See the Algorithm.<br><span class="highlight">Break the Echo.</span></h1>
-            <div class="slide-subtitle" style="font-size: 30px; max-width: 1100px; margin: 24px auto;">Reclaiming youth digital agency for a more conscious, literate, and democratic world.</div>
-            <div style="margin-top: 30px; font-size: 26px; color: var(--crimson); font-weight: 800;">
+        <div style="text-align: center; margin: 20px 0;">
+            <h1 class="slide-title" style="font-size: 68px;">See the Algorithm.<br><span class="highlight">Break the Echo.</span></h1>
+            <div class="slide-subtitle" style="font-size: 28px; max-width: 1100px; margin: 20px auto;">Reclaiming youth digital agency for a more conscious, literate, and democratic world.</div>
+            <div style="margin-top: 20px; font-size: 26px; color: var(--crimson); font-weight: 800;">
                 https://echobreaker-mil.onrender.com
             </div>
         </div>
