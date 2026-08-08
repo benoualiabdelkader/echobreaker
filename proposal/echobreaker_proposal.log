@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.8.4)  8 AUG 2026 15:41
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.8.4)  8 AUG 2026 15:47
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -999,17 +999,8 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has b
                    \relax 
 l.191 \newpage
                [1]
-Underfull \hbox (badness 10000) in paragraph at lines 210--210
-[]|\T1/lmr/m/n/10.95 (+20) BENDJERIOU
- []
-
-
-Underfull \hbox (badness 4303) in paragraph at lines 210--210
-\T1/lmr/m/n/10.95 (+20) SED-JER-ARI Ab-
- []
-
 LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 230.
-(c:/Users/CORTEC/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/lm/ts1lmr.fd
+ (c:/Users/CORTEC/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/lm/ts1lmr.fd
 File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 231.
@@ -1021,7 +1012,7 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
  [2{c:/Users/CORTEC/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-ts1.enc}]
-<feed_screenshot.png, id=112, 391.4625pt x 847.165pt>
+<feed_screenshot.png, id=113, 391.4625pt x 847.165pt>
 File: feed_screenshot.png Graphic file (type png)
 <use feed_screenshot.png>
 Package pdftex.def Info: feed_screenshot.png  used on input line 280.
@@ -1039,7 +1030,7 @@ Package caption Warning: The option `hypcap=true' will be ignored for this
 (caption)                particular \caption on input line 301.
 See the caption package documentation for explanation.
 
-<game_screenshot.png, id=113, 391.4625pt x 847.165pt>
+<game_screenshot.png, id=114, 391.4625pt x 847.165pt>
 File: game_screenshot.png Graphic file (type png)
 <use game_screenshot.png>
 Package pdftex.def Info: game_screenshot.png  used on input line 311.
@@ -1067,8 +1058,8 @@ Package caption Warning: The option `hypcap=true' will be ignored for this
 See the caption package documentation for explanation.
 
 
-Underfull \hbox (badness 2961) in paragraph at lines 347--349
-\T1/lmr/m/n/10.95 (+20) A 20-item in-ter-ac-tive au-dit check-list pro-vid-ing
+Underfull \hbox (badness 2961) in paragraph at lines 348--349
+[]\T1/lmr/m/n/10.95 (+20) A 20-item in-ter-ac-tive au-dit check-list pro-vid-ing
  []
 
 
@@ -1100,15 +1091,15 @@ Package rerunfilecheck Info: File `echobreaker_proposal.out' has not changed.
 (rerunfilecheck)             Checksum: D710E16854F28CB29AF26D8CDCA23A3C;2554.
  ) 
 Here is how much of TeX's memory you used:
- 35161 strings out of 469115
- 710405 string characters out of 5457220
+ 35159 strings out of 469115
+ 710379 string characters out of 5457220
  1182735 words of memory out of 5000000
  63475 multiletter control sequences out of 15000+600000
- 708746 words of font info for 149 fonts, out of 8000000 for 9000
+ 708616 words of font info for 148 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
  98i,12n,108p,1209b,864s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <c:/Users/CORTEC/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmbx10.pfb><c:/Users/CORTEC/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmbx12.pfb><c:/Users/CORTEC/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmbx5.pfb><c:/Users/CORTEC/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmbx6.pfb><c:/Users/CORTEC/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmbx8.pfb><c:/Users/CORTEC/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmbxi10.pfb><c:/Users/CORTEC/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmmi10.pfb><c:/Users/CORTEC/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmmi6.pfb><c:/Users/CORTEC/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr10.pfb><c:/Users/CORTEC/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr6.pfb><c:/Users/CORTEC/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr8.pfb><c:/Users/CORTEC/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmri10.pfb><c:/Users/CORTEC/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmri12.pfb><c:/Users/CORTEC/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmsy10.pfb><c:/Users/CORTEC/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmsy6.pfb><c:/Users/CORTEC/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmtt10.pfb>
-Output written on echobreaker_proposal.pdf (8 pages, 757462 bytes).
+Output written on echobreaker_proposal.pdf (8 pages, 756160 bytes).
 PDF statistics:
  237 PDF objects out of 1000 (max. 8388607)
  187 compressed objects within 2 object streams
