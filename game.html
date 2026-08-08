@@ -1378,12 +1378,26 @@
         if (typeof renderArenaCards === 'function') renderArenaCards();
     });
 
+    function checkHashScroll() {
+        const hash = window.location.hash;
+        if (hash === '#interactive-arena' || hash === '#arena-section') {
+            setTimeout(() => {
+                const target = document.getElementById('interactive-arena');
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            }, 300);
+        }
+    }
+
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', () => {
             renderArenaCards();
+            checkHashScroll();
         });
     } else {
         renderArenaCards();
+        checkHashScroll();
     }
     </script>
 
