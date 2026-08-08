@@ -428,3 +428,26 @@ if (typeof document !== 'undefined') {
 if (typeof window !== 'undefined') {
   window.i18n = i18n;
 }
+
+/* === GLOBAL PERFECT PRELOADER DISMISS === */
+(function() {
+  function dismissPreloader() {
+    const preloader = document.getElementById("eb-preloader");
+    if (preloader && !preloader.classList.contains("fade-out")) {
+      setTimeout(() => {
+        preloader.classList.add("fade-out");
+        setTimeout(() => {
+          if (preloader.parentNode) preloader.parentNode.removeChild(preloader);
+        }, 450);
+      }, 350);
+    }
+  }
+
+  if (document.readyState === 'complete') {
+    dismissPreloader();
+  } else {
+    window.addEventListener('load', dismissPreloader);
+    document.addEventListener('DOMContentLoaded', () => setTimeout(dismissPreloader, 600));
+    setTimeout(dismissPreloader, 1200); // Safety fallback
+  }
+})();
