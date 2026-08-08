@@ -663,7 +663,7 @@
         </p>
 
         <div class="hero-cta-group">
-            <a href="#interactive-arena" class="btn-primary-cta" data-i18n="btn_play_arena">
+            <a href="#interactive-arena" id="btn-play-arena" class="btn-primary-cta" onclick="event.preventDefault(); const target = document.getElementById('interactive-arena'); if (target) { target.scrollIntoView({behavior: 'smooth', block: 'start'}); }" data-i18n="btn_play_arena">
                 <span class="eb-icon eb-icon-game"></span> Play Interactive Arena
             </a>
             <a href="toolkit.html" class="btn-secondary-cta" data-i18n="btn_open_toolkit">
@@ -715,7 +715,7 @@
     </div>
 
     <!-- 1. INTERACTIVE SCENARIO ARENA -->
-    <section id="arena-section" class="content-section">
+    <section id="interactive-arena" class="content-section">
         <div class="section-header">
             <div class="section-title-badge" data-i18n="badge_interactive_deck">Interactive Card Deck</div>
         </div>
