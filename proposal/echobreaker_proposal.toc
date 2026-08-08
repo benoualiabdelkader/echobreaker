@@ -3,15 +3,12 @@
 \contentsline {section}{\numberline {1}Executive Summary}{2}{section.1}%
 \contentsline {section}{\numberline {2}The Team}{2}{section.2}%
 \contentsline {section}{\numberline {3}Problem Statement}{2}{section.3}%
-\contentsline {section}{\numberline {4}Objectives}{2}{section.4}%
+\contentsline {section}{\numberline {4}Objectives \& Contingency Plan}{2}{section.4}%
 \contentsline {section}{\numberline {5}Target Audience}{3}{section.5}%
 \contentsline {section}{\numberline {6}Proposed Solution / Concept \& Prototype}{3}{section.6}%
 \contentsline {subsection}{\numberline {6.1}Module Breakdown: Interfaces \& Algorithmic Logic}{3}{subsection.6.1}%
 \contentsline {section}{\numberline {7}Innovation \& Creativity}{5}{section.7}%
-\contentsline {section}{\numberline {8}Feasibility}{5}{section.8}%
-\contentsline {section}{\numberline {9}Sustainability}{5}{section.9}%
-\contentsline {section}{\numberline {10}Social Impact \& Inclusion}{5}{section.10}%
-\contentsline {section}{\numberline {11}Alignment with the Hackathon Theme}{6}{section.11}%
-\contentsline {section}{\numberline {12}Conclusion}{6}{section.12}%
-\contentsline {section}{Appendix A: Scoring Formula Reference}{6}{section*.4}%
-\contentsline {section}{Appendix B: Module File Map}{7}{section*.6}%
+\contentsline {section}{\numberline {8}Feasibility \& Sustainability}{5}{section.8}%
+\contentsline {section}{\numberline {9}Conclusion \& Call to Action}{6}{section.9}%
+\contentsline {section}{Appendix A: Scoring Formula \& Diversity Reference}{6}{section*.4}%
+\contentsline {section}{Appendix B: Module Architecture \& Complete File Map}{7}{section*.6}%
