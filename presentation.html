@@ -2,12 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>EchoBreaker Presentation</title>
+    <title>EchoBreaker Presentation — Official Light Theme</title>
     <style>
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: #0F172A;
-            color: #FFFFFF;
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background-color: #F8FAFC;
+            color: #0F172A;
             margin: 0;
             padding: 0;
         }
@@ -15,75 +15,122 @@
             width: 1920px;
             height: 1080px;
             box-sizing: border-box;
-            padding: 80px;
-            background: #0F172A;
-            color: #FFFFFF;
+            padding: 90px;
+            background: #FFFFFF;
+            color: #0F172A;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            border-bottom: 2px solid #1E293B;
+            border-bottom: 4px solid #E2E8F0;
             page-break-after: always;
+            position: relative;
+        }
+        .header-logo-group {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+        .official-logo-mark {
+            width: 54px;
+            height: 54px;
+            background: #A8412E;
+            mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5'/%3E%3C/svg%3E") center/contain no-repeat;
+            -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5'/%3E%3C/svg%3E") center/contain no-repeat;
+        }
+        .logo-text-echo {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 42px;
+            font-weight: 800;
+            color: #0F172A;
+            letter-spacing: 1px;
+        }
+        .logo-text-breaker {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 42px;
+            font-weight: 800;
+            color: #A8412E;
+            letter-spacing: 1px;
         }
         .slide-title {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: 56px;
+            font-size: 52px;
             font-weight: 800;
-            color: #FFFFFF;
-            margin-bottom: 24px;
+            color: #0F172A;
+            margin-bottom: 16px;
+            line-height: 1.2;
         }
         .slide-subtitle {
-            font-size: 28px;
-            color: #94A3B8;
+            font-size: 26px;
+            color: #475569;
             margin-bottom: 40px;
+            font-weight: 500;
         }
         .highlight {
             color: #A8412E;
         }
         .gold {
-            color: #D4A356;
+            color: #B8862E;
         }
         ul {
-            font-size: 28px;
+            font-size: 26px;
             line-height: 1.6;
-            color: #E4E6E9;
-            max-width: 1400px;
+            color: #334155;
+            max-width: 1450px;
+            padding-left: 30px;
         }
         li {
-            margin-bottom: 16px;
+            margin-bottom: 18px;
         }
         .badge {
             display: inline-block;
-            background: #1E293B;
-            border: 1px solid #D4A356;
-            color: #D4A356;
-            padding: 8px 16px;
+            background: #FEF2F2;
+            border: 1.5px solid #FCA5A5;
+            color: #A8412E;
+            padding: 8px 18px;
             border-radius: 20px;
-            font-size: 18px;
-            font-weight: 700;
+            font-size: 16px;
+            font-weight: 800;
+            letter-spacing: 0.5px;
             margin-bottom: 24px;
         }
         .stats-grid {
             display: flex;
-            gap: 40px;
-            margin-top: 40px;
+            gap: 36px;
+            margin-top: 36px;
         }
         .stat-box {
-            background: #1E293B;
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 16px;
-            padding: 32px;
+            background: #F8FAFC;
+            border: 2px solid #E2E8F0;
+            border-radius: 20px;
+            padding: 36px;
             flex: 1;
             text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
         }
         .stat-num {
-            font-size: 64px;
+            font-size: 68px;
             font-weight: 800;
             color: #A8412E;
         }
         .stat-label {
             font-size: 20px;
-            color: #94A3B8;
-            margin-top: 12px;
+            font-weight: 700;
+            color: #475569;
+            margin-top: 10px;
+        }
+        .footer-bar {
+            position: absolute;
+            bottom: 40px;
+            left: 90px;
+            right: 90px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 18px;
+            color: #64748B;
+            border-top: 1px solid #E2E8F0;
+            padding-top: 20px;
         }
     </style>
 </head>
@@ -91,57 +138,102 @@
 
     <!-- SLIDE 1 -->
     <div data-document-role="page" data-label="Slide 1 — EchoBreaker Overview" data-speaker-notes="Welcome to EchoBreaker. While traditional media literacy teaches what misinformation is, EchoBreaker teaches youth why it spreads by revealing the invisible math behind social media feeds." class="slide">
-        <div class="badge">UNESCO MIL HACKATHON 2026 SUBMISSION</div>
-        <h1 class="slide-title"><span style="color:#FFFFFF">ECHO</span> <span class="highlight">BREAKER</span></h1>
-        <div class="slide-subtitle">See the Algorithm. Break the Echo.</div>
+        <div class="badge">UNESCO MIL HACKATHON 2026 OFFICIAL SUBMISSION</div>
+        <div class="header-logo-group">
+            <div class="official-logo-mark"></div>
+            <div>
+                <span class="logo-text-echo">ECHO</span><span class="logo-text-breaker">BREAKER</span>
+            </div>
+        </div>
+        <h1 class="slide-title">See the Algorithm. <span class="highlight">Break the Echo.</span></h1>
+        <div class="slide-subtitle">An interactive classroom scenario arena & media literacy role-play web platform for youth.</div>
         <ul>
             <li><strong>Interactive Classroom Scenario Arena:</strong> Gamified media literacy role-play for youth (ages 14–18).</li>
             <li><strong>Visual AI Debugging:</strong> Exposes real-time mathematical feed scoring (S_post) and dwell-time tracking.</li>
             <li><strong>Zero-Install Architecture:</strong> Lightweight web app with rapid multi-language i18n support.</li>
         </ul>
-        <div style="margin-top:20px; font-size:22px; color:#94A3B8;">Live Production: https://echobreaker-mil.onrender.com</div>
+        <div class="footer-bar">
+            <div>Live Production: <strong>https://echobreaker-mil.onrender.com</strong></div>
+            <div>UNESCO Media &amp; Information Literacy Category</div>
+        </div>
     </div>
 
     <!-- SLIDE 2 -->
     <div data-document-role="page" data-label="Slide 2 — The Problem" data-speaker-notes="Modern recommendation engines are engineered for one goal: maximizing dwell-time. When category diversity drops below 35%, the user is trapped inside an echo chamber without realizing it." class="slide">
-        <h1 class="slide-title">The Problem: <span class="highlight">Invisible Algorithms</span> & Filter Bubbles</h1>
-        <div class="slide-subtitle">5.79 Billion users scroll feeds governed by invisible engagement maximization.</div>
+        <div class="header-logo-group">
+            <div class="official-logo-mark"></div>
+            <div>
+                <span class="logo-text-echo">ECHO</span><span class="logo-text-breaker">BREAKER</span>
+            </div>
+        </div>
+        <h1 class="slide-title">The Problem: <span class="highlight">Invisible Algorithms</span> &amp; Filter Bubbles</h1>
+        <div class="slide-subtitle">5.79 Billion social media identities scroll feeds governed by invisible engagement maximization.</div>
         <ul>
             <li><strong>Engagement Maximization:</strong> Algorithms prioritize emotional outrage and watch-time over factual accuracy.</li>
             <li><strong>Filter Bubble Formation:</strong> When single-topic concentration exceeds 65% (D &lt; 0.35), feed diversity collapses.</li>
             <li><strong>The Black Box Gap:</strong> 92% of youth scroll without recognizing ranking signals or category affinities.</li>
         </ul>
+        <div class="footer-bar">
+            <div>Problem Statement &amp; Target Population</div>
+            <div>DataReportal 2026 Analysis</div>
+        </div>
     </div>
 
     <!-- SLIDE 3 -->
     <div data-document-role="page" data-label="Slide 3 — 4-Module Solution" data-speaker-notes="To solve this, we built EchoBreaker—a 4-module interactive ecosystem combining experience, evaluation, auditing, and reflection." class="slide">
+        <div class="header-logo-group">
+            <div class="official-logo-mark"></div>
+            <div>
+                <span class="logo-text-echo">ECHO</span><span class="logo-text-breaker">BREAKER</span>
+            </div>
+        </div>
         <h1 class="slide-title">The Solution: <span class="gold">4-Module Pedagogical Ecosystem</span></h1>
         <div class="slide-subtitle">Experience → Evaluate → Audit → Analyze</div>
         <ul>
             <li><strong>Module 1 (Feed Simulator):</strong> Live post ranking (S_post) and dwell-time observation.</li>
-            <li><strong>Module 2 (Echo Escape Arena):</strong> 12-card classroom role-play (Algorithm, Creator, Fact-Checker).</li>
-            <li><strong>Module 3 (Agency Toolkit):</strong> 20-item actionable audit checklist to reset recommendation AI.</li>
-            <li><strong>Module 4 (Command Center):</strong> Educator dashboard tracking cohort telemetry without PII.</li>
+            <li><strong>Module 2 (Echo Escape Arena):</strong> 12-card classroom role-play (Algorithm, Content Creator, Fact-Checker).</li>
+            <li><strong>Module 3 (Agency Toolkit):</strong> 20-item actionable audit checklist to reset recommendation AI models.</li>
+            <li><strong>Module 4 (Command Center):</strong> Educator dashboard tracking cohort telemetry without personal data collection.</li>
         </ul>
+        <div class="footer-bar">
+            <div>Pedagogical Architecture</div>
+            <div>UNESCO MIL 4A Amplification Framework</div>
+        </div>
     </div>
 
     <!-- SLIDE 4 -->
     <div data-document-role="page" data-label="Slide 4 — Scoring Math" data-speaker-notes="At the heart of EchoBreaker is our real-time scoring engine. We expose the exact mathematical formula social platforms hide." class="slide">
+        <div class="header-logo-group">
+            <div class="official-logo-mark"></div>
+            <div>
+                <span class="logo-text-echo">ECHO</span><span class="logo-text-breaker">BREAKER</span>
+            </div>
+        </div>
         <h1 class="slide-title">Inside the Engine: <span class="highlight">Mathematical Scoring</span></h1>
-        <div style="background:#1E293B; border:1.5px solid #A8412E; padding:30px; border-radius:16px; font-family:monospace; font-size:32px; color:#FFFFFF; margin-bottom:40px;">
-            S_post = 0.40 × A_cat + 0.30 × E_res + 0.20 × E_pot + 0.10 × R
+        <div style="background:#F8FAFC; border:2px solid #A8412E; padding:28px 36px; border-radius:18px; font-family:monospace; font-size:30px; color:#0F172A; margin-bottom:36px; box-shadow:0 4px 12px rgba(168,65,46,0.08);">
+            <strong>S_post = 0.40 × A_cat + 0.30 × E_res + 0.20 × E_pot + 0.10 × R</strong>
         </div>
         <ul>
             <li><strong>40% Category Affinity (A_cat):</strong> User interaction history.</li>
             <li><strong>30% Emotional Resonance (E_res):</strong> Outrage and sentiment weight.</li>
-            <li><strong>20% Engagement Potential (E_pot):</strong> Viral shares & metadata.</li>
+            <li><strong>20% Engagement Potential (E_pot):</u> Virality shares &amp; metadata.</li>
             <li><strong>10% Recency (R):</strong> Decay time function.</li>
         </ul>
+        <div class="footer-bar">
+            <div>Scoring Engine Mechanics</div>
+            <div>js/engine.js Implementation</div>
+        </div>
     </div>
 
     <!-- SLIDE 5 -->
     <div data-document-role="page" data-label="Slide 5 — Impact & Roadmap" data-speaker-notes="EchoBreaker is built with strict privacy-by-design, collecting zero personal data. Built for UNESCO's global vision, it is live and ready." class="slide">
-        <h1 class="slide-title">Global Impact & <span class="gold">Deployment Roadmap</span></h1>
+        <div class="header-logo-group">
+            <div class="official-logo-mark"></div>
+            <div>
+                <span class="logo-text-echo">ECHO</span><span class="logo-text-breaker">BREAKER</span>
+            </div>
+        </div>
+        <h1 class="slide-title">Global Impact &amp; <span class="gold">Deployment Roadmap</span></h1>
         <div class="stats-grid">
             <div class="stat-box">
                 <div class="stat-num">480</div>
@@ -156,8 +248,12 @@
                 <div class="stat-label">Audit Pledges</div>
             </div>
         </div>
-        <div style="margin-top:40px; font-size:24px; color:#94A3B8; text-align:center;">
+        <div style="margin-top:36px; font-size:22px; color:#475569; text-align:center; font-weight:600;">
             100% COPPA &amp; GDPR Compliant · Zero PII Collection · Free &amp; Open Access
+        </div>
+        <div class="footer-bar">
+            <div>Feasibility &amp; Scalability</div>
+            <div>https://echobreaker-mil.onrender.com</div>
         </div>
     </div>
 
