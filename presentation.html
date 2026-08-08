@@ -3,145 +3,249 @@
 <head>
     <meta charset="UTF-8">
     <title>EchoBreaker — Official UNESCO Youth Hackathon 2026 Pitch Deck</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700;800&family=JetBrains+Mono:wght@600;700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --bg-main: #FFFFFF;
+            --bg-surface: #F8FAFC;
+            --bg-card: #FFFFFF;
+            --text-main: #0F172A;
+            --text-muted: #475569;
+            --crimson: #A8412E;
+            --crimson-light: #FEF2F2;
+            --gold: #B8862E;
+            --gold-light: #FFFBEB;
+            --blue: #2563EB;
+            --green: #059669;
+            --border: #E2E8F0;
+            --radius-lg: 24px;
+            --radius-md: 16px;
+            --shadow-premium: 0 20px 40px -15px rgba(15, 23, 42, 0.07);
+            --shadow-glow: 0 0 30px rgba(168, 65, 46, 0.15);
+        }
+
+        * { box-sizing: border-box; }
+
         body {
-            font-family: 'Inter', system-ui, -apple-system, sans-serif;
-            background-color: #F8FAFC;
-            color: #0F172A;
+            font-family: 'Inter', sans-serif;
+            background-color: #E2E8F0;
+            color: var(--text-main);
             margin: 0;
             padding: 0;
         }
+
         .slide {
             width: 1920px;
             height: 1080px;
             box-sizing: border-box;
-            padding: 80px 100px;
-            background: #FFFFFF;
-            color: #0F172A;
+            padding: 70px 90px;
+            background: var(--bg-main);
+            color: var(--text-main);
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            border-bottom: 4px solid #E2E8F0;
+            border-bottom: 6px solid var(--border);
             page-break-after: always;
             position: relative;
+            overflow: hidden;
         }
+
+        /* Subtle Animated Background Accents */
+        .bg-glow-ring {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(168, 65, 46, 0.06) 0%, rgba(255, 255, 255, 0) 70%);
+            top: -150px;
+            right: -150px;
+            pointer-events: none;
+            animation: pulseGlow 8s infinite alternate ease-in-out;
+        }
+
+        @keyframes pulseGlow {
+            0% { transform: scale(1); opacity: 0.6; }
+            100% { transform: scale(1.15); opacity: 1; }
+        }
+
         .header-logo-group {
             display: flex;
             align-items: center;
             justify-content: space-between;
+            position: relative;
+            z-index: 10;
         }
+
         .logo-left {
             display: flex;
             align-items: center;
             gap: 16px;
         }
+
         .official-logo-mark {
-            width: 48px;
-            height: 48px;
-            background: #A8412E;
+            width: 52px;
+            height: 52px;
+            background: var(--crimson);
+            border-radius: 12px;
             mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5'/%3E%3C/svg%3E") center/contain no-repeat;
             -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5'/%3E%3C/svg%3E") center/contain no-repeat;
         }
+
         .logo-text-echo {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: 36px;
+            font-size: 38px;
             font-weight: 800;
-            color: #0F172A;
-            letter-spacing: 1px;
+            color: var(--text-main);
+            letter-spacing: 0.5px;
         }
+
         .logo-text-breaker {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: 36px;
+            font-size: 38px;
             font-weight: 800;
-            color: #A8412E;
-            letter-spacing: 1px;
+            color: var(--crimson);
+            letter-spacing: 0.5px;
         }
+
         .badge {
-            display: inline-block;
-            background: #FEF2F2;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--crimson-light);
             border: 1.5px solid #FCA5A5;
-            color: #A8412E;
-            padding: 8px 18px;
-            border-radius: 20px;
+            color: var(--crimson);
+            padding: 8px 20px;
+            border-radius: 30px;
             font-size: 15px;
             font-weight: 800;
             letter-spacing: 0.5px;
         }
+
         .slide-title {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: 52px;
+            font-size: 56px;
             font-weight: 800;
-            color: #0F172A;
-            margin: 20px 0 10px 0;
-            line-height: 1.25;
+            color: var(--text-main);
+            margin: 15px 0 10px 0;
+            line-height: 1.2;
+            letter-spacing: -1px;
         }
+
         .slide-subtitle {
-            font-size: 24px;
-            color: #475569;
-            margin-bottom: 30px;
+            font-size: 26px;
+            color: var(--text-muted);
+            margin-bottom: 25px;
             font-weight: 500;
+            line-height: 1.4;
         }
-        .highlight {
-            color: #A8412E;
-        }
-        .gold {
-            color: #B8862E;
-        }
-        ul {
-            font-size: 24px;
-            line-height: 1.6;
-            color: #334155;
-            padding-left: 28px;
-            margin: 0;
-        }
-        li {
-            margin-bottom: 16px;
-        }
-        .grid-2 {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            align-items: center;
-        }
-        .grid-4 {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 24px;
-        }
+
+        .highlight { color: var(--crimson); }
+        .gold { color: var(--gold); }
+
+        /* Premium Card Containers */
         .card-box {
-            background: #F8FAFC;
-            border: 2px solid #E2E8F0;
-            border-radius: 20px;
-            padding: 32px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+            background: var(--bg-surface);
+            border: 2px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 36px;
+            box-shadow: var(--shadow-premium);
+            transition: all 0.3s ease;
+            position: relative;
         }
+
         .card-box-alert {
-            background: #FEF2F2;
+            background: var(--crimson-light);
             border: 2.5px solid #EF4444;
+            border-radius: var(--radius-lg);
+            padding: 36px;
+            box-shadow: 0 15px 35px rgba(239, 68, 68, 0.1);
+        }
+
+        /* macOS Mockup Frame */
+        .browser-mockup {
+            background: #FFFFFF;
+            border: 2px solid var(--border);
             border-radius: 20px;
-            padding: 32px;
-            box-shadow: 0 4px 16px rgba(239,68,68,0.08);
+            box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.15);
+            overflow: hidden;
         }
-        .stat-num {
-            font-size: 64px;
-            font-weight: 800;
-            color: #A8412E;
+
+        .browser-header {
+            background: #F1F5F9;
+            padding: 14px 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 1px solid var(--border);
         }
-        .stat-label {
-            font-size: 18px;
-            font-weight: 700;
-            color: #475569;
-            margin-top: 8px;
+
+        .browser-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
         }
+
+        .dot-red { background: #EF4444; }
+        .dot-yellow { background: #F59E0B; }
+        .dot-green { background: #10B981; }
+
+        .browser-url {
+            background: #FFFFFF;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 6px 16px;
+            font-size: 14px;
+            color: var(--text-muted);
+            font-weight: 600;
+            flex: 1;
+            margin-left: 10px;
+        }
+
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+        .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+        .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+
+        .stat-num { font-size: 68px; font-weight: 800; color: var(--crimson); font-family: 'Space Grotesk', sans-serif; }
+        .stat-label { font-size: 19px; font-weight: 700; color: var(--text-muted); margin-top: 8px; }
+
+        ul { font-size: 24px; line-height: 1.6; color: #334155; padding-left: 28px; margin: 0; }
+        li { margin-bottom: 14px; }
+
         .footer-bar {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            font-size: 16px;
-            color: #64748B;
-            border-top: 1px solid #E2E8F0;
-            padding-top: 20px;
-            margin-top: 20px;
+            font-size: 17px;
+            color: var(--text-muted);
+            border-top: 2px solid var(--border);
+            padding-top: 18px;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Animated Progress Fill */
+        .progress-bar-bg {
+            height: 12px;
+            background: #E2E8F0;
+            border-radius: 6px;
+            overflow: hidden;
+            margin-top: 10px;
+        }
+        .progress-fill-green { height: 100%; width: 88%; background: var(--green); border-radius: 6px; }
+        .progress-fill-red { height: 100%; width: 25%; background: #EF4444; border-radius: 6px; }
+
+        /* Formula Box */
+        .formula-box {
+            background: #FFFFFF;
+            border: 2.5px solid var(--crimson);
+            border-radius: var(--radius-md);
+            padding: 24px 32px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 28px;
+            color: var(--text-main);
+            box-shadow: var(--shadow-glow);
         }
     </style>
 </head>
@@ -149,6 +253,7 @@
 
     <!-- SLIDE 01 — THE HOOK -->
     <div data-document-role="page" data-label="Slide 01 — The Hook" data-speaker-notes="Every single day, five point seven billion people scroll through a feed. But what you see was not chosen by you. It was calculated by an invisible algorithm." class="slide">
+        <div class="bg-glow-ring"></div>
         <div class="header-logo-group">
             <div class="logo-left">
                 <div class="official-logo-mark"></div>
@@ -156,10 +261,22 @@
             </div>
             <div class="badge">UNESCO YOUTH HACKATHON 2026 ENTRY</div>
         </div>
-        <div style="margin: 40px 0;">
-            <div style="font-size: 28px; color: #B8862E; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 16px;">The Invisible Feed Equation</div>
-            <h1 class="slide-title" style="font-size: 68px;">See the Algorithm.<br><span class="highlight">Break the Echo.</span></h1>
-            <div class="slide-subtitle" style="font-size: 28px; max-width: 1200px;">An interactive visual debugging arena and media literacy role-play platform for youth.</div>
+        <div style="margin: 30px 0;">
+            <div style="font-size: 26px; color: var(--gold); font-weight: 800; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 16px;">The Invisible Feed Equation</div>
+            <h1 class="slide-title" style="font-size: 72px;">See the Algorithm.<br><span class="highlight">Break the Echo.</span></h1>
+            <div class="slide-subtitle" style="font-size: 30px; max-width: 1200px;">An interactive visual debugging arena and media literacy role-play platform for youth.</div>
+        </div>
+        <div class="browser-mockup" style="max-width: 1100px;">
+            <div class="browser-header">
+                <div class="browser-dot dot-red"></div>
+                <div class="browser-dot dot-yellow"></div>
+                <div class="browser-dot dot-green"></div>
+                <div class="browser-url">https://echobreaker-mil.onrender.com</div>
+            </div>
+            <div style="padding: 24px 32px; display: flex; justify-content: space-between; align-items: center; background: #F8FAFC;">
+                <div><strong>Live Production Web App</strong> — Zero Install · 100% Free · Multi-Language Ready</div>
+                <div style="color: var(--crimson); font-weight: 800;">PLAY INTERACTIVE ARENA →</div>
+            </div>
         </div>
         <div class="footer-bar">
             <div>Live Production: <strong>https://echobreaker-mil.onrender.com</strong></div>
@@ -181,18 +298,20 @@
             <div class="slide-subtitle">How recommendation AI turns engagement into invisible epistemic isolation.</div>
             <div class="grid-2">
                 <div class="card-box">
-                    <div style="color: #27AE60; font-weight: 800; font-size: 20px; margin-bottom: 12px;">HEALTHY FEED — DIVERSITY: 88%</div>
-                    <ul>
+                    <div style="color: var(--green); font-weight: 800; font-size: 22px; margin-bottom: 8px;">HEALTHY FEED — DIVERSITY: 88%</div>
+                    <div class="progress-bar-bg"><div class="progress-fill-green"></div></div>
+                    <ul style="margin-top: 20px;">
                         <li>Balanced exposure across 7+ topics.</li>
                         <li>Multi-perspective news discovery.</li>
-                        <li>High cognitive flexibility.</li>
+                        <li>High cognitive flexibility &amp; critical reasoning.</li>
                     </ul>
                 </div>
                 <div class="card-box-alert">
-                    <div style="color: #EF4444; font-weight: 800; font-size: 20px; margin-bottom: 12px;">ECHO CHAMBER — DIVERSITY: 25% (ALERT!)</div>
-                    <ul>
+                    <div style="color: #EF4444; font-weight: 800; font-size: 22px; margin-bottom: 8px;">ECHO CHAMBER — DIVERSITY: 25% (ALERT!)</div>
+                    <div class="progress-bar-bg"><div class="progress-fill-red"></div></div>
+                    <ul style="margin-top: 20px;">
                         <li>Single-topic concentration &gt; 65%.</li>
-                        <li>Opposing viewpoints suppressed.</li>
+                        <li>Opposing viewpoints silently suppressed.</li>
                         <li>Severe epistemic confirmation bias.</li>
                     </ul>
                 </div>
@@ -255,19 +374,19 @@
             <div class="slide-subtitle">How a single 12-second dwell-time trigger narrows a teenager's digital world.</div>
             <div class="grid-2">
                 <div class="card-box">
-                    <div style="font-size: 24px; font-weight: 800; color: #0F172A; margin-bottom: 8px;">Persona: Sarah (Age 16)</div>
-                    <div style="font-size: 18px; color: #475569; margin-bottom: 20px;">High School Student &amp; Active Daily User</div>
+                    <div style="font-size: 26px; font-weight: 800; color: var(--text-main); margin-bottom: 6px;">Persona: Sarah (Age 16)</div>
+                    <div style="font-size: 18px; color: var(--text-muted); margin-bottom: 20px;">High School Student &amp; Active Daily User</div>
                     <ul>
                         <li><strong>Goal:</strong> Find study routine tips for exam week.</li>
                         <li><strong>Friction:</strong> Lingers 12 seconds on sensational headline.</li>
-                        <li><strong>Consequence:</strong> Isolated from credible health sources.</li>
+                        <li><strong>Consequence:</strong> Isolated from credible health science.</li>
                     </ul>
                 </div>
-                <div class="card-box" style="border-left: 6px solid #A8412E;">
-                    <div style="font-size: 20px; font-weight: 800; color: #A8412E; margin-bottom: 12px;">FEED NARROWING TIMELINE</div>
-                    <p><strong>00:00</strong> — Searches Morning Study Routine.</p>
-                    <p><strong>03:00</strong> — Clicks "Miracle Extract" video.</p>
-                    <p><strong>08:00</strong> — Feed is 80% conspiracy health claims.</p>
+                <div class="card-box" style="border-left: 8px solid var(--crimson);">
+                    <div style="font-size: 22px; font-weight: 800; color: var(--crimson); margin-bottom: 16px;">FEED NARROWING TIMELINE</div>
+                    <p style="font-size: 20px;"><strong>00:00</strong> — Searches Morning Study Routine.</p>
+                    <p style="font-size: 20px;"><strong>03:00</strong> — Clicks "Miracle Extract" video.</p>
+                    <p style="font-size: 20px; color: var(--crimson); font-weight: 700;"><strong>08:00</strong> — Feed is 80% conspiracy health claims.</p>
                 </div>
             </div>
         </div>
@@ -290,16 +409,16 @@
             <h1 class="slide-title">Exposing the Math, <span class="gold">Not Just the Misinformation</span></h1>
             <div class="slide-subtitle">The paradigm shift from passive lectures to active visual debugging.</div>
             <div class="grid-2">
-                <div class="card-box" style="opacity: 0.7;">
-                    <div style="font-size: 22px; font-weight: 800; color: #64748B; margin-bottom: 12px;">OLD APPROACH — PASSIVE LECTURES</div>
+                <div class="card-box" style="opacity: 0.65;">
+                    <div style="font-size: 24px; font-weight: 800; color: var(--text-muted); margin-bottom: 12px;">OLD APPROACH — PASSIVE LECTURES</div>
                     <ul>
                         <li>Memorize definitions of fake news.</li>
                         <li>Passive warning banners.</li>
                         <li>Ignore ranking AI mechanics.</li>
                     </ul>
                 </div>
-                <div class="card-box" style="border: 2.5px solid #B8862E; background: #FFFBEB;">
-                    <div style="font-size: 22px; font-weight: 800; color: #B8862E; margin-bottom: 12px;">NEW BREAKTHROUGH — VISUAL DEBUGGING</div>
+                <div class="card-box" style="border: 3px solid var(--gold); background: var(--gold-light);">
+                    <div style="font-size: 24px; font-weight: 800; color: var(--gold); margin-bottom: 12px;">NEW BREAKTHROUGH — VISUAL DEBUGGING</div>
                     <ul>
                         <li>Expose live scoring formula S_post.</li>
                         <li>Track real-time dwell time &amp; affinity.</li>
@@ -323,12 +442,20 @@
             </div>
             <div class="badge">THE SOLUTION</div>
         </div>
-        <div style="text-align: center; margin: 20px 0;">
-            <h1 class="slide-title" style="font-size: 60px;">Introducing <span class="highlight">EchoBreaker</span></h1>
-            <div class="slide-subtitle" style="font-size: 26px;">The interactive classroom scenario arena &amp; media literacy role-play platform.</div>
-            <div class="card-box" style="max-width: 1200px; margin: 0 auto; padding: 40px; border: 2px solid #A8412E;">
-                <div style="font-size: 28px; font-weight: 800; color: #0F172A; margin-bottom: 16px;">"See the Algorithm. Break the Echo."</div>
-                <p style="font-size: 22px; color: #475569; margin: 0;">A zero-cost, open-access web ecosystem bridging theoretical media literacy and hands-on digital agency.</p>
+        <div style="text-align: center; margin: 15px 0;">
+            <h1 class="slide-title" style="font-size: 64px;">Introducing <span class="highlight">EchoBreaker</span></h1>
+            <div class="slide-subtitle" style="font-size: 28px;">The interactive classroom scenario arena &amp; media literacy role-play platform.</div>
+            <div class="browser-mockup" style="max-width: 1200px; margin: 0 auto;">
+                <div class="browser-header">
+                    <div class="browser-dot dot-red"></div>
+                    <div class="browser-dot dot-yellow"></div>
+                    <div class="browser-dot dot-green"></div>
+                    <div class="browser-url">https://echobreaker-mil.onrender.com/game.html</div>
+                </div>
+                <div style="padding: 40px; background: #FFFFFF;">
+                    <div style="font-size: 32px; font-weight: 800; color: var(--text-main); margin-bottom: 16px;">"See the Algorithm. Break the Echo."</div>
+                    <p style="font-size: 22px; color: var(--text-muted); margin: 0;">A zero-cost, open-access web ecosystem bridging theoretical media literacy and hands-on digital agency.</p>
+                </div>
             </div>
         </div>
         <div class="footer-bar">
@@ -348,25 +475,25 @@
         </div>
         <div>
             <h1 class="slide-title">The 4-Module <span class="gold">Pedagogical Ecosystem</span></h1>
-            <div style="background: #F8FAFC; border: 2px solid #A8412E; padding: 20px 30px; border-radius: 16px; font-family: monospace; font-size: 24px; color: #0F172A; margin-bottom: 24px;">
+            <div class="formula-box" style="margin-bottom: 24px;">
                 S_post = 0.40 × A_cat + 0.30 × E_res + 0.20 × E_pot + 0.10 × R
             </div>
             <div class="grid-4">
                 <div class="card-box">
-                    <div style="font-size: 20px; font-weight: 800; color: #A8412E;">MOD 1: SIMULATOR</div>
-                    <div style="font-size: 16px; color: #64748B; margin-top: 6px;">Live S_post &amp; dwell time visual debugging.</div>
+                    <div style="font-size: 20px; font-weight: 800; color: var(--crimson);">MOD 1: SIMULATOR</div>
+                    <div style="font-size: 16px; color: var(--text-muted); margin-top: 8px;">Live S_post &amp; dwell time visual debugging.</div>
                 </div>
                 <div class="card-box">
-                    <div style="font-size: 20px; font-weight: 800; color: #B8862E;">MOD 2: ESCAPE ARENA</div>
-                    <div style="font-size: 16px; color: #64748B; margin-top: 6px;">12-card classroom role-play deck.</div>
+                    <div style="font-size: 20px; font-weight: 800; color: var(--gold);">MOD 2: ESCAPE ARENA</div>
+                    <div style="font-size: 16px; color: var(--text-muted); margin-top: 8px;">12-card classroom role-play deck.</div>
                 </div>
                 <div class="card-box">
-                    <div style="font-size: 20px; font-weight: 800; color: #2563EB;">MOD 3: AUDIT TOOLKIT</div>
-                    <div style="font-size: 16px; color: #64748B; margin-top: 6px;">20-item device AI reset checklist.</div>
+                    <div style="font-size: 20px; font-weight: 800; color: var(--blue);">MOD 3: AUDIT TOOLKIT</div>
+                    <div style="font-size: 16px; color: var(--text-muted); margin-top: 8px;">20-item device AI reset checklist.</div>
                 </div>
                 <div class="card-box">
-                    <div style="font-size: 20px; font-weight: 800; color: #059669;">MOD 4: COMMAND CENTER</div>
-                    <div style="font-size: 16px; color: #64748B; margin-top: 6px;">Educator cohort telemetry dashboard.</div>
+                    <div style="font-size: 20px; font-weight: 800; color: var(--green);">MOD 4: COMMAND CENTER</div>
+                    <div style="font-size: 16px; color: var(--text-muted); margin-top: 8px;">Educator cohort telemetry dashboard.</div>
                 </div>
             </div>
         </div>
@@ -389,16 +516,16 @@
             <h1 class="slide-title">Live Product <span class="highlight">Visual Debugging</span></h1>
             <div class="slide-subtitle">Real software proof: inspect category affinities and dwell-time live.</div>
             <div class="grid-2">
-                <div class="card-box" style="border: 2px solid #A8412E;">
-                    <div style="font-weight: 800; color: #A8412E; font-size: 20px; margin-bottom: 12px;">BEHIND THE CURTAIN INSPECTOR</div>
-                    <p><strong>Health Affinity:</strong> 0.50</p>
-                    <p><strong>Technology Affinity:</strong> 0.50</p>
-                    <p><strong>Conspiracy Affinity:</strong> 0.85 (Reranking Feed...)</p>
+                <div class="card-box" style="border: 2.5px solid var(--crimson);">
+                    <div style="font-weight: 800; color: var(--crimson); font-size: 22px; margin-bottom: 12px;">BEHIND THE CURTAIN INSPECTOR</div>
+                    <p style="font-size: 20px;"><strong>Health Affinity:</strong> 0.50</p>
+                    <p style="font-size: 20px;"><strong>Technology Affinity:</strong> 0.50</p>
+                    <p style="font-size: 20px; color: var(--crimson); font-weight: 700;"><strong>Conspiracy Affinity:</strong> 0.85 (Reranking Feed...)</p>
                 </div>
                 <div class="card-box">
-                    <div style="font-weight: 800; color: #0F172A; font-size: 20px; margin-bottom: 12px;">12-CARD ESCAPE ARENA</div>
-                    <p><strong>Scenario #01:</strong> MIRACLE BERRY Extract ELIMINATES Chronic Pain!</p>
-                    <p><strong>Verdict:</strong> 🚩 Misleading (XP Reward: +100)</p>
+                    <div style="font-weight: 800; color: var(--text-main); font-size: 22px; margin-bottom: 12px;">12-CARD ESCAPE ARENA</div>
+                    <p style="font-size: 20px;"><strong>Scenario #01:</strong> MIRACLE BERRY Extract ELIMINATES Chronic Pain!</p>
+                    <p style="font-size: 20px; color: var(--green); font-weight: 700;"><strong>Verdict:</strong> 🚩 Misleading (XP Reward: +100)</p>
                 </div>
             </div>
         </div>
@@ -422,15 +549,15 @@
             <div class="slide-subtitle">Why EchoBreaker stands apart from traditional approaches.</div>
             <div class="grid-2">
                 <div class="card-box">
-                    <div style="font-size: 22px; font-weight: 800; color: #64748B; margin-bottom: 12px;">TRADITIONAL LECTURES</div>
+                    <div style="font-size: 24px; font-weight: 800; color: var(--text-muted); margin-bottom: 12px;">TRADITIONAL LECTURES</div>
                     <ul>
                         <li>Passive definitions &amp; slideshows.</li>
                         <li>No interaction with real AI ranking.</li>
                         <li>High student boredom &amp; drop-off.</li>
                     </ul>
                 </div>
-                <div class="card-box" style="border: 2.5px solid #A8412E; background: #FEF2F2;">
-                    <div style="font-size: 22px; font-weight: 800; color: #A8412E; margin-bottom: 12px;">ECHOBREAKER INNOVATION</div>
+                <div class="card-box" style="border: 3px solid var(--crimson); background: var(--crimson-light);">
+                    <div style="font-size: 24px; font-weight: 800; color: var(--crimson); margin-bottom: 12px;">ECHOBREAKER INNOVATION</div>
                     <ul>
                         <li>Active visual debugging of live algorithms.</li>
                         <li>Role-play gamification (Algorithm vs. User).</li>
@@ -459,7 +586,7 @@
             <div class="slide-subtitle">Built for every classroom: zero data barriers, 100% inclusive.</div>
             <div class="grid-2">
                 <div class="card-box">
-                    <div style="font-size: 22px; font-weight: 800; color: #059669; margin-bottom: 12px;">STRICT MINOR PRIVACY</div>
+                    <div style="font-size: 24px; font-weight: 800; color: var(--green); margin-bottom: 12px;">STRICT MINOR PRIVACY</div>
                     <ul>
                         <li>Zero account creation required.</li>
                         <li>Zero email or personal data collection.</li>
@@ -467,7 +594,7 @@
                     </ul>
                 </div>
                 <div class="card-box">
-                    <div style="font-size: 22px; font-weight: 800; color: #2563EB; margin-bottom: 12px;">GLOBAL ACCESSIBILITY</div>
+                    <div style="font-size: 24px; font-weight: 800; color: var(--blue); margin-bottom: 12px;">GLOBAL ACCESSIBILITY</div>
                     <ul>
                         <li>Low-bandwidth lightweight web delivery.</li>
                         <li>Plan B printable offline card worksheets.</li>
@@ -512,7 +639,7 @@
                 </div>
             </div>
             <div class="card-box">
-                <div style="font-weight: 800; color: #0F172A; font-size: 18px;">ROADMAP: Hackathon Submission (Aug 2026) → 5-School Pilot (Q4 2026) → UNESCO MIL Network (2027)</div>
+                <div style="font-weight: 800; color: var(--text-main); font-size: 18px;">ROADMAP: Hackathon Submission (Aug 2026) → 5-School Pilot (Q4 2026) → UNESCO MIL Network (2027)</div>
             </div>
         </div>
         <div class="footer-bar">
@@ -523,6 +650,7 @@
 
     <!-- SLIDE 12 — FINAL VISION -->
     <div data-document-role="page" data-label="Slide 12 — Final Vision" data-speaker-notes="Join us in reclaiming digital agency for the next generation. Break the echo chamber today at echobreaker-mil.onrender.com." class="slide">
+        <div class="bg-glow-ring"></div>
         <div class="header-logo-group">
             <div class="logo-left">
                 <div class="official-logo-mark"></div>
@@ -530,10 +658,10 @@
             </div>
             <div class="badge">FINAL VISION</div>
         </div>
-        <div style="text-align: center; margin: 40px 0;">
-            <h1 class="slide-title" style="font-size: 68px;">See the Algorithm.<br><span class="highlight">Break the Echo.</span></h1>
-            <div class="slide-subtitle" style="font-size: 28px; max-width: 1100px; margin: 24px auto;">Reclaiming youth digital agency for a more conscious, literate, and democratic world.</div>
-            <div style="margin-top: 30px; font-size: 24px; color: #A8412E; font-weight: 800;">
+        <div style="text-align: center; margin: 30px 0;">
+            <h1 class="slide-title" style="font-size: 72px;">See the Algorithm.<br><span class="highlight">Break the Echo.</span></h1>
+            <div class="slide-subtitle" style="font-size: 30px; max-width: 1100px; margin: 24px auto;">Reclaiming youth digital agency for a more conscious, literate, and democratic world.</div>
+            <div style="margin-top: 30px; font-size: 26px; color: var(--crimson); font-weight: 800;">
                 https://echobreaker-mil.onrender.com
             </div>
         </div>
