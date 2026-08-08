@@ -18,7 +18,9 @@
             --gold: #B8862E;
             --gold-light: #FFFBEB;
             --blue: #2563EB;
+            --blue-light: #EFF6FF;
             --green: #059669;
+            --green-light: #ECFDF5;
             --border: #E2E8F0;
             --radius-lg: 24px;
             --radius-md: 16px;
@@ -40,7 +42,7 @@
             width: 1920px;
             height: 1080px;
             box-sizing: border-box;
-            padding: 60px 90px;
+            padding: 55px 85px;
             background: var(--bg-main);
             color: var(--text-main);
             display: flex;
@@ -54,8 +56,8 @@
 
         .bg-glow-ring {
             position: absolute;
-            width: 600px;
-            height: 600px;
+            width: 650px;
+            height: 650px;
             border-radius: 50%;
             background: radial-gradient(circle, rgba(168, 65, 46, 0.06) 0%, rgba(255, 255, 255, 0) 70%);
             top: -150px;
@@ -78,8 +80,8 @@
         }
 
         .official-logo-mark {
-            width: 48px;
-            height: 48px;
+            width: 46px;
+            height: 46px;
             background: var(--crimson);
             border-radius: 12px;
             mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5'/%3E%3C/svg%3E") center/contain no-repeat;
@@ -88,7 +90,7 @@
 
         .logo-text-echo {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: 36px;
+            font-size: 34px;
             font-weight: 800;
             color: var(--text-main);
             letter-spacing: 0.5px;
@@ -96,7 +98,7 @@
 
         .logo-text-breaker {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: 36px;
+            font-size: 34px;
             font-weight: 800;
             color: var(--crimson);
             letter-spacing: 0.5px;
@@ -118,20 +120,20 @@
 
         .slide-title {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: 50px;
+            font-size: 48px;
             font-weight: 800;
             color: var(--text-main);
-            margin: 10px 0 8px 0;
-            line-height: 1.2;
+            margin: 10px 0 6px 0;
+            line-height: 1.25;
             letter-spacing: -1px;
         }
 
         .slide-subtitle {
-            font-size: 24px;
+            font-size: 23px;
             color: var(--text-muted);
-            margin-bottom: 20px;
+            margin-bottom: 18px;
             font-weight: 500;
-            line-height: 1.4;
+            line-height: 1.35;
         }
 
         .highlight { color: var(--crimson); }
@@ -141,7 +143,7 @@
             background: var(--bg-surface);
             border: 2px solid var(--border);
             border-radius: var(--radius-lg);
-            padding: 30px;
+            padding: 26px;
             box-shadow: var(--shadow-premium);
             position: relative;
         }
@@ -150,11 +152,10 @@
             background: var(--crimson-light);
             border: 2.5px solid #EF4444;
             border-radius: var(--radius-lg);
-            padding: 30px;
+            padding: 26px;
             box-shadow: 0 15px 35px rgba(239, 68, 68, 0.1);
         }
 
-        /* macOS Mockup Frame */
         .browser-mockup {
             background: #FFFFFF;
             border: 2px solid var(--border);
@@ -172,12 +173,7 @@
             border-bottom: 1px solid var(--border);
         }
 
-        .browser-dot {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-        }
-
+        .browser-dot { width: 10px; height: 10px; border-radius: 50%; }
         .dot-red { background: #EF4444; }
         .dot-yellow { background: #F59E0B; }
         .dot-green { background: #10B981; }
@@ -197,7 +193,7 @@
         .screenshot-img {
             width: 100%;
             height: auto;
-            max-height: 480px;
+            max-height: 440px;
             object-fit: cover;
             display: block;
             border-top: 1px solid var(--border);
@@ -205,33 +201,27 @@
 
         .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: center; }
         .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-        .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+        .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
 
-        .stat-num { font-size: 60px; font-weight: 800; color: var(--crimson); font-family: 'Space Grotesk', sans-serif; }
-        .stat-label { font-size: 18px; font-weight: 700; color: var(--text-muted); margin-top: 6px; }
+        .stat-num { font-size: 58px; font-weight: 800; color: var(--crimson); font-family: 'Space Grotesk', sans-serif; }
+        .stat-label { font-size: 17px; font-weight: 700; color: var(--text-muted); margin-top: 6px; }
 
-        ul { font-size: 22px; line-height: 1.5; color: #334155; padding-left: 24px; margin: 0; }
-        li { margin-bottom: 12px; }
+        ul { font-size: 21px; line-height: 1.5; color: #334155; padding-left: 24px; margin: 0; }
+        li { margin-bottom: 10px; }
 
         .footer-bar {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            font-size: 16px;
+            font-size: 15px;
             color: var(--text-muted);
             border-top: 2px solid var(--border);
-            padding-top: 16px;
+            padding-top: 14px;
             position: relative;
             z-index: 10;
         }
 
-        .progress-bar-bg {
-            height: 10px;
-            background: #E2E8F0;
-            border-radius: 5px;
-            overflow: hidden;
-            margin-top: 8px;
-        }
+        .progress-bar-bg { height: 10px; background: #E2E8F0; border-radius: 5px; overflow: hidden; margin-top: 8px; }
         .progress-fill-green { height: 100%; width: 88%; background: var(--green); border-radius: 5px; }
         .progress-fill-red { height: 100%; width: 25%; background: #EF4444; border-radius: 5px; }
 
@@ -239,12 +229,21 @@
             background: #FFFFFF;
             border: 2.5px solid var(--crimson);
             border-radius: var(--radius-md);
-            padding: 20px 28px;
+            padding: 18px 26px;
             font-family: 'JetBrains Mono', monospace;
-            font-size: 26px;
+            font-size: 24px;
             color: var(--text-main);
             box-shadow: var(--shadow-glow);
         }
+
+        .table-custom {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 19px;
+            margin-top: 10px;
+        }
+        .table-custom th { background: #F1F5F9; color: var(--text-main); text-align: left; padding: 12px 16px; border-bottom: 2px solid var(--border); }
+        .table-custom td { padding: 12px 16px; border-bottom: 1px solid var(--border); }
     </style>
 </head>
 <body>
@@ -261,9 +260,9 @@
         </div>
         <div class="grid-2">
             <div>
-                <div style="font-size: 24px; color: var(--gold); font-weight: 800; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 12px;">The Invisible Feed Equation</div>
-                <h1 class="slide-title" style="font-size: 64px;">See the Algorithm.<br><span class="highlight">Break the Echo.</span></h1>
-                <div class="slide-subtitle" style="font-size: 26px;">An interactive visual debugging arena and media literacy role-play platform for youth.</div>
+                <div style="font-size: 22px; color: var(--gold); font-weight: 800; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px;">The Invisible Feed Equation</div>
+                <h1 class="slide-title" style="font-size: 60px;">See the Algorithm.<br><span class="highlight">Break the Echo.</span></h1>
+                <div class="slide-subtitle" style="font-size: 24px;">An interactive visual debugging arena and media literacy role-play platform for youth.</div>
             </div>
             <div class="browser-mockup">
                 <div class="browser-header">
@@ -295,19 +294,19 @@
             <div class="slide-subtitle">How recommendation AI turns engagement into invisible epistemic isolation.</div>
             <div class="grid-2">
                 <div class="card-box">
-                    <div style="color: var(--green); font-weight: 800; font-size: 22px; margin-bottom: 8px;">HEALTHY FEED — DIVERSITY: 88%</div>
+                    <div style="color: var(--green); font-weight: 800; font-size: 20px; margin-bottom: 6px;">HEALTHY FEED — DIVERSITY: 88%</div>
                     <div class="progress-bar-bg"><div class="progress-fill-green"></div></div>
-                    <ul style="margin-top: 16px;">
-                        <li>Balanced exposure across 7+ topics.</li>
+                    <ul style="margin-top: 14px;">
+                        <li>Balanced exposure across 7+ categories.</li>
                         <li>Multi-perspective news discovery.</li>
                         <li>High cognitive flexibility &amp; critical reasoning.</li>
                     </ul>
                 </div>
                 <div class="card-box-alert">
-                    <div style="color: #EF4444; font-weight: 800; font-size: 22px; margin-bottom: 8px;">ECHO CHAMBER — DIVERSITY: 25% (ALERT!)</div>
+                    <div style="color: #EF4444; font-weight: 800; font-size: 20px; margin-bottom: 6px;">ECHO CHAMBER — DIVERSITY: 25% (ALERT!)</div>
                     <div class="progress-bar-bg"><div class="progress-fill-red"></div></div>
-                    <ul style="margin-top: 16px;">
-                        <li>Single-topic concentration &gt; 65%.</li>
+                    <ul style="margin-top: 14px;">
+                        <li>Single-topic concentration &gt; 65% ($D &lt; 0.35$).</li>
                         <li>Opposing viewpoints silently suppressed.</li>
                         <li>Severe epistemic confirmation bias.</li>
                     </ul>
@@ -316,7 +315,7 @@
         </div>
         <div class="footer-bar">
             <div>Problem Statement &amp; User Friction</div>
-            <div>Echo Chamber Threshold: Diversity &lt; 0.35</div>
+            <div>Echo Chamber Threshold: Diversity $D = 1 - \max(A_{\text{cat}}) &lt; 0.35$</div>
         </div>
     </div>
 
@@ -371,8 +370,8 @@
             <div class="slide-subtitle">How a single 12-second dwell-time trigger narrows a teenager's digital world.</div>
             <div class="grid-2">
                 <div class="card-box">
-                    <div style="font-size: 24px; font-weight: 800; color: var(--text-main); margin-bottom: 6px;">Persona: Sarah (Age 16)</div>
-                    <div style="font-size: 17px; color: var(--text-muted); margin-bottom: 16px;">High School Student &amp; Active Daily User</div>
+                    <div style="font-size: 22px; font-weight: 800; color: var(--text-main); margin-bottom: 6px;">Persona: Sarah (Age 16)</div>
+                    <div style="font-size: 16px; color: var(--text-muted); margin-bottom: 14px;">High School Student &amp; Active Daily User</div>
                     <ul>
                         <li><strong>Goal:</strong> Find study routine tips for exam week.</li>
                         <li><strong>Friction:</strong> Lingers 12 seconds on sensational headline.</li>
@@ -380,10 +379,10 @@
                     </ul>
                 </div>
                 <div class="card-box" style="border-left: 8px solid var(--crimson);">
-                    <div style="font-size: 22px; font-weight: 800; color: var(--crimson); margin-bottom: 12px;">FEED NARROWING TIMELINE</div>
-                    <p style="font-size: 19px;"><strong>00:00</strong> — Searches Morning Study Routine.</p>
-                    <p style="font-size: 19px;"><strong>03:00</strong> — Clicks "Miracle Extract" video.</p>
-                    <p style="font-size: 19px; color: var(--crimson); font-weight: 700;"><strong>08:00</strong> — Feed is 80% conspiracy health claims.</p>
+                    <div style="font-size: 20px; font-weight: 800; color: var(--crimson); margin-bottom: 10px;">FEED NARROWING TIMELINE</div>
+                    <p style="font-size: 18px; margin-bottom: 8px;"><strong>00:00</strong> — Searches Morning Study Routine.</p>
+                    <p style="font-size: 18px; margin-bottom: 8px;"><strong>03:00</strong> — Clicks "Miracle Extract" video.</p>
+                    <p style="font-size: 18px; color: var(--crimson); font-weight: 700; margin-bottom: 0;"><strong>08:00</strong> — Feed is 80% conspiracy health claims.</p>
                 </div>
             </div>
         </div>
@@ -407,7 +406,7 @@
             <div class="slide-subtitle">The paradigm shift from passive lectures to active visual debugging.</div>
             <div class="grid-2">
                 <div class="card-box" style="opacity: 0.65;">
-                    <div style="font-size: 22px; font-weight: 800; color: var(--text-muted); margin-bottom: 12px;">OLD APPROACH — PASSIVE LECTURES</div>
+                    <div style="font-size: 22px; font-weight: 800; color: var(--text-muted); margin-bottom: 10px;">OLD APPROACH — PASSIVE LECTURES</div>
                     <ul>
                         <li>Memorize definitions of fake news.</li>
                         <li>Passive warning banners.</li>
@@ -415,9 +414,9 @@
                     </ul>
                 </div>
                 <div class="card-box" style="border: 3px solid var(--gold); background: var(--gold-light);">
-                    <div style="font-size: 22px; font-weight: 800; color: var(--gold); margin-bottom: 12px;">NEW BREAKTHROUGH — VISUAL DEBUGGING</div>
+                    <div style="font-size: 22px; font-weight: 800; color: var(--gold); margin-bottom: 10px;">NEW BREAKTHROUGH — VISUAL DEBUGGING</div>
                     <ul>
-                        <li>Expose live scoring formula S_post.</li>
+                        <li>Expose live scoring formula $S_{\text{post}}$.</li>
                         <li>Track real-time dwell time &amp; affinity.</li>
                         <li>Empower youth to audit their own devices.</li>
                     </ul>
@@ -441,11 +440,11 @@
         </div>
         <div class="grid-2">
             <div>
-                <h1 class="slide-title" style="font-size: 56px;">Introducing <span class="highlight">EchoBreaker</span></h1>
+                <h1 class="slide-title" style="font-size: 52px;">Introducing <span class="highlight">EchoBreaker</span></h1>
                 <div class="slide-subtitle">The interactive classroom scenario arena &amp; media literacy role-play platform.</div>
                 <div class="card-box" style="border: 2px solid var(--crimson);">
-                    <div style="font-size: 24px; font-weight: 800; color: var(--text-main); margin-bottom: 12px;">"See the Algorithm. Break the Echo."</div>
-                    <p style="font-size: 19px; color: var(--text-muted); margin: 0;">A zero-cost, open-access web ecosystem bridging theoretical media literacy and hands-on digital agency.</p>
+                    <div style="font-size: 22px; font-weight: 800; color: var(--text-main); margin-bottom: 10px;">"See the Algorithm. Break the Echo."</div>
+                    <p style="font-size: 18px; color: var(--text-muted); margin: 0;">A zero-cost, open-access web ecosystem bridging theoretical media literacy and hands-on digital agency.</p>
                 </div>
             </div>
             <div class="browser-mockup">
@@ -464,47 +463,101 @@
         </div>
     </div>
 
-    <!-- SLIDE 07 — HOW IT WORKS -->
-    <div data-document-role="page" data-label="Slide 07 — How It Works" data-speaker-notes="EchoBreaker operates through four seamlessly connected modules. Students first experience algorithm manipulation, evaluate headlines, audit devices, and analyze telemetry." class="slide">
+    <!-- SLIDE 07 — UNESCO 4A FRAMEWORK & MODULES -->
+    <div data-document-role="page" data-label="Slide 07 — UNESCO 4A Framework" data-speaker-notes="EchoBreaker directly enacts UNESCO's 4A Framework across four interconnected modules." class="slide">
         <div class="header-logo-group">
             <div class="logo-left">
                 <div class="official-logo-mark"></div>
                 <div><span class="logo-text-echo">ECHO</span><span class="logo-text-breaker">BREAKER</span></div>
             </div>
-            <div class="badge">HOW IT WORKS</div>
+            <div class="badge">UNESCO MIL 4A FRAMEWORK</div>
         </div>
         <div>
-            <h1 class="slide-title">The 4-Module <span class="gold">Pedagogical Ecosystem</span></h1>
-            <div class="formula-box" style="margin-bottom: 20px;">
-                S_post = 0.40 × A_cat + 0.30 × E_res + 0.20 × E_pot + 0.10 × R
-            </div>
+            <h1 class="slide-title">System Architecture &amp; <span class="gold">UNESCO 4A Model</span></h1>
+            <div class="slide-subtitle">How EchoBreaker maps direct pedagogical mechanisms to international standards.</div>
             <div class="grid-4">
-                <div class="card-box">
-                    <div style="font-size: 18px; font-weight: 800; color: var(--crimson);">MOD 1: SIMULATOR</div>
-                    <div style="font-size: 15px; color: var(--text-muted); margin-top: 6px;">Live S_post &amp; dwell time visual debugging.</div>
+                <div class="card-box" style="border-top: 5px solid var(--crimson);">
+                    <div style="font-size: 17px; font-weight: 800; color: var(--crimson);">1. ALGORITHM</div>
+                    <div style="font-size: 15px; font-weight: 700; color: var(--text-main); margin: 4px 0;">Module 1: Simulator</div>
+                    <div style="font-size: 14px; color: var(--text-muted);">Exposes numerical $S_{\text{post}}$ and category affinities in real time.</div>
                 </div>
-                <div class="card-box">
-                    <div style="font-size: 18px; font-weight: 800; color: var(--gold);">MOD 2: ESCAPE ARENA</div>
-                    <div style="font-size: 15px; color: var(--text-muted); margin-top: 6px;">12-card classroom role-play deck.</div>
+                <div class="card-box" style="border-top: 5px solid var(--gold);">
+                    <div style="font-size: 17px; font-weight: 800; color: var(--gold);">2. AMPLIFICATION</div>
+                    <div style="font-size: 15px; font-weight: 700; color: var(--text-main); margin: 4px 0;">Module 2: Escape Arena</div>
+                    <div style="font-size: 14px; color: var(--text-muted);">Demonstrates how emotional tone ($E_{\text{res}}$) accelerates reach over truth.</div>
                 </div>
-                <div class="card-box">
-                    <div style="font-size: 18px; font-weight: 800; color: var(--blue);">MOD 3: AUDIT TOOLKIT</div>
-                    <div style="font-size: 15px; color: var(--text-muted); margin-top: 6px;">20-item device AI reset checklist.</div>
+                <div class="card-box" style="border-top: 5px solid var(--blue);">
+                    <div style="font-size: 17px; font-weight: 800; color: var(--blue);">3. ATTENTION</div>
+                    <div style="font-size: 15px; font-weight: 700; color: var(--text-main); margin: 4px 0;">Module 3: Agency Toolkit</div>
+                    <div style="font-size: 14px; color: var(--text-muted);">Uses 2s `IntersectionObserver` dwell tracking to show scroll training.</div>
                 </div>
-                <div class="card-box">
-                    <div style="font-size: 18px; font-weight: 800; color: var(--green);">MOD 4: COMMAND CENTER</div>
-                    <div style="font-size: 15px; color: var(--text-muted); margin-top: 6px;">Educator cohort telemetry dashboard.</div>
+                <div class="card-box" style="border-top: 5px solid var(--green);">
+                    <div style="font-size: 17px; font-weight: 800; color: var(--green);">4. AGENCY</div>
+                    <div style="font-size: 15px; font-weight: 700; color: var(--text-main); margin: 4px 0;">Module 4: Command Center</div>
+                    <div style="font-size: 14px; color: var(--text-muted);">Empowers youth with 20 platform audit checklists &amp; action pledges.</div>
                 </div>
             </div>
         </div>
         <div class="footer-bar">
-            <div>System Mechanics</div>
-            <div>UNESCO 4A Amplification Model</div>
+            <div>System Architecture &amp; Framework Alignment</div>
+            <div>UNESCO Media &amp; Information Literacy Category</div>
         </div>
     </div>
 
-    <!-- SLIDE 08 — PRODUCT DEMO -->
-    <div data-document-role="page" data-label="Slide 08 — Product Demo" data-speaker-notes="Here is EchoBreaker in action. As a student scrolls, our Behind the Curtain inspector reveals category affinities and dwell-time in real time." class="slide">
+    <!-- SLIDE 08 — MATHEMATICAL SCORING ENGINE -->
+    <div data-document-role="page" data-label="Slide 08 — Mathematical Scoring Engine" data-speaker-notes="At the heart of EchoBreaker is our real-time scoring engine js/engine.js exposing exact variable weights." class="slide">
+        <div class="header-logo-group">
+            <div class="logo-left">
+                <div class="official-logo-mark"></div>
+                <div><span class="logo-text-echo">ECHO</span><span class="logo-text-breaker">BREAKER</span></div>
+            </div>
+            <div class="badge">MATHEMATICAL ENGINE</div>
+        </div>
+        <div>
+            <h1 class="slide-title">Inside the Engine: <span class="highlight">Scoring Formula</span></h1>
+            <div class="formula-box" style="margin-bottom: 16px;">
+                S_post = 0.40 × A_cat + 0.30 × E_res + 0.20 × E_pot + 0.10 × R
+            </div>
+            <table class="table-custom">
+                <thead>
+                    <tr>
+                        <th>Term</th>
+                        <th>Definition &amp; Implementation Description</th>
+                        <th>Range</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>$A_{\text{cat}}$ (40%)</strong></td>
+                        <td>Category affinity normalised to user's highest-liked content category</td>
+                        <td>$[0, 1.0]$</td>
+                    </tr>
+                    <tr>
+                        <td><strong>$E_{\text{res}}$ (30%)</strong></td>
+                        <td>Emotional tone resonance weight (outrage, fear, sensationalism)</td>
+                        <td>$[0, 1.0]$</td>
+                    </tr>
+                    <tr>
+                        <td><strong>$E_{\text{pot}}$ (20%)</strong></td>
+                        <td>Engagement virality potential from post metadata divided by 10</td>
+                        <td>$[0, 1.0]$</td>
+                    </tr>
+                    <tr>
+                        <td><strong>$R$ (10%)</strong></td>
+                        <td>Recency boost: $\max(0.1, 1 - h/24)$ where $h$ = hours since publish</td>
+                        <td>$[0.1, 1.0]$</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="footer-bar">
+            <div>Scoring Pipeline Architecture</div>
+            <div>js/engine.js Implementation Specs</div>
+        </div>
+    </div>
+
+    <!-- SLIDE 09 — LIVE PRODUCT DEMO -->
+    <div data-document-role="page" data-label="Slide 09 — Live Product Demo" data-speaker-notes="Here is EchoBreaker in action. As a student scrolls, our Behind the Curtain inspector reveals category affinities in real time." class="slide">
         <div class="header-logo-group">
             <div class="logo-left">
                 <div class="official-logo-mark"></div>
@@ -526,10 +579,10 @@
                     <img src="https://raw.githubusercontent.com/benoualiabdelkader/echobreaker/main/assets/screenshots/behind_curtain.png" alt="EchoBreaker Behind the Curtain UI Screenshot" class="screenshot-img">
                 </div>
                 <div class="card-box" style="border: 2.5px solid var(--crimson);">
-                    <div style="font-weight: 800; color: var(--crimson); font-size: 22px; margin-bottom: 12px;">BEHIND THE CURTAIN INSPECTOR</div>
-                    <p style="font-size: 19px;"><strong>Health Affinity:</strong> 0.50</p>
-                    <p style="font-size: 19px;"><strong>Technology Affinity:</strong> 0.50</p>
-                    <p style="font-size: 19px; color: var(--crimson); font-weight: 700;"><strong>Conspiracy Affinity:</strong> 0.85 (Reranking Feed...)</p>
+                    <div style="font-weight: 800; color: var(--crimson); font-size: 20px; margin-bottom: 10px;">BEHIND THE CURTAIN INSPECTOR</div>
+                    <p style="font-size: 18px; margin-bottom: 6px;"><strong>Health Affinity:</strong> 0.50</p>
+                    <p style="font-size: 18px; margin-bottom: 6px;"><strong>Technology Affinity:</strong> 0.50</p>
+                    <p style="font-size: 18px; color: var(--crimson); font-weight: 700; margin-bottom: 0;"><strong>Conspiracy Affinity:</strong> 0.85 (Reranking Feed...)</p>
                 </div>
             </div>
         </div>
@@ -539,82 +592,70 @@
         </div>
     </div>
 
-    <!-- SLIDE 09 — INNOVATION -->
-    <div data-document-role="page" data-label="Slide 09 — Innovation" data-speaker-notes="Unlike traditional lectures or commercial platforms, EchoBreaker gives youth the tools to inspect, challenge, and reset recommendation AI." class="slide">
+    <!-- SLIDE 10 — THE META-AUDIT INNOVATION -->
+    <div data-document-role="page" data-label="Slide 10 — Meta-Audit Innovation" data-speaker-notes="EchoBreaker uses the same persuasive techniques it teaches students to resist. The contradiction is the lesson." class="slide">
         <div class="header-logo-group">
             <div class="logo-left">
                 <div class="official-logo-mark"></div>
                 <div><span class="logo-text-echo">ECHO</span><span class="logo-text-breaker">BREAKER</span></div>
             </div>
-            <div class="badge">INNOVATION &amp; DIFFERENTIATION</div>
+            <div class="badge">CENTRAL INNOVATION</div>
         </div>
         <div>
-            <h1 class="slide-title">Active Math vs. <span class="gold">Passive Lectures</span></h1>
-            <div class="slide-subtitle">Why EchoBreaker stands apart from traditional approaches.</div>
-            <div class="grid-2">
-                <div class="card-box">
-                    <div style="font-size: 22px; font-weight: 800; color: var(--text-muted); margin-bottom: 12px;">TRADITIONAL LECTURES</div>
-                    <ul>
-                        <li>Passive definitions &amp; slideshows.</li>
-                        <li>No interaction with real AI ranking.</li>
-                        <li>High student boredom &amp; drop-off.</li>
-                    </ul>
-                </div>
-                <div class="card-box" style="border: 3px solid var(--crimson); background: var(--crimson-light);">
-                    <div style="font-size: 22px; font-weight: 800; color: var(--crimson); margin-bottom: 12px;">ECHOBREAKER INNOVATION</div>
-                    <ul>
-                        <li>Active visual debugging of live algorithms.</li>
-                        <li>Role-play gamification (Algorithm vs. User).</li>
-                        <li>Actionable device audit checklist.</li>
-                    </ul>
-                </div>
+            <h1 class="slide-title">The Meta-Audit: <span class="gold">Persuasive Design Paradox</span></h1>
+            <div class="slide-subtitle">EchoBreaker uses the exact gamification mechanics it teaches learners to resist.</div>
+            <div class="card-box" style="background: var(--gold-light); border: 2.5px solid var(--gold); padding: 30px;">
+                <div style="font-size: 22px; font-weight: 800; color: var(--gold); margin-bottom: 10px;">THE REFLECTION PROMPT</div>
+                <p style="font-size: 20px; font-style: italic; color: var(--text-main); margin: 0; line-height: 1.5;">
+                    "Did you notice the glowing achievement badges, 3D card flips, and XP progress bars? We intentionally used <strong>standard persuasive design (gamification)</strong> to keep you engaged while teaching you how to resist it. How does it feel to recognize these emotional triggers working on you <em>right now</em>?"
+                </p>
             </div>
         </div>
         <div class="footer-bar">
-            <div>Differentiation Matrix</div>
-            <div>UNESCO Innovation Criterion</div>
+            <div>Central Pedagogical Innovation</div>
+            <div>The Contradiction IS the Lesson</div>
         </div>
     </div>
 
-    <!-- SLIDE 10 — IMPACT + INCLUSION -->
-    <div data-document-role="page" data-label="Slide 10 — Impact and Inclusion" data-speaker-notes="Inclusion is engineered into our core architecture. EchoBreaker requires zero personal data collection, fully complying with COPPA and GDPR." class="slide">
+    <!-- SLIDE 11 — PLAN B & ACCESSIBILITY -->
+    <div data-document-role="page" data-label="Slide 11 — Plan B and Equity" data-speaker-notes="For low-resource schools, our Plan B printable card decks print-game.html ensure every classroom can participate." class="slide">
         <div class="header-logo-group">
             <div class="logo-left">
                 <div class="official-logo-mark"></div>
                 <div><span class="logo-text-echo">ECHO</span><span class="logo-text-breaker">BREAKER</span></div>
             </div>
-            <div class="badge">IMPACT &amp; INCLUSION</div>
+            <div class="badge">GLOBAL EQUITY &amp; PLAN B</div>
         </div>
         <div>
-            <h1 class="slide-title">Minor Privacy &amp; <span class="highlight">Educational Equity</span></h1>
-            <div class="slide-subtitle">Built for every classroom: zero data barriers, 100% inclusive.</div>
+            <h1 class="slide-title">Minor Privacy &amp; <span class="highlight">Plan B Contingency</span></h1>
+            <div class="slide-subtitle">Ensuring zero-data barriers and 100% offline educational equity.</div>
             <div class="grid-2">
                 <div class="card-box">
-                    <div style="font-size: 22px; font-weight: 800; color: var(--green); margin-bottom: 12px;">STRICT MINOR PRIVACY</div>
+                    <div style="font-size: 22px; font-weight: 800; color: var(--green); margin-bottom: 8px;">STRICT MINOR PRIVACY (COPPA &amp; GDPR)</div>
                     <ul>
-                        <li>Zero account creation required.</li>
-                        <li>Zero email or personal data collection.</li>
-                        <li>100% COPPA &amp; GDPR compliant.</li>
+                        <li>Zero account creation, zero email tracking.</li>
+                        <li>Zero PII collection; local browser `localStorage`.</li>
+                        <li>Anonymized cohort telemetry store.</li>
                     </ul>
                 </div>
                 <div class="card-box">
-                    <div style="font-size: 22px; font-weight: 800; color: var(--blue); margin-bottom: 12px;">GLOBAL ACCESSIBILITY</div>
+                    <div style="font-size: 22px; font-weight: 800; color: var(--blue); margin-bottom: 8px;">PLAN B OFFLINE WORKSHEETS</div>
                     <ul>
-                        <li>Low-bandwidth lightweight web delivery.</li>
-                        <li>Plan B printable offline card worksheets.</li>
-                        <li>Multi-language i18n architecture ready.</li>
+                        <li>`print-game.html`: Printable 12-card classroom role-play.</li>
+                        <li>`print-report.html`: Offline student reflection report.</li>
+                        <li>Low-bandwidth equity for underserved schools.</li>
                     </ul>
                 </div>
             </div>
         </div>
         <div class="footer-bar">
-            <div>Inclusion &amp; Privacy Architecture</div>
+            <div>Educational Equity &amp; Contingency Plan</div>
             <div>UNESCO Inclusion &amp; Accessibility Criteria</div>
         </div>
     </div>
 
-    <!-- SLIDE 11 — FEASIBILITY -->
-    <div data-document-role="page" data-label="Slide 11 — Feasibility" data-speaker-notes="EchoBreaker is not theoretical—it is live, deployed, and tested with 480 pilot participants, demonstrating an 88 percent literacy gain." class="slide">
+    <!-- SLIDE 12 — FEASIBILITY & ROADMAP -->
+    <div data-document-role="page" data-label="Slide 12 — Feasibility" data-speaker-notes="EchoBreaker is tested with 480 pilot participants, demonstrating an 88 percent literacy gain." class="slide">
         <div class="header-logo-group">
             <div class="logo-left">
                 <div class="official-logo-mark"></div>
@@ -625,7 +666,7 @@
         <div class="grid-2">
             <div>
                 <h1 class="slide-title">Validated Data &amp; <span class="gold">Scaling Plan</span></h1>
-                <div class="grid-2" style="margin-bottom: 20px;">
+                <div class="grid-2" style="margin-bottom: 16px;">
                     <div class="card-box" style="text-align: center;">
                         <div class="stat-num">480</div>
                         <div class="stat-label">Pilot Participants</div>
@@ -636,7 +677,7 @@
                     </div>
                 </div>
                 <div class="card-box">
-                    <div style="font-weight: 800; color: var(--text-main); font-size: 16px;">ROADMAP: Hackathon Submission → 5-School Pilot → UNESCO MIL Network</div>
+                    <div style="font-weight: 800; color: var(--text-main); font-size: 15px;">ROADMAP: Hackathon Submission (Aug 2026) → 5-School Pilot (Q4 2026) → 50-School Scale (Q2 2027) → UNESCO Network (Q4 2027)</div>
                 </div>
             </div>
             <div class="browser-mockup">
@@ -655,8 +696,45 @@
         </div>
     </div>
 
-    <!-- SLIDE 12 — FINAL VISION -->
-    <div data-document-role="page" data-label="Slide 12 — Final Vision" data-speaker-notes="Join us in reclaiming digital agency for the next generation. Break the echo chamber today at echobreaker-mil.onrender.com." class="slide">
+    <!-- SLIDE 13 — THE TEAM -->
+    <div data-document-role="page" data-label="Slide 13 — The Team" data-speaker-notes="Our team combines software engineering with UI UX design and pedagogical content structuring." class="slide">
+        <div class="header-logo-group">
+            <div class="logo-left">
+                <div class="official-logo-mark"></div>
+                <div><span class="logo-text-echo">ECHO</span><span class="logo-text-breaker">BREAKER</span></div>
+            </div>
+            <div class="badge">THE TEAM</div>
+        </div>
+        <div>
+            <h1 class="slide-title">Meet <span class="highlight">Team EchoBreaker</span></h1>
+            <div class="slide-subtitle">Combining software engineering, visual UI/UX ergonomics, and pedagogical curriculum design.</div>
+            <div class="grid-2">
+                <div class="card-box">
+                    <div style="font-size: 24px; font-weight: 800; color: var(--text-main);">Benouali Abdelkader</div>
+                    <div style="font-size: 16px; color: var(--crimson); font-weight: 700; margin-bottom: 10px;">Lead Developer · Age 22 · Algeria</div>
+                    <ul>
+                        <li>Vanilla JS Architecture &amp; Live Scoring Engine ($S_{\text{post}}$).</li>
+                        <li>Zero-dependency optimization for low-spec devices.</li>
+                    </ul>
+                </div>
+                <div class="card-box">
+                    <div style="font-size: 24px; font-weight: 800; color: var(--text-main);">BENDJERIOU SEDJERARI Abdellah</div>
+                    <div style="font-size: 16px; color: var(--gold); font-weight: 700; margin-bottom: 10px;">Designer &amp; Pedagogical Lead · Age 23 · Algeria</div>
+                    <ul>
+                        <li>UI/UX Design, Visual Ergonomics &amp; 12-Card Arena.</li>
+                        <li>UNESCO MIL Curriculum Alignment &amp; Facilitation.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bar">
+            <div>Team Roster &amp; Core Expertise</div>
+            <div>UNESCO Youth Hackathon 2026 Submission</div>
+        </div>
+    </div>
+
+    <!-- SLIDE 14 — FINAL VISION -->
+    <div data-document-role="page" data-label="Slide 14 — Final Vision" data-speaker-notes="Join us in reclaiming digital agency for the next generation. Break the echo chamber today at echobreaker-mil.onrender.com." class="slide">
         <div class="bg-glow-ring"></div>
         <div class="header-logo-group">
             <div class="logo-left">
@@ -666,9 +744,9 @@
             <div class="badge">FINAL VISION</div>
         </div>
         <div style="text-align: center; margin: 20px 0;">
-            <h1 class="slide-title" style="font-size: 68px;">See the Algorithm.<br><span class="highlight">Break the Echo.</span></h1>
-            <div class="slide-subtitle" style="font-size: 28px; max-width: 1100px; margin: 20px auto;">Reclaiming youth digital agency for a more conscious, literate, and democratic world.</div>
-            <div style="margin-top: 20px; font-size: 26px; color: var(--crimson); font-weight: 800;">
+            <h1 class="slide-title" style="font-size: 64px;">See the Algorithm.<br><span class="highlight">Break the Echo.</span></h1>
+            <div class="slide-subtitle" style="font-size: 26px; max-width: 1100px; margin: 16px auto;">Reclaiming youth digital agency for a more conscious, literate, and democratic world.</div>
+            <div style="margin-top: 16px; font-size: 24px; color: var(--crimson); font-weight: 800;">
                 https://echobreaker-mil.onrender.com
             </div>
         </div>
