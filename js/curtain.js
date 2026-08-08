@@ -191,7 +191,8 @@ const Curtain = {
 
       const value = document.createElement("span");
       value.className = "affinity-value";
-      value.textContent = aff.normalized.toFixed(2);
+      const valNum = Number(aff.normalized) || 0;
+      value.textContent = valNum.toFixed(2);
 
       row.appendChild(label);
       row.appendChild(barTrack);
