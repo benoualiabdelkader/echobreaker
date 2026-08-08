@@ -427,7 +427,7 @@ This \textbf{Meta-Audit} is our central design innovation. The contradiction is 
 % ═════════════════════════════════════════════════════════════
 \section{Feasibility \& Sustainability}
 
-\textbf{Tech Stack \& Architecture:} Built using pure HTML5, Vanilla JavaScript, and CSS. The zero-dependency frontend ensures zero supply-chain vulnerabilities, zero build tool breaking changes, and maximum long-term operational stability. Hosting is free via GitHub Pages/Vercel/Render. Anonymous aggregate telemetry uses Firebase Realtime Database (free tier supports up to 100 concurrent connections, managed via client-side batching and local caching to easily accommodate classroom cohorts at \textbf{\$0 monthly cost}).
+\textbf{Tech Stack \& Architecture:} Built using pure HTML5, Vanilla JavaScript, and CSS. The zero-dependency frontend ensures zero supply-chain vulnerabilities, zero build tool breaking changes, and maximum long-term operational stability. Live hosting is deployed via Render static services (\url{https://echobreaker-mil.onrender.com}) backed by automated Blueprint configuration (\texttt{render.yaml}). Anonymous aggregate telemetry uses Firebase Realtime Database (free tier supports up to 100 concurrent connections, managed via client-side batching and local caching to easily accommodate classroom cohorts at \textbf{\$0 monthly cost}).
 
 \begin{figure}[htpb]
     \centering
@@ -542,6 +542,7 @@ At session start, $A_{\text{cat}}$ and $E_{\text{res}}$ both return $0.5$, ensur
 \texttt{dashboard.html}  & Educator Impact Command Center \\
 \texttt{print-game.html} & Offline printable card game worksheet (Plan B) \\
 \texttt{print-report.html}& Offline printable student reflection report (Plan B) \\
+\texttt{render.yaml}     & Render Blueprint automated deployment specification \\
 \midrule
 \texttt{css/styles.css}  & Primary component theme \& responsive layout \\
 \texttt{css/globals.css} & Global typography, CSS custom properties, color palette \\
