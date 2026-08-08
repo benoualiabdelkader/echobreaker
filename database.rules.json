@@ -1,0 +1,13 @@
+{
+  "rules": {
+    ".read": false,
+    ".write": false,
+    "impact_results": {
+      ".read": true,
+      "$entry_id": {
+        ".write": "!data.exists()",
+        ".validate": "newData.hasChildren(['timeToEchoChamberMs', 'dominantCategory', 'dominationPercent']) && newData.child('timeToEchoChamberMs').isNumber() && newData.child('dominantCategory').isString() && newData.child('dominationPercent').isNumber() && newData.child('dominationPercent').val() >= 0 && newData.child('dominationPercent').val() <= 100"
+      }
+    }
+  }
+}

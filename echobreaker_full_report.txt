@@ -1,0 +1,264 @@
+================================================================================
+                     ECHO BREAKER — FULL PROJECT REPORT
+             UNESCO Youth Media and Information Literacy Hackathon 2026
+================================================================================
+
+PROJECT TITLE:    EchoBreaker — Teaching Algorithmic Literacy Through Radical Transparency
+HACKATHON:       UNESCO Youth Media and Information Literacy (MIL) Hackathon 2026
+CATEGORY:        Interactive Digital Learning Tool
+TEAM MEMBERS:    Benouali Abdelkader · Yahia Zakaria
+COUNTRY:         Algeria
+DATE:            August 2026
+FORMAT:          Browser-Based, Zero-Install, Open-Access Web Application
+LIVE DEMO:       http://localhost:8085 / https://echobreaker.app
+
+================================================================================
+1. EXECUTIVE SUMMARY & ABSTRACT
+================================================================================
+
+EchoBreaker is an open-access, browser-based educational tool that teaches youth
+how social media recommendation algorithms construct echo chambers — by letting
+them EXPERIENCE it in real time. The platform comprises four interconnected modules:
+
+  1. Feed Simulator (index.html) — A transparent social feed powered by a live scoring engine.
+  2. Echo Escape Arena (game.html) — A 12-card credibility judgement game & role-play guide.
+  3. Agency Toolkit (toolkit.html) — A 20-item interactive audit checklist with local persistence.
+  4. Impact Analytics Command Center (dashboard.html) — An illustrative global telemetry dashboard.
+
+ITS CORE PEDAGOGICAL INNOVATION IS THE "META-AUDIT":
+EchoBreaker intentionally uses the same persuasive design techniques (gamification,
+micro-animations, glowing badges, progress bars) that social media platforms deploy —
+while simultaneously teaching students to recognise and resist them.
+
+Zero server infrastructure is required for deployment. All core logic runs in the
+browser with no setup, no account creation, and no software installation required.
+
+
+================================================================================
+2. PROBLEM STATEMENT AND CONTEXT
+================================================================================
+
+Recommendation algorithms on social media platforms operate invisibly. For the estimated
+4.8 billion social media users worldwide — the majority under 30 — the logic that decides
+which post appears first and which disappears entirely is never explained. The result is
+well-documented: filter bubbles, epistemic polarisation, and an accelerating erosion of
+shared informational reality (Pariser, 2011; Sunstein, 2017).
+
+Existing MIL curricula address WHAT misinformation is. EchoBreaker addresses WHY IT SPREADS:
+the mathematical, architectural, and attentional mechanics that amplify content
+regardless of its factual quality.
+
+HONEST SCOPE DECLARATION:
+EchoBreaker is a classroom and self-directed learning tool, not a platform-level policy
+intervention. Its goal is specific: give a learner the cognitive model needed to ask
+"Why am I seeing this?" every time they open a social feed.
+
+
+================================================================================
+3. MIL THEME ALIGNMENT & THE 4A FRAMEWORK
+================================================================================
+
+EchoBreaker is structured around four interconnected MIL competencies, each MECHANICALLY
+expressed in working code — not merely mentioned in a slide presentation:
+
+--------------------------------------------------------------------------------
+PILLAR         HOW ECHOBREAKER ENACTS IT
+--------------------------------------------------------------------------------
+1. ALGORITHM   The Feed Simulator runs a LIVE, VISIBLE SCORING FORMULA:
+               Score = (0.40 * CategoryAffinity) + (0.30 * EmotionalResonance) +
+                       (0.20 * EngagementPotential) + (0.10 * RecencyBoost)
+               displayed in real-time inside the "Behind the Curtain" panel.
+
+2. AMPLIFICATION Every like or 2-second dwell immediately re-ranks the entire feed.
+               Students watch content they never chose disappear as the algorithm
+               amplifies their expressed preferences.
+
+3. ATTENTION   Dwell time (>= 500ms at >= 50% viewport visibility) is tracked via the
+               browser's IntersectionObserver API and fed into the scoring engine —
+               replicating the passive-scroll signal real platforms measure.
+
+4. AGENCY      The Agency Toolkit provides 20 concrete, platform-specific audit actions
+               (TikTok, YouTube, Instagram, daily habits) with progress tracking,
+               full state reset capability, and a printable take-home audit sheet.
+--------------------------------------------------------------------------------
+
+ALIGNMENT WITH UNESCO MIL COMPETENCY FRAMEWORK (2021):
+  - Understanding Media: Makes algorithmic ranking legible at the mathematical level.
+  - Evaluating Media: The Arena Card Game presents 12 headlines (7 misleading, 5 credible)
+    for individual verdict before revealing red flags.
+  - Using Media Ethically: Post-simulation reflections prompt students to design their own
+    feed-diversification strategies.
+
+
+================================================================================
+4. FOUR-MODULE ARCHITECTURE & USER EXPERIENCE
+================================================================================
+
+1. FEED SIMULATOR (index.html)
+   - Allows users to scroll and interact with an algorithmically ranked feed.
+   - Includes a "Guided Demo: Sports Fan" persona mode to accelerate feed narrowing.
+   - Clicking "Behind the Curtain" slides out a real-time panel showing numerical
+     score breakdowns (Affinity, Emotion, Engagement, Recency) for every post.
+
+2. ECHO ESCAPE ARENA (game.html)
+   - A 12-card credibility assessment arena where learners evaluate real-world scenarios.
+   - Includes anti-cheat protections: Filter tabs (Misleading/Credible) remain locked
+     until all 12 cards are judged.
+   - Explanations, red flags, and discussion questions are dynamically injected into
+     the DOM ONLY after a guess is submitted, preventing Inspect Element cheating.
+   - Real accuracy is tracked: random guessing yields ~50% accuracy, not 100%.
+   - Includes a embedded 30-minute Teacher Facilitation Guide & 5 character role cards.
+
+3. AGENCY TOOLKIT (toolkit.html)
+   - A 20-item checklist spanning TikTok, YouTube, Instagram, and daily digital habits.
+   - Progress increments only on real interactions and persists across reloads via localStorage.
+   - Features a "Reset Audit Progress" modal that clears state cleanly back to 0/20.
+   - Includes a "Print My Audit Sheet" button for offline classroom distribution.
+
+4. IMPACT COMMAND CENTER (dashboard.html)
+   - Visualises aggregated youth algorithmic literacy telemetry.
+   - Explicitly labelled: "ILLUSTRATIVE TEMPLATE · NOT LIVE DATA — Simulated Sample Dataset (n=480)".
+   - Features a clear Data Provenance Banner and a interactive toggle button to switch
+     transparently between Demo Dataset (n=480) and Live Firebase Telemetry.
+
+
+================================================================================
+5. CORE INNOVATION: THE META-AUDIT
+================================================================================
+
+EchoBreaker uses THE SAME PERSUASIVE TECHNIQUES IT TEACHES STUDENTS TO RESIST.
+Glowing achievement badges, 3D card-flip animations, XP-style progress bars,
+pulsing live indicators, and dopamine-reward unlocks are all deliberately present.
+
+The Toolkit's reflection section makes this explicit:
+  "Did you notice the glowing badges, the 3D flip cards, and the 'Live' pulsing dots
+   in this app? We intentionally used standard persuasive design (gamification) to keep
+   you engaged while teaching you how to resist it. How does it feel to recognise
+   these emotional triggers working on you RIGHT NOW?"
+
+This META-AUDIT is the pedagogical core of EchoBreaker. No other MIL tool identified
+makes the contradiction the lesson itself.
+
+TECHNICAL INNOVATIONS:
+  - Live Scoring Transparency: Real-time formula breakdown next to every post.
+  - Inspect Element Protection: Back-face content injected dynamically post-guess.
+  - Dwell-Time Tracking: IntersectionObserver API measures passive viewing duration.
+  - Deterministic Engagement Counts: Displayed numbers are generated via post ID hashing
+    to remain visually consistent across renders without faking real social data.
+
+
+================================================================================
+6. TECHNICAL FEASIBILITY AND ARCHITECTURE
+================================================================================
+
+LAYER                 TECHNOLOGY
+--------------------------------------------------------------------------------
+Frontend              Pure HTML5 / Vanilla JavaScript (ES6+) / Vanilla CSS
+Design Tokens         Custom CSS variables (no external framework lock-in)
+Fonts & Charts        Google Fonts (Inter, Fraunces, JetBrains Mono) · Chart.js (CDN)
+Optional Backend      Firebase Realtime Database (Free Spark Tier)
+Hosting               Any static host (GitHub Pages, Netlify, Vercel)
+Hosting Cost          $0/month for the application itself
+--------------------------------------------------------------------------------
+
+WHY NO FRAMEWORK?
+Vanilla HTML/JS means zero dependency maintenance — no npm, no build pipelines that break.
+An educator can download the folder and open index.html in any browser without internet after load.
+
+FIREBASE IS OPTIONAL:
+Without Firebase, all toolkit progress saves to localStorage, impact data saves locally, and
+the command center displays its calibrated illustrative template. Educational value is 100%
+intact offline.
+
+
+================================================================================
+7. IMPACT, INCLUSION & LOCALISATION STRATEGY
+================================================================================
+
+MEASURABLE LEARNING OUTCOMES:
+Each completed session produces three passive, anonymous metrics:
+  1. Time to Echo Chamber (ms) — measures susceptibility rate.
+  2. Dominant Category — identifies which content drives bubble formation.
+  3. Behavioural Action Pledge — categorical choice (diversify, verify, follow, none).
+
+INCLUSION & ACCESSIBILITY:
+  - Honest Statement on Localisation: The current version is English-only. Arabic,
+    French, and Spanish localisations are planned for Phases 2–3 respectively.
+  - Zero-Cost Access: No account, no payment, no download required.
+  - Low-Bandwidth Operation: Client-side execution works on intermittent connections —
+    essential for Algerian schools and developing educational contexts.
+
+
+================================================================================
+8. DATA HONESTY, PRIVACY AND GOVERNANCE
+================================================================================
+
+  - Written Reflections (Toolkit textareas) are stored exclusively in local device storage
+    (localStorage). They are NEVER transmitted to any external server.
+  - Anonymous Telemetry (echo chamber timing + multiple-choice responses) may be submitted
+    to Firebase only with user notification. No names, emails, IP addresses, or device
+    fingerprints are collected. Sessions are identified by random UUIDs for deduplication.
+  - Command Center Banner explicitly clarifies data provenance ("Illustrative Template").
+  - No Official UNESCO Logo is used anywhere on the site, respecting patronage guidelines.
+
+
+================================================================================
+9. PHASED ROADMAP
+================================================================================
+
+PHASE      TIMELINE      DELIVERABLE
+--------------------------------------------------------------------------------
+Phase 0    Aug 2026      Full English tool; Teacher Facilitation Guide;
+                         Illustrative Impact Command Center (Hackathon Submission).
+
+Phase 1    Q4 2026       Controlled classroom pilot deployments in Algeria;
+                         First real telemetry dataset collection.
+
+Phase 2    Q2 2027       Arabic (RTL) + French UI localisation;
+                         Region-specific content pool expansion.
+
+Phase 3    Q4 2027       Spanish localisation; WCAG 2.1 AA accessibility audit;
+                         UNESCO MIL network global distribution partnership.
+--------------------------------------------------------------------------------
+
+
+================================================================================
+APPENDIX A: MATHEMATICAL SCORING FORMULA REFERENCE
+================================================================================
+
+The feed ranking formula implemented in js/engine.js:
+
+  Score = (0.40 * CategoryAffinity) + (0.30 * EmotionalResonance) +
+          (0.20 * EngagementPotential) + (0.10 * RecencyBoost)
+
+WHERE:
+  - CategoryAffinity (0.0 to 1.0): User's affinity for the post's category divided by max affinity.
+  - EmotionalResonance (0.0 to 1.0): User's affinity for the post's tone divided by max tone affinity.
+  - EngagementPotential (0.0 to 1.0): Metadata attribute of the post divided by 10.
+  - RecencyBoost (0.1 to 1.0): Max(0.1, 1 - (hoursOld / 24)).
+
+At session start (zero interactions), CategoryAffinity and EmotionalResonance return 0.5 (neutral),
+ensuring ranking is driven by content metadata alone before user choices are made.
+
+
+================================================================================
+APPENDIX B: COMPLETE CODEBASE & MODULE FILE MAP
+================================================================================
+
+FILE                      ROLE & RESPONSIBILITY
+--------------------------------------------------------------------------------
+index.html                Feed Simulator entry point & onboarding banner
+game.html                 Echo Escape Arena (12 cards) + Teacher Facilitation Guide
+toolkit.html              Agency Toolkit (20-item checklist with reset & print)
+dashboard.html            Global Analytics Command Center & Data Provenance Banner
+print-game.html           Printable physical card set for classroom use
+css/styles.css            Design system tokens, responsive layout, animations
+js/engine.js              Scoring Engine formula & user state logic
+js/feed.js                Feed card renderer & IntersectionObserver dwell tracking
+js/curtain.js             "Behind the Curtain" live score breakdown panel
+js/impact.js              Echo chamber detection trigger & assessment modal
+js/diversity.js           Feed diversity gauge logic
+js/telemetry.js           Firebase Realtime DB & LocalStorage data bridge
+js/dashboard.js           Chart.js analytics rendering & mode toggle logic
+js/data.js                Content pool (60 posts editable by educators)
+================================================================================

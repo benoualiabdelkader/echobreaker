@@ -1,0 +1,1359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Echo Escape — Classroom Card Game | EchoBreaker</title>
+    <meta name="description" content="An interactive classroom card game & media literacy role-play experience for UNESCO Youth MIL Hackathon 2026.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- NOTE: Update ?v=XX query param when modifying shared js/css files -->
+    <link rel="stylesheet" href="css/styles.css?v=100">
+    <script src="js/data.js?v=100"></script>
+    <script src="js/feed.js?v=100"></script>
+    <script src="js/i18n.js?v=100"></script>
+
+        <style>
+        /* ─── DESIGN SYSTEM TOKENS ───────────────────────────────── */
+        body {
+            overflow-x: hidden;
+            background: var(--news-bg);
+            color: var(--news-ink);
+        }
+
+        /* ─── HERO SECTION WITH 3D CARD SHOWCASE ─────────────────── */
+        .hero-section {
+            position: relative;
+            padding: 80px 24px 60px;
+            background: var(--news-bg);
+            border-bottom: 1px solid var(--news-border);
+            text-align: center;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--news-accent-soft);
+            border: 1px solid var(--news-border);
+            color: var(--news-accent);
+            padding: 6px 18px;
+            border-radius: 999px;
+            font-family: 'Fraunces', sans-serif;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .hero-title {
+            font-family: 'Fraunces', sans-serif;
+            font-size: clamp(36px, 6vw, 64px);
+            font-weight: 800;
+            line-height: 1.1;
+            margin: 0 auto 16px;
+            color: var(--news-accent);
+            max-width: 900px;
+        }
+
+        .hero-sub {
+            font-size: 18px;
+            color: var(--news-ink-muted);
+            max-width: 720px;
+            margin: 0 auto 32px;
+            line-height: 1.6;
+        }
+
+        .hero-cta-group {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 36px;
+        }
+
+        .btn-primary-cta {
+            background: var(--news-accent);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            padding: 14px 28px;
+            font-family: 'Fraunces', sans-serif;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            text-decoration: none;
+            transition: transform 0.2s, box-shadow 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-primary-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+        }
+
+        .btn-secondary-cta {
+            background: var(--news-ink);
+            border: 1px solid var(--news-ink);
+            color: white;
+            border-radius: 10px;
+            padding: 14px 24px;
+            font-family: 'Fraunces', sans-serif;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background 0.2s, transform 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-secondary-cta:hover {
+            background: var(--news-ink-muted);
+            transform: translateY(-2px);
+        }
+
+        /* 3D Card Fan Showcase */
+        .card-fan-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 40px;
+            perspective: 1000px;
+            height: 220px;
+        }
+
+        .fan-card {
+            width: 140px;
+            height: 190px;
+            background: var(--news-bg-raised);
+            border: 1px solid var(--news-border);
+            border-radius: 12px;
+            padding: 16px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            transition: transform 0.4s ease, box-shadow 0.4s;
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            text-align: left;
+        }
+
+        .fan-card-1 { transform: rotate(-16deg) translateX(-120px); border-color: var(--news-accent); }
+        .fan-card-2 { transform: rotate(-6deg) translateX(-40px); z-index: 2; border-color: var(--news-ink); }
+        .fan-card-3 { transform: rotate(6deg) translateX(40px); z-index: 3; border-color: var(--news-gold); }
+        .fan-card-4 { transform: rotate(16deg) translateX(120px); z-index: 1; border-color: var(--news-ok); }
+
+        .card-fan-container:hover .fan-card-1 { transform: rotate(-22deg) translateX(-160px); }
+        .card-fan-container:hover .fan-card-2 { transform: rotate(-8deg) translateX(-50px); }
+        .card-fan-container:hover .fan-card-3 { transform: rotate(8deg) translateX(50px); }
+        .card-fan-container:hover .fan-card-4 { transform: rotate(22deg) translateX(160px); }
+
+        .fan-tag { font-size: 10px; font-weight: 700; text-transform: uppercase; color: var(--news-ink); }
+        .fan-title { font-family: 'Fraunces', sans-serif; font-size: 12px; font-weight: 700; color: var(--news-ink); line-height: 1.3; }
+
+        /* ─── NAVIGATION TAB BAR ─────────────────────────────────── */
+        .tab-bar-container {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: var(--news-bg);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--news-border);
+            padding: 12px 24px;
+        }
+
+        .tab-bar {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            overflow-x: auto;
+        }
+
+        .tab-btn {
+            background: transparent;
+            border: 1px solid transparent;
+            color: var(--news-ink-muted);
+            padding: 8px 18px;
+            border-radius: 8px;
+            font-family: 'Fraunces', sans-serif;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: all 0.2s;
+        }
+
+        .tab-btn:hover { color: var(--news-accent); background: var(--news-border); }
+
+        .tab-btn.active {
+            background: var(--news-accent-soft);
+            border-color: var(--news-accent);
+            color: var(--news-accent);
+        }
+
+        /* ─── SECTION CONTAINERS & SPACING ───────────────────────── */
+        .content-section {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 64px 24px;
+        }
+
+        .section-header {
+            margin-bottom: 36px;
+        }
+
+        .section-title-badge {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--news-ink);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 6px;
+        }
+
+        .section-title {
+            font-family: 'Fraunces', sans-serif;
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--news-ink);
+            margin: 0 0 10px;
+        }
+
+        .section-sub {
+            font-size: 15px;
+            color: var(--news-ink-muted);
+            margin: 0;
+        }
+
+        /* ─── STEPPER TIMELINE FOR RULEBOOK ──────────────────────── */
+        .stepper-timeline {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            margin-bottom: 32px;
+            position: relative;
+        }
+
+        .step-card {
+            background: var(--news-bg-raised);
+            border: 1px solid var(--news-border);
+            border-radius: 14px;
+            padding: 24px;
+            position: relative;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .step-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--news-accent);
+        }
+
+        .step-num {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            background: var(--news-accent-soft);
+            border: 1px solid var(--news-accent);
+            color: var(--news-accent);
+            border-radius: 8px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .step-heading {
+            font-family: 'Fraunces', sans-serif;
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--news-ink);
+            margin-bottom: 10px;
+        }
+
+        .step-body {
+            font-size: 13px;
+            color: var(--news-ink-muted);
+            line-height: 1.6;
+        }
+
+        .debrief-box {
+            background: var(--news-bg-raised);
+            border: 1px solid var(--news-gold);
+            border-radius: 12px;
+            padding: 20px 24px;
+            font-size: 14px;
+            color: var(--news-ink);
+            line-height: 1.6;
+        }
+
+        /* ─── ROLE CARDS DECK (DISTINCT STYLES) ──────────────────── */
+        .roles-deck {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .role-box {
+            background: var(--news-bg-raised);
+            border: 2px solid var(--news-border);
+            border-radius: 14px;
+            padding: 24px;
+            position: relative;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s;
+        }
+
+        .role-box:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.1);
+        }
+
+        .role-box[data-role="algorithm"] { border-color: var(--news-accent); }
+        .role-box[data-role="user"] { border-color: var(--news-ink); }
+        .role-box[data-role="creator"] { border-color: var(--news-gold); }
+        .role-box[data-role="checker"] { border-color: var(--news-ok); }
+        .role-box[data-role="analyzer"] { border-color: #EF4444; }
+
+        .role-badge-tag {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 3px 8px;
+            border-radius: 4px;
+            display: inline-block;
+            margin-bottom: 12px;
+        }
+
+        .tag-algo { background: var(--news-accent-soft); color: var(--news-accent); }
+        .tag-user { background: rgba(0, 0, 0, 0.05); color: var(--news-ink); }
+        .tag-creator { background: rgba(184, 134, 46, 0.1); color: var(--news-gold); }
+        .tag-checker { background: rgba(92, 122, 107, 0.1); color: var(--news-ok); }
+        .tag-analyzer { background: rgba(239, 68, 68, 0.1); color: #EF4444; }
+
+        .role-name-text {
+            font-family: 'Fraunces', sans-serif;
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--news-ink);
+            margin-bottom: 6px;
+        }
+
+        .role-goal-text {
+            font-size: 12px;
+            color: var(--news-ink-muted);
+            margin-bottom: 14px;
+            font-weight: 500;
+        }
+
+        .role-power-box {
+            background: rgba(0,0,0,0.03);
+            border-radius: 8px;
+            padding: 12px;
+            font-size: 12px;
+            color: var(--news-ink);
+            line-height: 1.5;
+        }
+
+        /* ─── 3D CARD ARENA & FILTERING ──────────────────────────── */
+        .arena-controls {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin-bottom: 24px;
+            background: var(--news-bg-raised);
+            border: 1px solid var(--news-border);
+            border-radius: 12px;
+            padding: 14px 20px;
+        }
+
+        .filter-buttons {
+            display: flex;
+            gap: 8px;
+        }
+
+        .filter-btn {
+            background: transparent;
+            border: 1px solid var(--news-border);
+            color: var(--news-ink-muted);
+            padding: 6px 14px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .filter-btn.active {
+            background: var(--news-accent);
+            border-color: var(--news-accent);
+            color: white;
+        }
+
+        .arena-progress {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 13px;
+            color: var(--news-ink);
+        }
+
+        /* 3D Perspective Card Grid */
+        .interactive-arena-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+            gap: 24px;
+            perspective: 1200px;
+        }
+
+        .flip-card-3d {
+            background-color: transparent;
+            height: 380px;
+            cursor: pointer;
+        }
+
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: left;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            transform-style: preserve-3d;
+        }
+
+        .flip-card-3d.flipped .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .card-face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            border-radius: 14px;
+            padding: 24px;
+            box-sizing: border-box;
+            background: var(--news-bg-raised);
+            border: 1px solid var(--news-border);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        .card-face-back {
+            transform: rotateY(180deg);
+            background: var(--news-bg);
+            border-color: var(--news-accent);
+        }
+
+        .card-verdict-tag {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            padding: 4px 10px;
+            border-radius: 6px;
+            display: inline-block;
+            margin-bottom: 12px;
+        }
+
+        .verdict-misleading { background: rgba(239, 68, 68, 0.1); color: var(--news-alert); }
+        .verdict-credible { background: rgba(92, 122, 107, 0.15); color: var(--news-ok); }
+
+        .card-headline-3d {
+            font-family: 'Fraunces', sans-serif;
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--news-ink);
+            line-height: 1.4;
+            margin-bottom: 14px;
+        }
+
+        .card-engagement-metrics {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            color: var(--news-ink-muted);
+            display: flex;
+            gap: 14px;
+            margin-bottom: 12px;
+        }
+
+        .card-hint-text {
+            font-size: 11px;
+            color: var(--news-ink-muted);
+            text-align: center;
+        }
+
+        .card-explanation-text {
+            font-size: 13px;
+            color: var(--news-ink);
+            line-height: 1.5;
+            margin-bottom: 12px;
+        }
+
+        .card-redflag-box {
+            background: rgba(239, 68, 68, 0.05);
+            border: 1px solid rgba(239, 68, 68, 0.2);
+            border-radius: 6px;
+            padding: 8px 10px;
+            font-size: 12px;
+            color: var(--news-alert);
+            margin-bottom: 10px;
+        }
+
+        .card-discussion-box {
+            background: rgba(0, 0, 0, 0.03);
+            border: 1px solid var(--news-border);
+            border-radius: 6px;
+            padding: 8px 10px;
+            font-size: 12px;
+            color: var(--news-ink);
+        }
+
+        /* ─── 4A FRAMEWORK INFOGRAPHIC ───────────────────────────── */
+        .framework-infographic {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 24px;
+        }
+
+        .info-card {
+            background: var(--news-bg-raised);
+            border: 1px solid var(--news-border);
+            border-radius: 14px;
+            padding: 28px;
+            position: relative;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .info-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--news-accent);
+        }
+
+        .info-letter {
+            font-family: 'Fraunces', sans-serif;
+            font-size: 52px;
+            font-weight: 800;
+            color: var(--news-ink);
+            line-height: 1;
+            margin-bottom: 10px;
+        }
+
+        .info-title {
+            font-family: 'Fraunces', sans-serif;
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--news-ink);
+            margin-bottom: 8px;
+        }
+
+        .info-question {
+            font-size: 13px;
+            color: var(--news-accent);
+            font-style: italic;
+            margin-bottom: 14px;
+            line-height: 1.4;
+        }
+
+        .info-desc {
+            font-size: 13px;
+            color: var(--news-ink-muted);
+            line-height: 1.6;
+        }
+
+        /* ─── FINAL CTA FOOTER SECTION ───────────────────────────── */
+        .final-cta-section {
+            text-align: center;
+            padding: 60px 24px 80px;
+            background: var(--news-bg-raised);
+            border-top: 1px solid var(--news-border);
+        }
+
+        .cta-container-box {
+            background: var(--news-bg-raised);
+            border: 1px solid var(--news-accent);
+            border-radius: 16px;
+            padding: 40px;
+            display: inline-block;
+            max-width: 600px;
+            box-shadow: 0 12px 36px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- APP HEADER -->
+    <header class="app-header">
+        <div class="header-left">
+            <h1 class="logo">
+                <div class="logo-mark" aria-hidden="true"></div>
+                <div class="logo-text-group">
+                    <span class="logo-echo">ECHO</span>
+                    <span class="logo-breaker">BREAKER</span>
+                </div>
+            </h1>
+        </div>
+        <div class="header-right">
+            <a href="index.html" class="btn-curtain"><span class="eb-icon eb-icon-back"></span> <span data-i18n="nav_back_simulator">Back to Simulator</span></a>
+        </div>
+    </header>
+
+    <!-- HERO SECTION WITH 3D CARD SHOWCASE -->
+    <section class="hero-section">
+        <div class="hero-badge" data-i18n="game_hero_badge">Classroom Edition · MIL Role-Play</div>
+        <h1 class="hero-title" data-i18n="game_hero_title">Echo Escape — Classroom Card Game</h1>
+        <p class="hero-sub" data-i18n="game_hero_sub">
+            An interactive classroom scenario arena & media literacy role-play experience for youth.
+        </p>
+
+        <div class="hero-cta-group">
+                Play Interactive Arena
+            </a>
+            <a href="toolkit.html" class="btn-secondary-cta" data-i18n="btn_open_toolkit">
+                Open Agency Toolkit →
+            </a>
+        </div>
+
+        <!-- 3D Card Fan Showcase -->
+        <div class="card-fan-container">
+            <div class="fan-card fan-card-1">
+                <span class="fan-tag" data-i18n="fan_algo_tag">Algorithm</span>
+                <div class="fan-title" data-i18n="fan_algo_title">The Math Behind Your Feed</div>
+            </div>
+            <div class="fan-card fan-card-2">
+                <span class="fan-tag" data-i18n="fan_creator_tag">Creator</span>
+                <div class="fan-title" data-i18n="fan_creator_title">Sensational Reach vs Truth</div>
+            </div>
+            <div class="fan-card fan-card-3">
+                <span class="fan-tag" data-i18n="fan_checker_tag">Fact-Checker</span>
+                <div class="fan-title" data-i18n="fan_checker_title">Exposing Red Flags</div>
+            </div>
+            <div class="fan-card fan-card-4">
+                <span class="fan-tag" data-i18n="fan_user_tag">User</span>
+                <div class="fan-title" data-i18n="fan_user_title">Reclaiming Feed Agency</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- STICKY TAB NAVIGATION BAR -->
+    <div class="tab-bar-container">
+        <div class="tab-bar">
+            <button class="tab-btn" onclick="scrollToSection('rulebook-section', this)" data-i18n="tab_rulebook">Teacher Rulebook</button>
+            <button class="tab-btn" onclick="scrollToSection('roles-section', this)" data-i18n="tab_roles">Role Cards Deck</button>
+            <button class="tab-btn" onclick="scrollToSection('framework-section', this)" data-i18n="tab_framework">4A MIL Framework</button>
+            <button class="tab-btn" onclick="scrollToSection('roadmap-section', this)" data-i18n="tab_roadmap">Roadmap</button>
+        </div>
+    </div>
+
+    <!-- 1. INTERACTIVE SCENARIO ARENA -->
+    <section id="arena-section" class="content-section">
+        <div class="section-header">
+            <div class="section-title-badge" data-i18n="badge_interactive_deck">Interactive Card Deck</div>
+        </div>
+
+        <!-- Arena Filter Controls -->
+        <div class="arena-controls">
+            <div class="filter-buttons" id="arena-filter-buttons" style="opacity: 0.5; pointer-events: none;" title="Filters locked until you finish the game">
+                <button class="filter-btn active" onclick="filterCards('all', this)" data-i18n="filter_all">All Cards</button>
+                <button class="filter-btn" onclick="filterCards('misleading', this)" data-i18n="filter_misleading">Misleading</button>
+                <button class="filter-btn" onclick="filterCards('credible', this)" data-i18n="filter_credible">Credible</button>
+            </div>
+            <div id="filter-lock-msg" style="font-size: 11px; color: var(--news-alert); margin-bottom: 8px; text-align: center;" data-i18n="filter_lock_msg">🔒 Filters locked to prevent cheating. Guess all 12 cards to unlock.</div>
+            <div class="arena-progress" id="arena-count-display">
+                Showing 12 of 12 Scenario Cards
+            </div>
+        </div>
+        <!-- Live Score Tracker -->
+        <div id="arena-score-tracker" style="background:var(--news-bg-raised); border:1px solid var(--news-accent-soft); border-radius:10px; padding:14px 20px; margin-bottom:24px; display:flex; gap:20px; flex-wrap:wrap; font-family:'JetBrains Mono',monospace; font-size:13px;">
+                <div><span style="color:var(--news-ink-muted);" data-i18n="tracker_inspected">Inspected:</span> <strong id="score-inspected">0</strong> / 12</div>
+                <div><span style="color:var(--news-ink-muted);" data-i18n="tracker_correct">Correct:</span> <strong id="score-correct" style="color:var(--news-ok);">0</strong></div>
+                <div><span style="color:var(--news-ink-muted);" data-i18n="tracker_accuracy">Accuracy:</span> <strong id="score-accuracy" style="color:var(--news-accent);">--</strong></div>
+            </div>
+
+        <!-- 3D Flip Card Grid Container -->
+        <div class="interactive-arena-grid" id="arena-grid">
+            <!-- Populated dynamically via JS -->
+        </div>
+    </section>
+
+    <!-- 2. TEACHER RULEBOOK STEPPER TIMELINE -->
+    <section id="rulebook-section" class="content-section" style="background: rgba(255,255,255,0.01); border-top: 1px solid var(--news-border); border-bottom: 1px solid var(--news-border);">
+        <div class="section-header">
+            <div class="section-title-badge" data-i18n="facilitation_badge">Classroom Facilitation</div>
+            <h2 class="section-title" data-i18n="facilitation_title">Classroom Facilitation Guide</h2>
+            <p class="section-sub" data-i18n="facilitation_sub">A structured 30-minute lesson flow designed for high schools and youth workshops.</p>
+        </div>
+
+        <div class="stepper-timeline">
+            <div class="step-card">
+                <div class="step-num">01</div>
+                <div class="step-heading" data-i18n="step1_title">Setup & Role Assignment</div>
+                <div class="step-body" data-i18n="step1_body">
+                    Divide students into groups of 4–6. Assign core roles: 1 Algorithm, 1 User, 1 Creator, 1 Fact-Checker. Remaining students become Audience Analyzers to log engagement math publicly.
+                </div>
+            </div>
+
+            <div class="step-card">
+                <div class="step-num">02</div>
+                <div class="step-heading" data-i18n="step2_title">Play 3 System Rounds</div>
+                <div class="step-body" data-i18n="step2_body">
+                    • <strong>Publish:</strong> Creator draws 3 cards & rates sensationalism.<br>
+                    • <strong>Rank:</strong> Algorithm calculates totals & shows top 2 cards to User.<br>
+                    • <strong>Verify:</strong> Fact-Checker inspects 1 card per round.<br>
+                    • <strong>Log:</strong> Analyzers record categories on the scoreboard.
+                </div>
+            </div>
+
+            <div class="step-card">
+                <div class="step-num">03</div>
+                <div class="step-heading" data-i18n="step3_title">Scoring & System Debrief</div>
+                <div class="step-body" data-i18n="step3_body">
+                    • <strong>Algorithm + Creator win</strong> if User receives 3+ misleading cards uncaught.<br>
+                    • <strong>Fact-Checker + User win</strong> if they catch 2+ misleading cards AND maintain 4+ different categories.<br>
+                    • <em>Otherwise: System Complexity Draw.</em>
+                </div>
+            </div>
+        </div>
+
+        <div class="debrief-box" data-i18n="debrief_tip">
+            <span class="eb-icon eb-icon-bulb" style="width:16px;height:16px;margin-right:6px;vertical-align:middle;"></span><strong>Teacher Debrief Tip:</strong> Keep the Audience Analyzers' board hidden from the User until Round 3 ends. Revealing it right before scoring — <em>"Here is what the class saw the whole time that you never did"</em> — creates your strongest debrief moment!
+        </div>
+    </section>
+
+    <!-- 3. ROLE CARDS DECK -->
+    <section id="roles-section" class="content-section">
+        <div class="section-header">
+            <div class="section-title-badge" data-i18n="roles_badge">Character Roles</div>
+            <h2 class="section-title" data-i18n="roles_title">Role Cards Deck</h2>
+            <p class="section-sub" data-i18n="roles_sub">Distinct objectives and powers assigned to each student in the classroom role-play.</p>
+        </div>
+
+        <div class="roles-deck">
+            <div class="role-box" data-role="algorithm">
+                <span class="role-badge-tag tag-algo" data-i18n="role_algo_tag">Algorithm</span>
+                <div class="role-name-text" data-i18n="role_algo_title">THE ALGORITHM</div>
+                <div class="role-goal-text" data-i18n="role_algo_goal">Goal: Maximum User Engagement</div>
+                <div class="role-power-box" data-i18n="role_algo_desc">
+                    <strong>⚡ Mechanics:</strong> Add up engagement numbers on all 3 published cards. Reveal only the top 2 totals to the User. You cannot override the math.
+                </div>
+            </div>
+
+            <div class="role-box" data-role="user">
+                <span class="role-badge-tag tag-user" data-i18n="role_user_tag">Audience</span>
+                <div class="role-name-text" data-i18n="role_user_title">THE USER</div>
+                <div class="role-goal-text" data-i18n="role_user_goal">Goal: Stay Informed & Spot Missing Info</div>
+                <div class="role-power-box" data-i18n="role_user_desc">
+                    <strong>⚡ Mechanics:</strong> Once per round, ask "What am I NOT seeing?" — the Algorithm must reveal one hidden post from that round.
+                </div>
+            </div>
+
+            <div class="role-box" data-role="creator">
+                <span class="role-badge-tag tag-creator" data-i18n="role_creator_tag">Content Producer</span>
+                <div class="role-name-text" data-i18n="role_creator_title">THE CREATOR</div>
+                <div class="role-goal-text" data-i18n="role_creator_goal">Goal: Maximum Reach & Visibility</div>
+                <div class="role-power-box" data-i18n="role_creator_desc">
+                    <strong>⚡ Mechanics:</strong> Draw 3 scenario cards each round. Rate them 1–5 on headline sensationalism before handing them to the Algorithm.
+                </div>
+            </div>
+
+            <div class="role-box" data-role="checker">
+                <span class="role-badge-tag tag-checker" data-i18n="role_checker_tag">MIL Guardian</span>
+                <div class="role-name-text" data-i18n="role_checker_title">THE FACT-CHECKER</div>
+                <div class="role-goal-text" data-i18n="role_checker_goal">Goal: Expose Misinformation</div>
+                <div class="role-power-box" data-i18n="role_checker_desc">
+                    <strong>⚡ Mechanics:</strong> Once per round, flip 1 card to reveal its truth. If misleading, the Algorithm removes it from the feed.
+                </div>
+            </div>
+
+            <div class="role-box" data-role="analyzer">
+                <span class="role-badge-tag tag-analyzer" data-i18n="role_analyzer_tag">Scorekeeper</span>
+                <div class="role-name-text" data-i18n="role_analyzer_title">THE AUDIENCE ANALYZER</div>
+                <div class="role-goal-text" data-i18n="role_analyzer_goal">Goal: Log System Metrics</div>
+                <div class="role-power-box" data-i18n="role_analyzer_desc">
+                    <strong>⚡ Mechanics:</strong> Log the 3 engagement totals and update the class Feed Tracker with the 2 shown categories. You are the scoreboard!
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. 4A MIL FRAMEWORK INFOGRAPHIC -->
+    <section id="framework-section" class="content-section" style="border-top: 1px solid var(--news-border);">
+        <div class="section-header">
+            <div class="section-title-badge" data-i18n="framework_badge">Pedagogical Basis</div>
+            <h2 class="section-title" data-i18n="framework_title">The 4A Media Literacy Framework</h2>
+            <p class="section-sub" data-i18n="framework_sub">Core UNESCO conceptual pillars explored through post-game debrief discussion.</p>
+        </div>
+
+        <div class="framework-infographic">
+            <div class="info-card">
+                <div class="info-letter">A</div>
+                <div class="info-title" data-i18n="fw_algo_title">Algorithm</div>
+                <div class="info-question" data-i18n="fw_algo_quote">"Who decides what you see — and why?"</div>
+                <div class="info-desc" data-i18n="fw_algo_desc">Recommendation systems select content to maximize time spent on platform, not truth. Understanding algorithmic control is the first step to reclaiming attention.</div>
+            </div>
+
+            <div class="info-card">
+                <div class="info-letter">A</div>
+                <div class="info-title" data-i18n="fw_amp_title">Amplification</div>
+                <div class="info-question" data-i18n="fw_amp_quote">"Why does outrage travel faster than nuance?"</div>
+                <div class="info-desc" data-i18n="fw_amp_desc">Emotional content generates higher click-through rates. The algorithm rewards engagement, causing misinformation to naturally amplify at scale.</div>
+            </div>
+
+            <div class="info-card">
+                <div class="info-letter">A</div>
+                <div class="info-title" data-i18n="fw_att_title">Attention</div>
+                <div class="info-question" data-i18n="fw_att_quote">"Are you choosing, or is the feed choosing for you?"</div>
+                <div class="info-desc" data-i18n="fw_att_desc">Every scroll is data. Algorithms track dwell time and reaction history, narrowing your world over time to what keeps you engaged longest.</div>
+            </div>
+
+            <div class="info-card">
+                <div class="info-letter">A</div>
+                <div class="info-title" data-i18n="fw_agency_title">Agency</div>
+                <div class="info-question" data-i18n="fw_agency_quote">"What can YOU actually do about it?"</div>
+                <div class="info-desc" data-i18n="fw_agency_desc">Media literacy provides deliberate choice. Diversify sources, clear watch histories, and seek contrasting perspectives to transform from a passive scroll to an active citizen.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SCALABILITY & INCLUSION ROADMAP -->
+    <section id="roadmap-section" class="content-section" style="border-top: 1px solid var(--news-border); background: var(--news-bg-raised);">
+        <div class="section-header">
+            <div class="section-title-badge" data-i18n="roadmap_badge">Roadmap</div>
+            <h2 class="section-title" data-i18n="roadmap_title">Phase 2: Localization & Inclusion</h2>
+            <p class="section-sub" data-i18n="roadmap_sub">Extending reach to linguistically and culturally diverse communities.</p>
+        </div>
+        <div class="framework-infographic">
+            <div class="info-card">
+                <div class="info-letter" style="color:var(--news-accent);">Ar</div>
+            </div>
+            <div class="info-card">
+                <div class="info-letter" style="color:var(--news-accent);">Fr</div>
+                <div class="info-title" data-i18n="roadmap_fr_title">French (Phase 2)</div>
+                <div class="info-desc" data-i18n="roadmap_fr_desc">Francophone sub-Saharan Africa deployment. Aligned with UNESCO MIL curriculum frameworks used in West African educational systems.</div>
+            </div>
+            <div class="info-card">
+                <div class="info-letter" style="color:var(--news-gold);">ES</div>
+                <div class="info-title" data-i18n="roadmap_es_title">Spanish (Phase 3)</div>
+                <div class="info-desc" data-i18n="roadmap_es_desc">Latin American youth adaptation with region-specific misinformation case studies (health, political, migration-related content).</div>
+            </div>
+            <div class="info-card">
+                <div class="info-letter" style="color:var(--news-ok);">+a11y</div>
+                <div class="info-title" data-i18n="roadmap_a11y_title">Accessibility Audit</div>
+                <div class="info-desc" data-i18n="roadmap_a11y_desc">WCAG 2.1 AA compliance review. Screen reader navigation, keyboard-only operation, and high-contrast mode for visually impaired learners.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FINAL CTA FOOTER SECTION -->
+    <section class="final-cta-section">
+        <div class="cta-container-box">
+            <h3 style="font-family: 'Fraunces', sans-serif; font-size: 24px; font-weight: 700; color: var(--news-ink); margin-bottom: 12px;" data-i18n="cta_ready_title">Ready for Real-World Feed Auditing?</h3>
+            <p style="font-size: 14px; color: var(--news-ink-muted); margin-bottom: 24px; line-height: 1.6;" data-i18n="cta_ready_sub">Help students audit their own social feeds with the Agency Toolkit — a step-by-step take-home checklist.</p>
+            <a href="toolkit.html" class="btn-primary-cta" style="justify-content: center; width: 100%;" data-i18n="btn_open_toolkit">
+                Open Agency Toolkit →
+            </a>
+        </div>
+    </section>
+
+    <!-- INTERACTIVE JAVASCRIPT ENGINE -->
+    <script>
+    const arenaScenarios = [
+        {
+            id: 1,
+            headline: "MIRACLE BERRY Extract ELIMINATES All Chronic Pain in 48 Hours!",
+            headline_fr: "L'extrait de Baie Miracle ÉLIMINE toute douleur chronique en 48h !",
+            headline_es: "¡El extracto de Baya Milagrosa ELIMINA todo dolor crónico en 48 horas!",
+            category: "Health",
+            is_misleading: true,
+            explanation: "This post uses ALL-CAPS and conspiracy language to create urgency. No scientific evidence supports chronic pain elimination in 48 hours.",
+            redflags: "ALL-CAPS headline · No named source · Conspiracy framing",
+            discussion: "What emotional reaction does this headline trigger? Why does that make it easier to share without fact-checking?",
+            explanation_fr: "Ce post utilise des MAJUSCULES et un langage conspirationniste pour créer l'urgence. Aucune preuve scientifique ne soutient l'élimination des douleurs chroniques en 48h.",
+            redflags_fr: "Titre en MAJUSCULES · Aucune source nommée · Cadrage conspirationniste",
+            discussion_fr: "Quelle réaction émotionnelle ce titre déclenche-t-il ? Pourquoi est-il plus facile à partager sans vérification ?",
+            explanation_es: "Esta publicación utiliza MAYÚSCULAS y lenguaje conspirativo para crear urgencia. No existe evidencia científica que respalde la eliminación del dolor crónico en 48 horas.",
+            redflags_es: "Titular en MAYÚSCULAS · Sin fuente nombrada · Enfoque conspirativo",
+            discussion_es: "¿Qué reacción emocional provoca este titular? ¿Por qué dificulta la verificación antes de compartir?"
+        },
+        {
+            id: 2,
+            headline: "New Study Links Daily Walking to 30% Better Sleep Quality",
+            headline_fr: "Une étude associe la marche quotidienne à une amélioration du sommeil de 30%",
+            headline_es: "Un estudio vincula la caminata diaria con una mejora del 30% en el sueño",
+            category: "Health",
+            is_misleading: false,
+            explanation: "Cites a specific study, sample size (n=2,400), and 12-month timeframe. Responsible science communication.",
+            redflags: "None — factual health reporting.",
+            discussion: "Why did this credible post get far fewer shares than the miracle berry post?",
+            explanation_fr: "Cite une étude spécifique, un échantillon (n=2 400) et une durée de 12 mois. Communication scientifique responsable.",
+            redflags_fr: "Aucun — rapport médical factuel.",
+            discussion_fr: "Pourquoi ce post crédible a-t-il eu moins de partages que celui sur la baie miracle ?",
+            explanation_es: "Cita un estudio específico, un tamaño de muestra (n=2,400) y un marco temporal de 12 meses. Comunicación científica responsable.",
+            redflags_es: "Ninguna — informe de salud basado en hechos.",
+            discussion_es: "¿Por qué esta publicación creíble obtuvo muchas menos interacciones que la de la baya milagrosa?"
+        },
+        {
+            id: 3,
+            headline: "WARNING: Popular Mobile Apps Are Secretly Recording Your Background Audio 24/7!",
+            headline_fr: "AVERTISSEMENT : Des applications mobiles vous enregistrent 24/7 !",
+            headline_es: "ADVERTENCIA: ¡Aplicaciones móviles populares te graban en segundo plano 24/7!",
+            category: "Technology",
+            is_misleading: true,
+            explanation: "Uses privacy panic to trigger sharing. OS permissions require explicit mic indicators; background 24/7 recording is technically impossible.",
+            redflags: "WARNING framing · Surveillance fear · No technical proof",
+            discussion: "Why do privacy rumors travel so fast on social media?",
+            explanation_fr: "Utilise la peur pour pousser au partage. Les autorisations système exigent un indicateur de micro ; l'enregistrement 24/7 est techniquement impossible.",
+            redflags_fr: "Cadrage AVERTISSEMENT · Peur de la surveillance · Aucune preuve technique",
+            discussion_fr: "Pourquoi les rumeurs sur la vie privée se propagent-elles si vite ?",
+            explanation_es: "Utiliza el pánico sobre la privacidad para motivar que se comparta. Los permisos del SO requieren un indicador de micrófono; la grabación 24/7 en segundo plano es técnicamente imposible.",
+            redflags_es: "Enfoque de ADVERTENCIA · Miedo a la vigilancia · Sin pruebas técnicas",
+            discussion_es: "¿Por qué los rumores sobre privacidad se propagan tan rápido en las redes sociales?"
+        },
+        {
+            id: 4,
+            headline: "City Council Approves New Public Transport Expansion Plan",
+            headline_fr: "Le conseil municipal approuve le nouveau plan de transport public",
+            headline_es: "El Concejo Municipal aprueba nuevo plan de expansión del transporte público",
+            category: "Politics",
+            is_misleading: false,
+            explanation: "Cites a verifiable decision by a named governing body. Standard civic reporting with no sensational language.",
+            redflags: "None — factual civic reporting.",
+            discussion: "Why might a factual report about your city get fewer shares than a false conspiracy theory?",
+            explanation_fr: "Cite une décision vérifiable d'un organisme public nommé. Journalisme civique standard.",
+            redflags_fr: "Aucun — rapport civique factuel.",
+            discussion_fr: "Pourquoi un rapport factuel sur votre ville obtiendrait-il moins de partages qu'une fausse théorie ?",
+            explanation_es: "Cita una decisión verificable de un organismo gubernamental. Periodismo cívico estándar sin lenguaje sensacionalista.",
+            redflags_es: "Ninguna — informe cívico basado en hechos.",
+            discussion_es: "¿Por qué un informe factual sobre tu ciudad recibe menos compartidos que una falsa teoría conspirativa?"
+        },
+        {
+            id: 5,
+            headline: "A Leading Space Agency Confirms: Earth's Magnetic Field Is COLLAPSING!",
+            headline_fr: "Une agence spatiale confirme : Le champ magnétique terrestre S'EFFONDRE !",
+            headline_es: "Una agencia espacial confirma: ¡El campo magnético de la Tierra se está COLAPSANDO!",
+            category: "Science",
+            is_misleading: true,
+            explanation: "Implies imminent catastrophe. Magnetic field reversals take thousands of years, not months.",
+            redflags: "Unnamed agency · CAPS alarmism · False exclusivity",
+            discussion: "How can a misleading post contain some true information?",
+            explanation_fr: "Implique une catastrophe imminente. Les inversions du champ magnétique prennent des milliers d'années.",
+            redflags_fr: "Agence non nommée · Alarmisme en MAJUSCULES · Fausse exclusivité",
+            discussion_fr: "Comment un post trompeur peut-il contenir des informations vraies ?",
+            explanation_es: "Implica una catástrofe inminente. Las inversiones del campo magnético tardan miles de años, no meses.",
+            redflags_es: "Agencia no nombrada · Alarmismo en MAYÚSCULAS · Exclusividad falsa",
+            discussion_es: "¿Cómo puede una publicación engañosa contener parte de información verdadera?"
+        },
+        {
+            id: 6,
+            headline: "Reforestation Project Plants 10 Million Trees Using Drone Technology",
+            headline_fr: "Un projet de reboisement plante 10 millions d'arbres par drones",
+            headline_es: "Proyecto de reforestación planta 10 millones de árboles usando drones",
+            category: "Science",
+            is_misleading: false,
+            explanation: "Provides measurable specifics: 10M trees, autonomous drones, 6 months. Real technology.",
+            redflags: "None.",
+            discussion: "Solutions and positive progress get fewer shares than disasters. What does this mean for our worldview?",
+            explanation_fr: "Fournit des détails mesurables : 10M d'arbres, drones autonomes, 6 mois. Vraie technologie.",
+            redflags_fr: "Aucun.",
+            discussion_fr: "Les solutions et progrès positifs obtiennent moins de partages que les catastrophes. Qu'est-ce que cela signifie ?",
+            explanation_es: "Proporciona datos específicos y medibles: 10M de árboles, drones autónomos, 6 meses. Tecnología real.",
+            redflags_es: "Ninguna.",
+            discussion_es: "Las soluciones y progresos positivos se comparten menos que los desastres. ¿Qué significa esto para nuestra visión del mundo?"
+        },
+        {
+            id: 7,
+            headline: "This ONE Morning Routine Will TRANSFORM Your Entire Life in 7 Days",
+            headline_fr: "Cette SEULE routine matinale TRANSFORMERA votre vie en 7 jours",
+            headline_es: "Esta ÚNICA rutina matutina TRANSFORMARÁ tu vida en 7 días",
+            category: "Lifestyle",
+            is_misleading: true,
+            explanation: "Promises 7-day life transformation without peer-reviewed backing. Designed for viral clicks.",
+            redflags: "Absolute promise · Unverifiable timeframe · Authority without credentials",
+            discussion: "Who benefits financially when you believe and share this content?",
+            explanation_fr: "Promet une transformation en 7 jours sans soutien scientifique. Conçu pour les clics.",
+            redflags_fr: "Promesse absolue · Durée invérifiable · Autorité sans diplôme",
+            discussion_fr: "Qui profite financièrement lorsque vous croyez et partagez ce contenu ?",
+            explanation_es: "Promete una transformación de vida en 7 días sin respaldo científico evaluado por pares. Diseñado para clics virales.",
+            redflags_es: "Promesa absoluta · Plazo inverificable · Autoridad sin credenciales",
+            discussion_es: "¿Quién se beneficia económicamente cuando crees y compartes este contenido?"
+        },
+        {
+            id: 8,
+            headline: "Local Team Wins Championship After 20-Year Drought",
+            headline_fr: "L'équipe locale remporte le championnat après 20 ans d'attente",
+            headline_es: "Equipo local gana el campeonato tras 20 años de sequía",
+            category: "Sports",
+            is_misleading: false,
+            explanation: "Straightforward sports journalism with verifiable scores and timeline.",
+            redflags: "None.",
+            discussion: "Why might sports news be consumed differently from political news?",
+            explanation_fr: "Journalisme sportif factuel avec des scores et un calendrier vérifiables.",
+            redflags_fr: "Aucun.",
+            discussion_fr: "Pourquoi les actualités sportives sont-elles consommées différemment des actualités politiques ?",
+            explanation_es: "Periodismo deportivo directo con resultados y cronología verificables.",
+            redflags_es: "Ninguna.",
+            discussion_es: "¿Por qué las noticias deportivas se consumen de manera diferente a las políticas?"
+        },
+        {
+            id: 9,
+            headline: "VIRAL TRICK: Typing This 4-Digit Secret Code Doubles Your Wi-Fi Speed Instantly!",
+            headline_fr: "ASTUCE VIRALE : Tapez ce code secret à 4 chiffres pour doubler votre Wi-Fi !",
+            headline_es: "TRUCO VIRAL: ¡Escribir este código secreto de 4 dígitos duplica tu velocidad de Wi-Fi!",
+            category: "Technology",
+            is_misleading: true,
+            explanation: "Router speed is governed by ISP bandwidth allocations, not hidden key codes. Classic hoax.",
+            redflags: "VIRAL TRICK framing · Secret code trope · No technical basis",
+            discussion: "Why do life hacks go viral so easily?",
+            explanation_fr: "La vitesse du routeur est régie par le FAI, pas par des codes secrets. Canular classique.",
+            redflags_fr: "Cadrage ASTUCE VIRALE · Code secret · Aucune base technique",
+            discussion_fr: "Pourquoi les astuces de la vie quotidienne deviennent-elles si facilement virales ?",
+            explanation_es: "La velocidad del router está determinada por el proveedor de internet, no por códigos ocultos. Un engaño clásico.",
+            redflags_es: "Enfoque de TRUCO VIRAL · Cliché de código secreto · Sin base técnica",
+            discussion_es: "¿Por qué los trucos caseros se vuelven virales tan fácilmente?"
+        },
+        {
+            id: 10,
+            headline: "EXPOSED: The Ingredient in Your Toothpaste That's Slowly Poisoning You",
+            headline_fr: "RÉVÉLATION : L'ingrédient de votre dentifrice qui vous empoisonne",
+            headline_es: "EXPUESTO: El ingrediente en tu pasta de dientes que te está envenenando lentamente",
+            category: "Health",
+            is_misleading: true,
+            explanation: "Fluoride in toothpaste is safe at controlled concentrations. Fear-mongering without evidence.",
+            redflags: "EXPOSED framing · Decades of lying conspiracy · Fear-based health claim",
+            discussion: "When a health claim contradicts consensus, what is the responsible action?",
+            explanation_fr: "Le fluor est sûr à des concentrations contrôlées. Alarmisme sans preuve.",
+            redflags_fr: "Cadrage RÉVÉLATION · Théorie du complot · Peur pour la santé",
+            discussion_fr: "Lorsqu'une affirmation médicale contredit le consensus, quelle est l'attitude responsable ?",
+            explanation_es: "El fluoruro en la pasta de dientes es seguro en concentraciones controladas. Infundir miedo sin evidencia.",
+            redflags_es: "Enfoque de EXPUESTO · Conspiración infundada · Afirmación de salud basada en el miedo",
+            discussion_es: "Cuando una afirmación sobre salud contradice el consenso científico, ¿cuál es la acción responsable?"
+        },
+        {
+            id: 11,
+            headline: "Researchers Create Prosthetic Hand with Real Touch Feedback",
+            headline_fr: "Des chercheurs créent une main prothétique avec retour tactile",
+            headline_es: "Investigadores crean mano prostética con retroalimentación táctil real",
+            category: "Technology",
+            is_misleading: false,
+            explanation: "Describes a bioengineering breakthrough with verifiable results.",
+            redflags: "None.",
+            discussion: "Why does amazing scientific news get fewer shares than toothpaste conspiracies?",
+            explanation_fr: "Décrit une percée en bio-ingénierie avec des résultats vérifiables.",
+            redflags_fr: "Aucun.",
+            discussion_fr: "Pourquoi des avancées scientifiques incroyables obtiennent-elles moins de partages que les théories du complot ?",
+            explanation_es: "Describe un avance en bioingeniería con resultados verificables.",
+            redflags_es: "Ninguna.",
+            discussion_es: "¿Por qué las noticias científicas asombrosas reciben menos interacciones que las conspiraciones sobre pasta de dientes?"
+        },
+        {
+            id: 12,
+            headline: "Scientists Are HIDING the Cure for Cancer to Keep Pharma Profits",
+            headline_fr: "Des scientifiques CACHENT le remède contre le cancer",
+            headline_es: "Científicos OCULTAN la cura del cáncer para mantener las ganancias farmacéuticas",
+            category: "Conspiracy",
+            is_misleading: true,
+            explanation: "Global cancer suppression would be impossible given thousands of competing global labs.",
+            redflags: "No named scientist · Global suppression claim · Financial motive trope",
+            discussion: "Why do institutional conspiracy theories feel believable to many people?",
+            explanation_fr: "La suppression mondiale d'un remède contre le cancer serait impossible face à des milliers de laboratoires.",
+            redflags_fr: "Aucun scientifique nommé · Censure mondiale prétendue · Motif financier",
+            discussion_fr: "Pourquoi les théories du complot institutionnelles semblent-elles crédibles pour beaucoup ?",
+            explanation_es: "La supresión global del cáncer sería imposible dados los miles de laboratorios competidores en el mundo.",
+            redflags_es: "Sin científico nombrado · Afirmación de supresión global · Cliché de motivo financiero",
+            discussion_es: "¿Por qué las teorías de conspiración institucional les parecen creíbles a tantas personas?"
+        }
+    ];
+
+    let currentFilter = 'all';
+    let cardStates = {};
+    let totalInspected = 0;
+    let correctGuessesCount = 0;
+
+    function getScenarioText(scenario, field) {
+        const lang = (typeof i18n !== 'undefined' && i18n.currentLang) ? i18n.currentLang : 'en';
+        if (lang !== 'en' && scenario[field + '_' + lang]) {
+            return scenario[field + '_' + lang];
+        }
+        return scenario[field];
+    }
+
+    window.submitGuess = function(cardId, userGuess) {
+        if (cardStates[cardId] && cardStates[cardId].guessed) {
+            console.warn('Card already guessed.');
+            return;
+        }
+
+        const scenario = arenaScenarios.find(s => s.id === cardId);
+        const actualVerdict = scenario.is_misleading ? 'MISLEADING' : 'CREDIBLE';
+        const isCorrect = (userGuess === actualVerdict);
+
+        cardStates[cardId] = {
+            guessed: true,
+            userGuess: userGuess,
+            correct: isCorrect
+        };
+
+        totalInspected++;
+        if (isCorrect) {
+            correctGuessesCount++;
+        }
+
+        updateScoreTracker();
+
+        const cardEl = document.getElementById('card-' + cardId);
+        if (cardEl) {
+            const backFace = cardEl.querySelector('.card-face-back');
+            if (backFace) {
+                let bannerHtml = '';
+                const rightTxt = (typeof i18n !== 'undefined' && i18n.t) ? i18n.t('verdict_you_were_right') : "You were right!";
+                const notQuiteTxt = (typeof i18n !== 'undefined' && i18n.t) ? i18n.t('verdict_not_quite') : "Not quite — this was actually";
+                const redFlagsLabel = (typeof i18n !== 'undefined' && i18n.t) ? i18n.t('label_red_flags') : "Red Flags:";
+                const discussionLabel = (typeof i18n !== 'undefined' && i18n.t) ? i18n.t('label_discussion') : "Discussion:";
+
+                const tagMisleading = (typeof i18n !== 'undefined' && i18n.t) ? i18n.t('verdict_tag_misleading') : "MISLEADING";
+                const tagCredible = (typeof i18n !== 'undefined' && i18n.t) ? i18n.t('verdict_tag_credible') : "CREDIBLE";
+                const activeVerdictLabel = scenario.is_misleading ? tagMisleading : tagCredible;
+
+                const expText = getScenarioText(scenario, 'explanation');
+                const redFlagsText = getScenarioText(scenario, 'redflags');
+                const discText = getScenarioText(scenario, 'discussion');
+
+                if (isCorrect) {
+                    bannerHtml = `<div class="guess-result-banner" style="background: rgba(16, 185, 129, 0.2); color: var(--news-ok); border: 1px solid var(--news-ok); padding:8px 12px; border-radius:6px; margin-bottom:12px; font-size:13px; text-align:center;">✅ <strong>${rightTxt}</strong></div>`;
+                } else {
+                    bannerHtml = `<div class="guess-result-banner" style="background: rgba(239, 68, 68, 0.2); color: var(--news-alert); border: 1px solid var(--news-alert); padding:8px 12px; border-radius:6px; margin-bottom:12px; font-size:13px; text-align:center;">❌ <strong>${notQuiteTxt} ${activeVerdictLabel}</strong></div>`;
+                }
+                
+                backFace.innerHTML = `
+                    <div>
+                        ${bannerHtml}
+                        <span class="card-verdict-tag ${scenario.is_misleading ? 'verdict-misleading' : 'verdict-credible'}">
+                            ${activeVerdictLabel}
+                        </span>
+                        <div class="card-explanation-text">${expText}</div>
+                        ${scenario.is_misleading ? `<div class="card-redflag-box"><strong>${redFlagsLabel}</strong> ${redFlagsText}</div>` : ''}
+                    </div>
+                    <div class="card-discussion-box" style="margin-top:12px;">
+                        <strong>${discussionLabel}</strong> ${discText}
+                    </div>
+                `;
+            }
+
+            const buttons = cardEl.querySelectorAll('.guess-btn');
+            buttons.forEach(b => {
+                b.disabled = true;
+                b.style.opacity = '0.5';
+                b.style.cursor = 'not-allowed';
+            });
+
+            cardEl.classList.add('flipped');
+        }
+    };
+
+    window.resetGame = function() {
+        cardStates = {};
+        totalInspected = 0;
+        correctGuessesCount = 0;
+        updateScoreTracker();
+        renderArenaCards();
+    };
+
+    function renderArenaCards() {
+        const grid = document.getElementById('arena-grid');
+        if (!grid) return;
+        grid.innerHTML = '';
+
+        const filtered = arenaScenarios.filter(s => {
+            if (currentFilter === 'misleading') return s.is_misleading;
+            if (currentFilter === 'credible') return !s.is_misleading;
+            return true;
+        });
+
+        const countDisplay = document.getElementById('arena-count-display');
+        if (countDisplay) {
+            const showingText = (typeof i18n !== 'undefined' && i18n.t)
+                ? i18n.t('showing_scenario_cards').replace('{0}', filtered.length).replace('{1}', arenaScenarios.length)
+                : `Showing ${filtered.length} of ${arenaScenarios.length} Scenario Cards`;
+            countDisplay.textContent = showingText;
+        }
+
+        const verdictQ = (typeof i18n !== 'undefined' && i18n.t) ? i18n.t('verdict_question') : "What's your verdict?";
+        const btnCredible = (typeof i18n !== 'undefined' && i18n.t) ? i18n.t('btn_guess_credible') : "✅ Credible";
+        const btnMisleading = (typeof i18n !== 'undefined' && i18n.t) ? i18n.t('btn_guess_misleading') : "🚩 Misleading";
+        const scenarioLabel = (typeof i18n !== 'undefined' && i18n.t) ? i18n.t('scenario_label') : "SCENARIO #";
+
+        const tagMisleading = (typeof i18n !== 'undefined' && i18n.t) ? i18n.t('verdict_tag_misleading') : "MISLEADING";
+        const tagCredible = (typeof i18n !== 'undefined' && i18n.t) ? i18n.t('verdict_tag_credible') : "CREDIBLE";
+
+        filtered.forEach(s => {
+            const card = document.createElement('div');
+            card.className = 'flip-card-3d';
+            card.id = 'card-' + s.id;
+            
+            const headlineText = getScenarioText(s, 'headline');
+
+            // Only render front face initially to prevent Inspect Element cheating
+            card.innerHTML = `
+                <div class="flip-card-inner">
+                    <div class="card-face card-face-front" style="display: flex; flex-direction: column; justify-content: space-between;">
+                        <div>
+                            <div class="scenario-number" style="font-family:'JetBrains Mono',monospace; font-size:11px; font-weight:700; color:var(--news-ink-muted); margin-bottom:12px;">${scenarioLabel}${String(s.id).padStart(2,'0')}</div>
+                            <div class="card-headline-3d">${headlineText}</div>
+                        </div>
+                        <div>
+                            <div style="font-size:12px; font-weight:600; text-align:center; margin-bottom:8px; color:var(--news-ink);">${verdictQ}</div>
+                            <div style="display:flex; gap:8px; justify-content:center;">
+                                <button class="guess-btn" style="flex:1; padding:10px 4px; border:1px solid var(--news-ok); background:rgba(92,122,107,0.1); color:var(--news-ok); border-radius:6px; cursor:pointer; font-size:12px; font-weight:700;" onclick="submitGuess(${s.id}, 'CREDIBLE')">${btnCredible}</button>
+                                <button class="guess-btn" style="flex:1; padding:10px 4px; border:1px solid var(--news-alert); background:rgba(239,68,68,0.1); color:var(--news-alert); border-radius:6px; cursor:pointer; font-size:12px; font-weight:700;" onclick="submitGuess(${s.id}, 'MISLEADING')">${btnMisleading}</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-face card-face-back" style="overflow-y:auto;">
+                        <!-- Content injected by submitGuess() to prevent cheating -->
+                    </div>
+                </div>
+            `;
+
+            if (cardStates[s.id] && cardStates[s.id].guessed) {
+                card.classList.add('flipped');
+                const state = cardStates[s.id];
+                const backFace = card.querySelector('.card-face-back');
+                const activeVerdictLabel = s.is_misleading ? tagMisleading : tagCredible;
+                let bannerHtml = '';
+
+                const rightTxt = (typeof i18n !== 'undefined' && i18n.t) ? i18n.t('verdict_you_were_right') : "You were right!";
+                const notQuiteTxt = (typeof i18n !== 'undefined' && i18n.t) ? i18n.t('verdict_not_quite') : "Not quite — this was actually";
+                const redFlagsLabel = (typeof i18n !== 'undefined' && i18n.t) ? i18n.t('label_red_flags') : "Red Flags:";
+                const discussionLabel = (typeof i18n !== 'undefined' && i18n.t) ? i18n.t('label_discussion') : "Discussion:";
+
+                const expText = getScenarioText(s, 'explanation');
+                const redFlagsText = getScenarioText(s, 'redflags');
+                const discText = getScenarioText(s, 'discussion');
+
+                if (state.correct) {
+                    bannerHtml = `<div class="guess-result-banner" style="background: rgba(16, 185, 129, 0.2); color: var(--news-ok); border: 1px solid var(--news-ok); padding:8px 12px; border-radius:6px; margin-bottom:12px; font-size:13px; text-align:center;">✅ <strong>${rightTxt}</strong></div>`;
+                } else {
+                    bannerHtml = `<div class="guess-result-banner" style="background: rgba(239, 68, 68, 0.2); color: var(--news-alert); border: 1px solid var(--news-alert); padding:8px 12px; border-radius:6px; margin-bottom:12px; font-size:13px; text-align:center;">❌ <strong>${notQuiteTxt} ${activeVerdictLabel}</strong></div>`;
+                }
+                
+                backFace.innerHTML = `
+                    <div>
+                        ${bannerHtml}
+                        <span class="card-verdict-tag ${s.is_misleading ? 'verdict-misleading' : 'verdict-credible'}">
+                            ${activeVerdictLabel}
+                        </span>
+                        <div class="card-explanation-text">${expText}</div>
+                        ${s.is_misleading ? `<div class="card-redflag-box"><strong>${redFlagsLabel}</strong> ${redFlagsText}</div>` : ''}
+                    </div>
+                    <div class="card-discussion-box" style="margin-top:12px;">
+                        <strong>${discussionLabel}</strong> ${discText}
+                    </div>
+                `;
+                
+                const buttons = card.querySelectorAll('.guess-btn');
+                buttons.forEach(b => {
+                    b.disabled = true;
+                    b.style.opacity = '0.5';
+                    b.style.cursor = 'not-allowed';
+                });
+            }
+
+            grid.appendChild(card);
+        });
+    }
+
+    function updateScoreTracker() {
+        const inspectedEl = document.getElementById('score-inspected');
+        const correctEl = document.getElementById('score-correct');
+        const accuracyEl = document.getElementById('score-accuracy');
+        if (inspectedEl) inspectedEl.textContent = totalInspected;
+        if (correctEl) correctEl.textContent = correctGuessesCount;
+        if (accuracyEl) {
+            if (totalInspected > 0) {
+                accuracyEl.textContent = Math.round((correctGuessesCount / totalInspected) * 100) + '%';
+            } else {
+                accuracyEl.textContent = '--';
+            }
+        }
+
+        if (totalInspected === arenaScenarios.length) {
+            const filterContainer = document.getElementById('arena-filter-buttons');
+            const filterMsg = document.getElementById('filter-lock-msg');
+            if (filterContainer) {
+                filterContainer.style.opacity = '1';
+                filterContainer.style.pointerEvents = 'auto';
+                filterContainer.title = '';
+            }
+            if (filterMsg) filterMsg.style.display = 'none';
+        }
+    }
+
+    function filterCards(type, btn) {
+        currentFilter = type;
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        renderArenaCards();
+    }
+
+    function scrollToSection(id, btn) {
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const el = document.getElementById(id);
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    window.filterCards = filterCards;
+    window.scrollToSection = scrollToSection;
+
+    window.addEventListener('languageChanged', () => {
+        if (typeof renderArenaCards === 'function') renderArenaCards();
+    });
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', () => {
+            renderArenaCards();
+        });
+    } else {
+        renderArenaCards();
+    }
+    </script>
+
+    <!-- BOTTOM NAV FOR MOBILE -->
+    <nav class="bottom-nav">
+        <a href="index.html" class="nav-item">
+            <span class="eb-icon eb-icon-feed"></span>
+            <span class="nav-label">Feed</span>
+        </a>
+        <a href="game.html" class="nav-item">
+            <span class="eb-icon eb-icon-game"></span>
+            <span class="nav-label">Game</span>
+        </a>
+        <a href="toolkit.html" class="nav-item">
+            <span class="eb-icon eb-icon-toolkit"></span>
+            <span class="nav-label">Toolkit</span>
+        </a>
+        <a href="dashboard.html" class="nav-item">
+            <span class="eb-icon eb-icon-dashboard"></span>
+            <span class="nav-label">Dashboard</span>
+        </a>
+    </nav>
+
+</body>
+</html>
+

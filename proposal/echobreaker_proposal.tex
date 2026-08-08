@@ -1,0 +1,569 @@
+% ============================================================
+%  EchoBreaker — UNESCO Youth MIL Hackathon 2026
+%  Project Proposal
+% ============================================================
+
+\documentclass[11pt, a4paper]{article}
+
+% ── Packages ─────────────────────────────────────────────────
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{fancyhdr}
+\usepackage{mdframed}
+\usepackage{multicol}
+\usepackage{tcolorbox}
+\usepackage{array}
+\usepackage{parskip}
+\usepackage{fontawesome5}
+\usepackage{amsmath}
+\usepackage{caption}
+\usepackage{tikz}
+\usepackage{needspace}
+\usetikzlibrary{shapes.geometric, arrows.meta, positioning, fit, calc}
+
+% ── Page geometry ────────────────────────────────────────────
+\geometry{
+  top    = 2.0cm,
+  bottom = 2.0cm,
+  left   = 2.2cm,
+  right  = 2.2cm,
+  headheight = 28pt
+}
+
+% ── Colour palette ────────────
+\definecolor{echored}{HTML}{A8412E}
+\definecolor{echogold}{HTML}{B8862E}
+\definecolor{echoink}{HTML}{1C1B1A}
+\definecolor{echogreen}{HTML}{5C7A6B}
+\definecolor{echobg}{HTML}{F5F0EB}
+\definecolor{echoborder}{HTML}{D9D3CB}
+\definecolor{echomuted}{HTML}{5C5750}
+
+% ── Hyperref setup ───────────────────────────────────────────
+\hypersetup{
+  colorlinks = true,
+  linkcolor  = echored,
+  urlcolor   = echored,
+  citecolor  = echored,
+  pdftitle   = {EchoBreaker -- UNESCO Youth MIL Hackathon 2026 Proposal},
+  pdfauthor  = {Benouali Abdelkader, BENDJERIOU SEDJERARI Abdellah}
+}
+
+% ── Section styling ──────────────────────────────────────────
+\titleformat{\section}
+  {\large\bfseries\color{echored}}
+  {\thesection.}{0.6em}{}
+  [\vspace{-4pt}\textcolor{echoborder}{\rule{\linewidth}{0.5pt}}]
+
+\titleformat{\subsection}
+  {\normalsize\bfseries\color{echoink}}
+  {\thesubsection.}{0.5em}{}
+
+\titlespacing{\section}{0pt}{12pt}{4pt}
+\titlespacing{\subsection}{0pt}{8pt}{3pt}
+
+% ── Header / Footer ──────────────────────────────────────────
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\textcolor{echomuted}{\textbf{EchoBreaker} --- UNESCO Youth MIL Hackathon 2026}}
+\fancyhead[R]{\small\textcolor{echomuted}{Algeria}}
+\fancyfoot[C]{\small\textcolor{echomuted}{\thepage}}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\headrule}{\hbox to\headwidth{\color{echoborder}\leaders\hrule height \headrulewidth\hfill}}
+
+% ── Custom box environments ───────────────────────────────────
+\tcbuselibrary{skins, breakable}
+
+\newtcolorbox{criteriabox}[2][]{
+  enhanced, breakable=false,
+  colback      = echobg,
+  colframe     = echored,
+  colbacktitle = echored,
+  coltitle     = white,
+  fonttitle    = \bfseries\small,
+  title        = {#2},
+  left=8pt, right=8pt, top=6pt, bottom=6pt,
+  arc=4pt,
+  #1
+}
+
+\newtcolorbox{honestbox}[1][]{
+  enhanced, breakable=false,
+  colback  = echobg,
+  colframe = echogold,
+  left=8pt, right=8pt, top=5pt, bottom=5pt,
+  arc=4pt,
+  #1
+}
+
+% ── List settings ────────────────────────────────────────────
+\setlist[itemize]{leftmargin=1.4em, itemsep=2pt, topsep=3pt}
+\setlist[enumerate]{leftmargin=1.4em, itemsep=2pt, topsep=3pt}
+
+% ═════════════════════════════════════════════════════════════
+\begin{document}
+
+% ── COVER PAGE ───────────────────────────────────────────────
+\thispagestyle{empty}
+\begin{center}
+
+  \vspace*{0.6cm}
+  
+  % ACTUAL WEBSITE LOGO RECREATION
+  \begin{tikzpicture}
+    \node (mark) [draw=none, fill=echored, rounded corners=6pt, minimum size=42pt, inner sep=0pt] {
+      \textcolor{white}{\fontsize{20}{20}\selectfont\bfseries EB}
+    };
+  \end{tikzpicture}
+  \vspace{0.35cm}
+
+  {\fontsize{36}{40}\selectfont
+    \textbf{\textcolor{echoink}{ECHO}\textcolor{echored}{BREAKER}}}
+
+  \vspace{0.3cm}
+  {\large\itshape\textcolor{echomuted}{Teaching Algorithmic Literacy Through Radical Transparency}}
+
+  \vspace{0.8cm}
+  \textcolor{echoborder}{\rule{0.65\textwidth}{0.8pt}}
+  \vspace{0.4cm}
+
+  {\normalsize
+    \begin{tabular}{rl}
+      \textbf{Hackathon:}  & UNESCO Youth Media and Information Literacy Hackathon 2026\\[4pt]
+      \textbf{Project Name:} & EchoBreaker \\[4pt]
+      \textbf{Team Name:}  & Team EchoBreaker \\[4pt]
+      \textbf{Selected Track:} & AI and Media and Information Literacy (MIL) \\[4pt]
+      \textbf{Project Format:} & Interactive Digital Learning Tool (Browser-based app)\\[4pt]
+      \textbf{Submission Date:} & 08 August 2026 \\
+    \end{tabular}
+  }
+
+  \vspace{0.8cm}
+  \textcolor{echoborder}{\rule{0.65\textwidth}{0.8pt}}
+  \vspace{0.4cm}
+
+  {\normalsize
+    \textbf{Team Members}\\[8pt]
+    \renewcommand{\arraystretch}{1.3}
+    \begin{tabular}{llcc}
+      \textbf{Name} & \textbf{Role} & \textbf{Country} & \textbf{Age} \\
+      \midrule
+      Benouali Abdelkader & Developer & Algeria & 22 \\
+      BENDJERIOU SEDJERARI Abdellah & Designer & Algeria & 23 \\
+    \end{tabular}
+  }
+
+  \vspace{0.8cm}
+  \textcolor{echoborder}{\rule{0.65\textwidth}{0.8pt}}
+
+\end{center}
+
+\newpage
+\pagenumbering{arabic}
+
+% ── TABLE OF CONTENTS & LIST OF FIGURES (1 SINGLE PAGE) ────────
+\begin{center}
+  {\large\bfseries\color{echored} Table of Contents \& Index of Figures}
+\end{center}
+\vspace{-4pt}
+
+\tableofcontents
+
+\vspace{12pt}
+\textcolor{echoborder}{\rule{\linewidth}{0.5pt}}
+\vspace{6pt}
+
+\phantomsection
+\addcontentsline{toc}{section}{List of Figures}
+\listoffigures
+
+\newpage
+
+% ═════════════════════════════════════════════════════════════
+\section{Executive Summary}
+
+EchoBreaker is an open-access, browser-based educational tool designed to combat the rising tide of epistemic polarisation by teaching algorithmic literacy to youth. While most MIL curricula focus on \emph{what} misinformation is, EchoBreaker teaches \emph{why} it spreads by allowing students to experience algorithmic echo chambers in real-time. By engaging with four interconnected modules (Feed Simulator, Echo Escape Arena, Agency Toolkit, and Impact Command Center), users learn how recommendation systems prioritize engagement over truth. Built 100\% in English for global youth accessibility, our solution ensures wide adoption with zero-installation, low-bandwidth architecture. We aim to equip students with the cognitive framework needed to critically evaluate and diversify their social media feeds, creating a more informed and resilient digital generation.
+
+% ═════════════════════════════════════════════════════════════
+\section{The Team}
+
+\begin{center}
+\renewcommand{\arraystretch}{1.2}
+\begin{tabularx}{\textwidth}{l l X l c}
+\toprule
+\textbf{Name} & \textbf{Role} & \textbf{Core Skill} & \textbf{Country} & \textbf{Age} \\
+\midrule
+Benouali Abdelkader & Developer & Vanilla JS, Algorithmic Engine & Algeria & 22 \\
+BENDJERIOU SEDJERARI Abdellah & Designer & UI/UX Design, Visual Identity & Algeria & 23 \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+\textbf{Why this team?} We possess a balanced mix of technical engineering and visual design skills. Benouali brings robust frontend development experience to ensure the application is lightweight, responsive, and functions seamlessly on low-end mobile devices. BENDJERIOU SEDJERARI brings expert UI/UX design capabilities, ensuring intuitive navigation and compelling persuasive visual design. Together, we form an agile team capable of building complete EdTech solutions without unnecessary overhead.
+
+% ═════════════════════════════════════════════════════════════
+\section{Problem Statement}
+
+For the estimated \textbf{4.8 billion} social media users worldwide---the majority under 30---recommendation algorithms operate invisibly. The logic that decides which post appears first, and which disappears entirely, is never explained. The result is well-documented: filter bubbles, epistemic polarisation, and an accelerating erosion of shared informational reality. 
+
+Existing Media and Information Literacy (MIL) curricula predominantly address \emph{what} misinformation is, often failing to address the underlying mechanics of \emph{why} it spreads. The AI-driven mathematical, architectural, and attentional systems that amplify content regardless of its factual quality remain a black box to users. This problem is particularly urgent now, as AI-generated content exponentially increases the volume of online misinformation, making mere fact-checking insufficient without a foundational understanding of algorithmic amplification.
+
+% ═════════════════════════════════════════════════════════════
+\section{Objectives}
+
+\textbf{Main SMART Objective:}\\
+By Q4 2026, deploy EchoBreaker across 50 secondary schools, reaching at least 1,500 youth learners and achieving a measurable 70\% increase in algorithmic awareness, as indicated by in-app behavioural pledges and telemetry data.
+
+\textbf{Supporting Operational Objectives:}
+\begin{itemize}
+    \item \textbf{Global English Tool Deployment:} Maintain a zero-install, lightweight, 100\% English digital learning tool accessible to youth worldwide.
+    \item \textbf{Facilitate Educators:} Provide zero-setup, comprehensive Teacher Facilitation Guides enabling non-technical educators to run a 30-minute structured MIL lesson seamlessly.
+\end{itemize}
+
+% ═════════════════════════════════════════════════════════════
+\section{Target Audience}
+
+Our primary target audience consists of \textbf{Secondary students (ages 14--18)} and global youth learners. 
+
+\textbf{Why this audience?} This age group is critical, as they are forming their digital identities and long-term social media habits. They are highly active online but often lack the critical framework to understand how recommendation algorithms shape their informational environment.
+
+\textbf{How will we reach them?} Through direct partnerships with schools, UNESCO-affiliated workshops, and civil society youth organisations. The tool is built 100\% in English, requires zero installation (browser-based), and is optimized for low-bandwidth environments, specifically ensuring that \textbf{marginalized and underserved youth} with low-end devices can seamlessly participate.
+
+% ═════════════════════════════════════════════════════════════
+% ═════════════════════════════════════════════════════════════
+\section{Proposed Solution / Concept \& Prototype}
+
+EchoBreaker is structured around four interconnected modules enacting UNESCO's MIL \textbf{4A Framework} (Algorithm, Amplification, Attention, Agency). Interface screenshots are paired directly with algorithmic flow diagrams:
+
+\begin{figure}[htpb]
+    \centering
+    \vspace{-4pt}
+    \begin{tikzpicture}[
+        arrow/.style={-Latex, thick, echomuted},
+        module/.style={draw, rounded corners=4pt, minimum width=2.8cm, minimum height=0.65cm, align=center, font=\tiny\bfseries, fill=echored, text=white, draw=echored}
+    ]
+        \node (feed) [module] {1. Feed Simulator\\[-2pt]\tiny(Experience)};
+        \node (game) [module, right=0.8cm of feed] {2. Echo Escape Arena\\[-2pt]\tiny(Evaluation)};
+        \node (toolkit) [module, below=0.5cm of feed] {3. Agency Toolkit\\[-2pt]\tiny(Action)};
+        \node (dashboard) [module, right=0.8cm of toolkit] {4. Impact Dashboard\\[-2pt]\tiny(Analytics)};
+        
+        \draw [arrow] (feed) -- (game);
+        \draw [arrow] (game) -- (dashboard);
+        \draw [arrow] (feed) -- (toolkit);
+        \draw [arrow] (toolkit) -- (dashboard);
+    \end{tikzpicture}
+    \vspace{-6pt}
+    \caption{Diagram 1: System Flow \& Module Architecture.}
+    \label{fig:architecture}
+\end{figure}
+
+\vspace{-4pt}
+\subsection{Module Breakdown: Interfaces \& Algorithmic Logic}
+
+% ── MODULE 1 PAIR ─────────────────────────────────────────────
+\noindent
+\begin{minipage}[c]{0.43\textwidth}
+    \centering
+    \includegraphics[height=5.0cm, keepaspectratio]{feed_screenshot.png}
+    \captionof{figure}{Module 1: Feed Simulator}
+    \label{fig:feed_ui}
+\end{minipage}\hfill
+\begin{minipage}[c]{0.54\textwidth}
+    \textbf{1. Feed Simulator (The Experience):}\\
+    Students explore an algorithmically ranked feed. As they scroll and like, posts re-rank instantly. Dwell time is tracked via \texttt{IntersectionObserver}.
+    
+    \vspace{4pt}
+    \centering
+    \begin{tikzpicture}[
+        box/.style={draw=echored, fill=echobg, rounded corners=3pt, font=\tiny\bfseries, align=center, inner sep=3pt, text=echoink, minimum width=3.8cm},
+        arrow/.style={-Latex, thick, echored}
+    ]
+        \node (user) [box] {\textcolor{echored}{User Interaction Capture}\\[-2pt]\tiny Scroll Dwell-Time + Like Signals};
+        \node (engine) [box, below=0.35cm of user] {\textcolor{echored}{Live Scoring Engine}\\[-2pt]\tiny $S_{\text{post}} = 0.4A + 0.3E_{\text{res}} + 0.2E_{\text{pot}} + 0.1R$};
+        \node (rerank) [box, below=0.35cm of engine] {\textcolor{echored}{Real-Time Feed Re-rank}\\[-2pt]\tiny Behind the Curtain Panel Visibility};
+        
+        \draw [arrow] (user) -- (engine);
+        \draw [arrow] (engine) -- (rerank);
+    \end{tikzpicture}
+    \captionof{figure}{Diagram 2: Module 1 Engine Logic.}
+    \label{fig:diag_feed}
+\end{minipage}
+
+\vspace{6pt}
+
+% ── MODULE 2 PAIR ─────────────────────────────────────────────
+\noindent
+\begin{minipage}[c]{0.43\textwidth}
+    \centering
+    \includegraphics[height=5.0cm, keepaspectratio]{game_screenshot.png}
+    \captionof{figure}{Module 2: Echo Escape Arena}
+    \label{fig:game_ui}
+\end{minipage}\hfill
+\begin{minipage}[c]{0.54\textwidth}
+    \textbf{2. Echo Escape Arena (The Evaluation):}\\
+    A 12-card credibility judgment arena where students evaluate headlines as Credible or Misleading \emph{before} red flags are revealed.
+    
+    \vspace{4pt}
+    \centering
+    \begin{tikzpicture}[
+        box/.style={draw=echored, fill=echobg, rounded corners=3pt, font=\tiny\bfseries, align=center, inner sep=3pt, text=echoink, minimum width=3.8cm},
+        arrow/.style={-Latex, thick, echored}
+    ]
+        \node (card) [box] {\textcolor{echored}{Headline Card Presentation}\\[-2pt]\tiny Content Metadata \& Emotion Prompts};
+        \node (guess) [box, below=0.35cm of card] {\textcolor{echored}{Credibility Judgment}\\[-2pt]\tiny Student Binary Guess (Credible / Misleading)};
+        \node (reveal) [box, below=0.35cm of guess] {\textcolor{echored}{Red Flag \& XP Debrief}\\[-2pt]\tiny Unlocks Critical Analysis \& Score};
+        
+        \draw [arrow] (card) -- (guess);
+        \draw [arrow] (guess) -- (reveal);
+    \end{tikzpicture}
+    \captionof{figure}{Diagram 3: Module 2 Evaluation Flow.}
+    \label{fig:diag_game}
+\end{minipage}
+
+\vspace{10pt}
+
+% ── MODULE 3 PAIR ─────────────────────────────────────────────
+\noindent
+\begin{minipage}[c]{0.43\textwidth}
+    \centering
+    \includegraphics[height=5.4cm, keepaspectratio]{toolkit_screenshot.png}
+    \captionof{figure}{Module 3: Agency Toolkit}
+    \label{fig:toolkit_ui}
+\end{minipage}\hfill
+\begin{minipage}[c]{0.54\textwidth}
+    \textbf{3. Agency Toolkit (The Action):}\\
+    A 20-item interactive audit checklist providing platform-specific actions (TikTok, YouTube, Meta) to reset recommendation models.
+    
+    \vspace{4pt}
+    \centering
+    \begin{tikzpicture}[
+        box/.style={draw=echored, fill=echobg, rounded corners=3pt, font=\tiny\bfseries, align=center, inner sep=3pt, text=echoink, minimum width=3.8cm},
+        arrow/.style={-Latex, thick, echored}
+    ]
+        \node (platform) [box] {\textcolor{echored}{Platform Audit Selection}\\[-2pt]\tiny TikTok / YouTube / Instagram Actions};
+        \node (action) [box, below=0.4cm of platform] {\textcolor{echored}{Action Checklist Execution}\\[-2pt]\tiny Clear History / Mute / Reset Recommendation};
+        \node (cert) [box, below=0.4cm of action] {\textcolor{echored}{Ambassador Certification}\\[-2pt]\tiny Level XP Progress \& Printable Certificate};
+        
+        \draw [arrow] (platform) -- (action);
+        \draw [arrow] (action) -- (cert);
+    \end{tikzpicture}
+    \captionof{figure}{Diagram 4: Module 3 Audit Pipeline.}
+    \label{fig:diag_toolkit}
+\end{minipage}
+
+\vspace{8pt}
+
+% ── MODULE 4 PAIR ─────────────────────────────────────────────
+\noindent
+\begin{minipage}[c]{0.43\textwidth}
+    \centering
+    \includegraphics[height=5.4cm, keepaspectratio]{dashboard_screenshot.png}
+    \captionof{figure}{Module 4: Impact Command Center}
+    \label{fig:dashboard_ui}
+\end{minipage}\hfill
+\begin{minipage}[c]{0.54\textwidth}
+    \textbf{4. Impact Command Center (The Analytics):}\\
+    An illustrative analytics dashboard for educators to visualize cohort telemetry, tracking time-to-echo-chamber and behavioral pledges without PII.
+    
+    \vspace{4pt}
+    \centering
+    \begin{tikzpicture}[
+        box/.style={draw=echored, fill=echobg, rounded corners=3pt, font=\tiny\bfseries, align=center, inner sep=3pt, text=echoink, minimum width=3.8cm},
+        arrow/.style={-Latex, thick, echored}
+    ]
+        \node (telemetry) [box] {\textcolor{echored}{Anonymous Student Telemetry}\\[-2pt]\tiny Time-to-Echo, Dominance, Pledges};
+        \node (firebase) [box, below=0.4cm of telemetry] {\textcolor{echored}{Firebase Realtime Aggregator}\\[-2pt]\tiny Zero-PII Pilot Data Store};
+        \node (analytics) [box, below=0.4cm of firebase] {\textcolor{echored}{Educator Command Dashboard}\\[-2pt]\tiny Cohort Visualizations \& Exportable PDF Report};
+        
+        \draw [arrow] (telemetry) -- (firebase);
+        \draw [arrow] (firebase) -- (analytics);
+    \end{tikzpicture}
+    \captionof{figure}{Diagram 5: Module 4 Telemetry Pipeline.}
+    \label{fig:diag_dashboard}
+\end{minipage}
+
+\vspace{12pt}
+
+\textbf{User Journey:} The student explores the feed. Once their feed falls below 35\% diversity, a trigger pauses the experience, showing them exactly how fast they entered an echo chamber. They play the Arena game to evaluate content, and use the Toolkit to pledge behavioural changes.
+
+\textbf{Direct connection to MIL principles:} EchoBreaker moves beyond passive theory. By displaying the scoring engine, it teaches the \textbf{Algorithm} pillar. By re-ranking based on 2-second dwell times, it demonstrates the \textbf{Attention} economy. By providing the toolkit, it builds digital \textbf{Agency}.
+
+\newpage
+
+% ═════════════════════════════════════════════════════════════
+\section{Innovation \& Creativity}
+
+\begin{criteriabox}{Core Differentiator --- The Meta-Audit}
+EchoBreaker uses \textbf{the same persuasive techniques it teaches students to resist}.
+Glowing achievement badges, 3D card-flip animations, XP-style progress bars, and dopamine-reward unlocks are all deliberately present.
+
+The reflection section explicitly reveals this contradiction:
+\begin{quote}
+\itshape
+``Did you notice the glowing badges and 3D animations? We intentionally used \textbf{standard persuasive design (gamification)} to keep you engaged while teaching you how to resist it. How does it feel to recognise these emotional triggers working on you \emph{right now}?''
+\end{quote}
+\end{criteriabox}
+
+This \textbf{Meta-Audit} is our central design innovation. The contradiction is the lesson. Technically, the live scoring transparency and dwell-time simulation using \texttt{IntersectionObserver} provide a realism rarely seen in educational tools, without requiring a massive backend infrastructure.
+
+% ═════════════════════════════════════════════════════════════
+\section{Feasibility}
+
+\textbf{Resources \& Tech:} The project is built using pure HTML5, Vanilla JavaScript, and CSS. There is no build step (\texttt{npm}), ensuring maximum long-term stability and zero dependency maintenance. Hosting is free via GitHub Pages/Vercel. A Firebase Realtime Database (free tier) is optionally used for aggregate telemetry. Monthly operating cost is \textbf{\$0}.
+
+\begin{figure}[htpb]
+    \centering
+    \begin{tikzpicture}[
+        stage/.style={draw, rounded corners=4pt, minimum width=2.8cm, minimum height=0.9cm, align=center, font=\small\bfseries, fill=echobg, draw=echogold, text=echoink},
+        arrow/.style={-Latex, thick, echogold}
+    ]
+        \node (s1) [stage] {Aug 2026\\[-2pt]\tiny Hackathon Submission};
+        \node (s2) [stage, right=0.6cm of s1] {Q4 2026\\[-2pt]\tiny Classroom Pilot (n=1,500)};
+        \node (s3) [stage, right=0.6cm of s2] {Q2 2027\\[-2pt]\tiny Global Content Pools};
+        \node (s4) [stage, right=0.6cm of s3] {Q4 2027\\[-2pt]\tiny UNESCO Network Scale};
+        
+        \draw [arrow] (s1) -- (s2);
+        \draw [arrow] (s2) -- (s3);
+        \draw [arrow] (s3) -- (s4);
+    \end{tikzpicture}
+    \caption{Diagram 6: Feasibility \& Phased Deployment Roadmap.}
+    \label{fig:roadmap}
+\end{figure}
+
+\textbf{Challenges \& Mitigation:} The main challenge is varying internet reliability in target schools. To mitigate this, EchoBreaker is designed as a static site that, once initially loaded, functions completely offline for the remainder of the session.
+
+% ═════════════════════════════════════════════════════════════
+\section{Sustainability}
+
+\textbf{Continuation:} The tool is open-source and requires zero active maintenance to keep running due to its static nature. The content pool is a simple JSON structure, allowing non-technical educators to add culturally relevant scenarios independently without touching code.
+
+\textbf{Funding Model:} Given the \$0 monthly hosting overhead, the project is inherently self-sustaining on a technical level. Operational funding for educator workshops and global expansion will be sought through institutional grants, NGO partnerships, and potential UNESCO MIL network integration.
+
+\textbf{Scalability:} Expanding to new regions only requires adding new scenario entries to the JSON content pool. The underlying engine remains exactly the same.
+
+% ═════════════════════════════════════════════════════════════
+\section{Social Impact \& Inclusion}
+
+\textbf{Impact:} In the short-term, we expect to see immediate cognitive shifts in students, tracked via in-app pledges (e.g., pledging to ``verify sources'' or ``follow opposite viewpoints''). Long-term, EchoBreaker builds systemic algorithmic literacy, making youth less susceptible to radicalisation and AI-amplified misinformation.
+
+\textbf{Inclusion:} EchoBreaker is built with equity in mind. It works flawlessly on older, low-end smartphones and tablets typical in underserved communities. The offline-capable architecture ensures rural areas are not left behind. 
+
+\textbf{UNESCO Values:} The project directly supports UNESCO's values of peace and freedom of expression by democratising the knowledge of how information is curated, ensuring that users are active participants in their digital lives rather than passive consumers.
+
+% ═════════════════════════════════════════════════════════════
+\section{Alignment with the Hackathon Theme}
+
+The theme \textbf{"Play Your Part: Youth Designing the Future of Media and Information Literacy (MIL)"} is the driving force behind EchoBreaker. We believe that to design the future of MIL, youth must transition from being subjects of algorithms to auditors of them. By gamifying the learning experience and literally letting users "play their part" in breaking their own echo chambers, EchoBreaker embodies youth-led, action-oriented digital empowerment. We are turning a theoretical MIL concept into a tangible, experiential tool built by youth, for youth.
+
+% ═════════════════════════════════════════════════════════════
+\section{Conclusion}
+
+\begin{honestbox}[title=\textbf{Conclusion \& Call to Action}]
+EchoBreaker does not ask young people to memorise a list of logical fallacies. It puts them \emph{inside} an algorithm, lets them watch their feed narrow in real time, and confronts them with the exact number of seconds it took for their digital world to shrink. That moment---``\textit{I did this to myself, and here is the math}''---is the beginning of genuine media literacy.
+
+\vspace{6pt}
+\textbf{Key Project Takeaways:}
+\begin{itemize}
+    \item \textbf{100\% English Global Accessibility:} Built as a lightweight, zero-install, static web application optimized for low-bandwidth devices.
+    \item \textbf{Radical Algorithmic Transparency:} Demystifies recommendation AI by showing live numerical scores and dwell-time tracking in real time.
+    \item \textbf{The Meta-Audit Innovation:} Leverages persuasive gamification design to teach learners how to recognize and resist emotional manipulation.
+    \item \textbf{Youth-Led Empowerment:} Directly fulfills the UNESCO MIL 2026 mandate by transforming passive consumers into active algorithmic auditors.
+\end{itemize}
+
+\vspace{6pt}
+We submit EchoBreaker as a technically honest, highly feasible, and immediately deployable solution to empower the next generation. \textit{Because the algorithms aren't waiting, and neither should our education systems.}
+\end{honestbox}
+
+% ═════════════════════════════════════════════════════════════
+\appendix
+
+\phantomsection
+\section*{Appendix A: Scoring Formula Reference}
+\addcontentsline{toc}{section}{Appendix A: Scoring Formula Reference}
+
+The feed ranking formula implemented in \texttt{js/engine.js}:
+
+\[
+  S_{\text{post}} \;=\;
+    0.40 \cdot A_{\text{cat}}
+    \;+\; 0.30 \cdot E_{\text{res}}
+    \;+\; 0.20 \cdot E_{\text{pot}}
+    \;+\; 0.10 \cdot R
+\]
+
+\begin{figure}[htpb]
+    \centering
+    \begin{tikzpicture}[
+        node/.style={draw, rounded corners, minimum width=2.4cm, minimum height=0.8cm, align=center, font=\tiny\bfseries, fill=echobg, draw=echored, text=echoink},
+        sum/.style={circle, draw=echored, fill=echored, text=white, font=\bfseries, inner sep=3pt},
+        line/.style={-Latex, thick, echored}
+    ]
+        \node (a) [node] {Category Affinity\\[-2pt]\tiny ($0.40 \cdot A_{\text{cat}}$)};
+        \node (e) [node, right=0.4cm of a] {Emotional Tone\\[-2pt]\tiny ($0.30 \cdot E_{\text{res}}$)};
+        \node (p) [node, right=0.4cm of e] {Engagement Pot.\\[-2pt]\tiny ($0.20 \cdot E_{\text{pot}}$)};
+        \node (r) [node, right=0.4cm of p] {Recency Boost\\[-2pt]\tiny ($0.10 \cdot R$)};
+        
+        \node (plus) [sum, below=0.6cm of e] {$\Sigma$};
+        \node (score) [node, fill=echored, text=white, right=1cm of plus] {Final Post Score\\[-2pt]\tiny ($S_{\text{post}}$)};
+        
+        \draw [line] (a) |- (plus);
+        \draw [line] (e) -- (plus);
+        \draw [line] (p) |- (plus);
+        \draw [line] (r) |- (plus);
+        \draw [line] (plus) -- (score);
+    \end{tikzpicture}
+    \caption{Diagram 7: Real-time Mathematical Scoring Engine Pipeline.}
+    \label{fig:scoring_pipeline}
+\end{figure}
+
+\vspace{4pt}
+\begin{center}
+\renewcommand{\arraystretch}{1.3}
+\begin{tabularx}{0.94\textwidth}{>{\bfseries}l X l}
+\toprule
+Term & Definition & Range \\
+\midrule
+$A_{\text{cat}}$ & Category affinity normalised to the user's highest-liked category & $[0,\,1]$ \\
+$E_{\text{res}}$ & Emotional tone resonance normalised to the dominant emotion & $[0,\,1]$ \\
+$E_{\text{pot}}$ & Engagement potential from content metadata, divided by 10 & $[0,\,1]$ \\
+$R$ & Recency boost: $\max(0.1,\;1 - h/24)$, where $h$ = hours since publish & $[0.1,\,1]$ \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+At session start, $A_{\text{cat}}$ and $E_{\text{res}}$ both return $0.5$, ensuring ranking is driven by content metadata alone, not artificially biased before the student makes a choice.
+
+\phantomsection
+\section*{Appendix B: Module File Map}
+\addcontentsline{toc}{section}{Appendix B: Module File Map}
+
+\begin{center}
+\renewcommand{\arraystretch}{1.25}
+\begin{tabular}{ll}
+\toprule
+\textbf{File} & \textbf{Role} \\
+\midrule
+\texttt{index.html}      & Feed Simulator entry point \\
+\texttt{game.html}       & Echo Escape Arena + Teacher Facilitation Guide \\
+\texttt{toolkit.html}    & Agency Toolkit (20-item audit checklist) \\
+\texttt{dashboard.html}  & Impact Analytics Command Center \\
+\midrule
+\texttt{js/engine.js}    & Scoring formula and user-state management \\
+\texttt{js/feed.js}      & Feed renderer + dwell-time IntersectionObserver \\
+\texttt{js/impact.js}    & Echo chamber trigger and assessment modal \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\end{document}

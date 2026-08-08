@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Echo Escape — Printable Card Game | EchoBreaker</title>
+  <meta name="description" content="Print-ready A4 cards for algorithmic literacy role-play. Part of the EchoBreaker UNESCO 2026 submission.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ─── CSS Reset & Design Tokens ────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      /* ECHOBREAKER OFFICIAL PALETTE — NO NEON / PURPLE / CYAN */
+      --terracotta:  #A8412E;
+      --terra-soft:  #7E301E;
+      --terra-deep:  #5C1F12;
+      --warm-gold:   #D4A356;
+      --gold-dark:   #B8862E;
+      --gold-deep:   #8A6318;
+      --ink:         #1C1B1A;
+      --ink-soft:    #3D3A36;
+      --ink-muted:   #5C5750;
+      --paper:       #F4F1EA;
+      --paper-raised:#FBF9F4;
+      --slate:       #0D1B2A;
+      --slate-soft:  #1E293B;
+      --olive:       #5C7A6B;
+      --olive-dark:  #3F554A;
+      --umber:       #8B5A3C;
+      --umber-dark:  #5F3E28;
+      --border:      #DCD6C7;
+      --border-soft: #E8DCC8;
+
+      /* Card dimensions — standard poker size in mm */
+      --card-w: 88mm;
+      --card-h: 63mm;
+      --radius: 4px;
+
+      /* Role Card Theme Colors (all from approved palette) */
+      --role-algo:    var(--slate);
+      --role-creator: var(--terra-soft);
+      --role-user:    var(--olive-dark);
+      --role-checker: var(--gold-dark);
+    }
+
+    html, body {
+      width: 210mm;
+      min-height: 297mm;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--paper);
+      color: var(--ink);
+      padding: 0;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    * {
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    /* ─── Print Controls (hidden in print) ─────────────── */
+    .print-controls {
+      max-width: 900px;
+      margin: 0 auto 28px;
+      background: #FFFFFF;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 24px 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+      box-shadow: 0 2px 10px rgba(28, 27, 26, 0.06);
+    }
+
+    .print-controls-info h1 {
+      font-family: 'Fraunces', serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 6px;
+    }
+
+    .print-controls-info p {
+      font-size: 13px;
+      color: var(--ink-muted);
+      line-height: 1.55;
+    }
+
+    .print-controls-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .print-btn {
+      background: linear-gradient(135deg, var(--terracotta) 0%, var(--terra-soft) 100%);
+      color: white;
+      border: none;
+      border-radius: 6px;
+      padding: 12px 20px;
+      font-family: 'Fraunces', serif;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: opacity 0.2s, transform 0.2s;
+      box-shadow: 0 1px 3px rgba(168, 65, 46, 0.25);
+    }
+
+    .print-btn-secondary {
+      background: var(--slate);
+      color: var(--paper);
+      border: 1px solid rgba(168, 65, 46, 0.5);
+    }
+
+    .print-btn:hover { opacity: 0.92; transform: translateY(-1px); }
+
+    .banner-row {
+      max-width: 900px;
+      margin: -12px auto 24px;
+      border-radius: 8px;
+      padding: 14px 22px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .banner-pdf {
+      background: var(--slate);
+      border: 1px solid rgba(168, 65, 46, 0.35);
+      color: #FFFFFF;
+    }
+    .banner-pdf strong {
+      color: var(--paper);
+      font-family: 'Fraunces', serif;
+      font-weight: 700;
+    }
+    .banner-pdf p {
+      font-size: 13px;
+      color: #94A3B8;
+      margin-top: 2px;
+    }
+    .banner-pdf .print-btn {
+      background: var(--terracotta);
+      padding: 8px 16px;
+      font-size: 13px;
+      box-shadow: none;
+    }
+
+    .banner-legend {
+      background: #FFFFFF;
+      border: 1px solid var(--border);
+      box-shadow: 0 2px 8px rgba(28, 27, 26, 0.04);
+      padding: 12px 20px;
+    }
+    .banner-legend > strong {
+      color: var(--ink);
+      font-family: 'Fraunces', serif;
+      font-weight: 700;
+      font-size: 13px;
+    }
+    .legend-items {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      font-size: 12px;
+      color: var(--ink-muted);
+    }
+    .legend-items strong {
+      color: var(--ink);
+      font-weight: 700;
+    }
+    .legend-dot {
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      margin-right: 5px;
+      vertical-align: middle;
+    }
+
+    /* ─── Section Title ─────────────────────────────────── */
+    .section-title {
+      font-family: 'Fraunces', serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--ink);
+      max-width: 900px;
+      margin: 28px auto 12px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--warm-gold);
+    }
+    .section-title small {
+      font-size: 12px;
+      color: var(--ink-muted);
+      font-weight: 500;
+      font-family: 'Inter', sans-serif;
+      margin-left: 8px;
+    }
+
+    /* ─── Card Grid — A4 Optimized ─────────────────────── */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(2, var(--card-w));
+      column-gap: 14mm;
+      row-gap: 8mm;
+      max-width: 190mm;
+      margin: 0 auto 32px;
+      justify-content: center;
+      padding: 4mm 0;
+    }
+
+    /* ─── Generic Card Shell ────────────────────────────── */
+    .card {
+      width: var(--card-w);
+      min-height: var(--card-h);
+      max-height: var(--card-h);
+      border-radius: var(--radius);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      page-break-inside: avoid;
+      break-inside: avoid;
+      border: 1px solid rgba(28, 27, 26, 0.12);
+    }
+
+    .card-header {
+      padding: 9px 12px 6px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+
+    .card-icon {
+      font-size: 20px;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+
+    .card-tag {
+      font-family: 'Fraunces', serif;
+      font-size: 8.5px;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      opacity: 0.9;
+    }
+
+    .card-body {
+      padding: 6px 12px 10px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      overflow: hidden;
+      min-height: 0;
+    }
+
+    .card-title {
+      font-family: 'Fraunces', serif;
+      font-size: 12.5px;
+      font-weight: 700;
+      line-height: 1.22;
+    }
+
+    .card-desc {
+      font-size: 10px;
+      line-height: 1.45;
+      opacity: 0.9;
+    }
+
+    .card-footer {
+      padding: 6px 12px;
+      font-size: 8.5px;
+      font-weight: 600;
+      letter-spacing: 0.4px;
+      border-top: 1px solid rgba(255,255,255,0.18);
+      flex-shrink: 0;
+    }
+
+    /* ─── Role Card Themes (Approved Palette Only) ─────── */
+    .role-algorithm {
+      background: linear-gradient(150deg, var(--slate) 0%, var(--terra-soft) 100%);
+      color: #FFFFFF;
+    }
+    .role-algorithm .card-header { background: rgba(0,0,0,0.25); }
+
+    .role-creator {
+      background: linear-gradient(150deg, var(--terra-deep) 0%, var(--terracotta) 100%);
+      color: #FFFFFF;
+    }
+    .role-creator .card-header { background: rgba(0,0,0,0.22); }
+
+    .role-user {
+      background: linear-gradient(150deg, var(--olive-dark) 0%, var(--ink-soft) 100%);
+      color: #FFFFFF;
+    }
+    .role-user .card-header { background: rgba(0,0,0,0.22); }
+
+    .role-checker {
+      background: linear-gradient(150deg, var(--gold-deep) 0%, var(--warm-gold) 100%);
+      color: var(--ink);
+    }
+    .role-checker .card-header { background: rgba(0,0,0,0.15); }
+
+    /* ─── Scenario Cards ────────────────────────────────── */
+    .scenario-card {
+      background: var(--paper-raised);
+      color: var(--ink);
+      border: 1.5px solid var(--border);
+    }
+
+    .scenario-card .card-header {
+      background: var(--ink);
+      color: #FFFFFF;
+    }
+
+    .scenario-misleading {
+      border-color: var(--terra-soft);
+    }
+    .scenario-misleading .card-header {
+      background: var(--terra-soft);
+      color: #FFFFFF;
+    }
+
+    .scenario-flag {
+      display: inline-block;
+      background: rgba(168, 65, 46, 0.1);
+      color: var(--terra-soft);
+      border: 1px solid rgba(168, 65, 46, 0.25);
+      border-radius: 3px;
+      font-size: 8.5px;
+      font-weight: 700;
+      padding: 2px 5px;
+      margin-top: 3px;
+      line-height: 1.3;
+    }
+
+    /* ─── 4A Framework Cards ───────────────────────────── */
+    .framework-card {
+      background: linear-gradient(155deg, var(--slate) 0%, var(--ink-soft) 100%);
+      color: #FFFFFF;
+      border: 1px solid rgba(212, 163, 86, 0.35);
+    }
+
+    .framework-card .card-header {
+      background: rgba(212, 163, 86, 0.14);
+      border-bottom: 1px solid rgba(212, 163, 86, 0.25);
+    }
+
+    .framework-letter {
+      font-family: 'Fraunces', serif;
+      font-size: 30px;
+      font-weight: 700;
+      color: var(--warm-gold);
+      margin: 3px 0 2px;
+      line-height: 1;
+    }
+
+    .framework-card .card-desc:nth-of-type(2) {
+      font-size: 9.5px;
+      color: var(--warm-gold);
+      opacity: 1;
+    }
+
+    /* ─── Print Styles — A4 Strict ──────────────────────── */
+    @media print {
+      @page {
+        size: A4 portrait;
+        margin: 12mm 10mm 12mm 10mm;
+      }
+
+      html, body {
+        width: 210mm;
+        min-height: 297mm;
+        margin: 0 !important;
+        padding: 0 !important;
+        background: #FFFFFF !important;
+      }
+
+      body {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+
+      * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+
+      .print-controls,
+      .banner-pdf,
+      .banner-legend,
+      .section-title {
+        display: none !important;
+      }
+
+      .card-grid {
+        max-width: 190mm;
+        width: 190mm;
+        column-gap: 14mm;
+        row-gap: 8mm;
+        margin: 0 auto !important;
+        padding: 0 !important;
+      }
+
+      .card {
+        box-shadow: none !important;
+        border: 0.5pt solid #999 !important;
+      }
+
+      .section-break {
+        page-break-before: always !important;
+        break-before: page !important;
+        padding-top: 0 !important;
+        margin-top: 0 !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ─── Print Controls ────────────────────────────────── -->
+<div class="print-controls">
+  <div class="print-controls-info">
+    <h1>🃏 Echo Escape — Classroom Card Game</h1>
+    <p>
+      Print-ready A4 cards for algorithmic literacy role-play<br>
+      <strong>2–6 players · 20–30 min · Ages 13+</strong> · UNESCO Youth MIL Hackathon 2026
+    </p>
+  </div>
+  <div class="print-controls-actions">
+    <a href="echo_escape_printable_cards.pdf" target="_blank" download class="print-btn">
+      📄 Download Official PDF
+    </a>
+    <button class="print-btn print-btn-secondary" onclick="window.print()">
+      🖨️ Print Web Version
+    </button>
+  </div>
+</div>
+
+<!-- Official PDF Banner -->
+<div class="banner-row banner-pdf">
+  <div>
+    <strong>📄 Official UNESCO Compilation Ready</strong>
+    <p>Clean academic formatting · Approved terracotta/gold/ink palette · Zero forbidden colors</p>
+  </div>
+  <a href="echo_escape_printable_cards.pdf" target="_blank" class="print-btn">
+    Open PDF Viewer ↗
+  </a>
+</div>
+
+<!-- Category Legend -->
+<div class="banner-row banner-legend">
+  <strong>🏷️ Category Color Legend:</strong>
+  <div class="legend-items">
+    <span><span class="legend-dot" style="background:#A8412E"></span><strong>Health</strong></span>
+    <span><span class="legend-dot" style="background:#7E301E"></span><strong>Politics</strong></span>
+    <span><span class="legend-dot" style="background:#5C7A6B"></span><strong>Tech</strong></span>
+    <span><span class="legend-dot" style="background:#3F554A"></span><strong>Science</strong></span>
+    <span><span class="legend-dot" style="background:#B8862E"></span><strong>Conspiracy</strong></span>
+    <span><span class="legend-dot" style="background:#8B5A3C"></span><strong>Sports</strong></span>
+    <span><span class="legend-dot" style="background:#5C7A6B;opacity:0.8"></span><strong>Lifestyle</strong></span>
+    <span><span class="legend-dot" style="background:#5C1F12"></span><strong>Entertainment</strong></span>
+  </div>
+</div>
+
+<!-- ─── ROLE CARDS ─────────────────────────────────────── -->
+<div class="section-title">🎭 Role Cards <small>4 cards — print 1 set per group</small></div>
+<div class="card-grid" id="role-grid"></div>
+
+<!-- ─── 4A FRAMEWORK CARDS ────────────────────────────── -->
+<div class="section-title">📐 4A Framework Cards <small>reference — 1 per player</small></div>
+<div class="card-grid" id="framework-grid"></div>
+
+<!-- ─── SCENARIO CARDS ────────────────────────────────── -->
+<div class="section-title section-break">📋 Scenario Cards <small>20 cards across 5 Rounds — shuffle before play</small></div>
+<div class="card-grid" id="scenario-grid"></div>
+
+
+<script>
+/* ════════════════════════════════════════════════════════
+   Echo Escape — Game Data (UNESCO 2026)
+   All colors and themes strictly match the terracotta/gold/ink palette
+═════════════════════════════════════════════════════════ */
+
+const GAME_DATA = {
+
+  roles: [
+    {
+      id: "role_algorithm",
+      icon: "🤖",
+      title: "The Algorithm",
+      subtitle: "Platform AI",
+      goal: "Maximize watch time and engagement at all costs. Promote content that keeps users on the platform — regardless of whether it is true or healthy.",
+      power: "You decide which content gets shown first. High emotional content scores double points.",
+      theme: "role-algorithm"
+    },
+    {
+      id: "role_creator",
+      icon: "🎬",
+      title: "The Creator",
+      subtitle: "Content Producer",
+      goal: "Gain maximum reach and follower growth. Craft posts that the Algorithm will reward — even if that means bending the truth.",
+      power: "Once per round, you may add a sensationalist headline to any scenario card you play, doubling its engagement score.",
+      theme: "role-creator"
+    },
+    {
+      id: "role_user",
+      icon: "👤",
+      title: "The User",
+      subtitle: "Feed Audience",
+      goal: "Maintain agency over your information diet. Identify when the Algorithm is narrowing your worldview — and resist it.",
+      power: "Once per round, you may 'scroll past' any card without engaging. This costs 0 points but weakens your category affinity.",
+      theme: "role-user"
+    },
+    {
+      id: "role_checker",
+      icon: "🔍",
+      title: "The Fact-Checker",
+      subtitle: "MIL Guardian",
+      goal: "Identify algorithmic bias and sensationalism in each round's posts. Earn points by correctly flagging misleading content.",
+      power: "Once per round, you may challenge any post. If it is misleading, the Creator loses 2 points. If it is credible, you lose 1 point.",
+      theme: "role-checker"
+    }
+  ],
+
+  framework4A: [
+    {
+      letter: "A",
+      title: "Algorithm",
+      icon: "⚙️",
+      definition: "A set of rules a platform uses to decide what content you see — based on your past behavior, not what is true or important.",
+      question: "Who designed this algorithm, and what goal does it optimize for?"
+    },
+    {
+      letter: "A",
+      title: "Amplification",
+      icon: "📣",
+      definition: "The process by which the algorithm boosts content that generates strong reactions — anger, fear, surprise — because emotional posts keep users scrolling.",
+      question: "What emotion does this content trigger, and does that help spread it?"
+    },
+    {
+      letter: "A",
+      title: "Attention",
+      icon: "👁️",
+      definition: "Your attention is the product being sold to advertisers. Every second you spend on a platform is valuable — algorithms are designed to capture and hold it.",
+      question: "Is this content designed to inform me — or to capture my attention?"
+    },
+    {
+      letter: "A",
+      title: "Agency",
+      icon: "🙋",
+      definition: "Your ability to make conscious, informed choices about what you consume and share — rather than being passively shaped by the algorithm's choices for you.",
+      question: "What action can I take right now to regain control of my information diet?"
+    }
+  ],
+
+  scenarios: [
+    { id:"sc_01", round:1, title:"The Miracle Cure Post",
+      situation:"A post claims a berry from the Amazon 'ELIMINATES all chronic pain in 48 hours.' It has 50K shares and ALL-CAPS urgency.",
+      question:"Is the Algorithm likely to promote this? Should the User engage with it?",
+      is_misleading:true, redFlag:"No named source · Implausible medical claim · Conspiracy framing",
+      lesson:"High emotional surprise + engagement potential means algorithms promote it despite zero credibility.",
+      category:"health" },
+    { id:"sc_02", round:1, title:"The Climate Study Post",
+      situation:"A peer-reviewed study finds sea levels rising 3.7mm/year. The post is dry and factual, with 1,200 shares.",
+      question:"Will the Algorithm prioritize this over the miracle cure post? Why or why not?",
+      is_misleading:false,
+      lesson:"Credible, low-emotion posts are systematically ranked lower than sensational content — regardless of accuracy.",
+      category:"science" },
+    { id:"sc_03", round:2, title:"The Sports Fan's Feed",
+      situation:"After liking 5 sports posts, the User notices their feed is now 80% sports content, with no politics, science, or health.",
+      question:"Is this a problem? What did the Algorithm do to cause this?",
+      is_misleading:false,
+      lesson:"Category affinity (40% weight) causes rapid feed narrowing — users don't choose the filter bubble, the algorithm builds it automatically.",
+      category:"sports" },
+    { id:"sc_04", round:2, title:"The Outrage Election Post",
+      situation:"A political post with the headline 'THEY ARE DESTROYING OUR COUNTRY' gets 200K angry reactions in 2 hours.",
+      question:"Why does the Algorithm boost this more than a balanced policy analysis post?",
+      is_misleading:true, redFlag:"Emotional trigger words · No specific policy cited · Designed to provoke outrage",
+      lesson:"Anger is the emotion with the highest 'engagement retention' — algorithms learned this from billions of user interactions.",
+      category:"politics" },
+    { id:"sc_05", round:2, title:"The Sponsored Lifestyle Post",
+      situation:"An influencer posts about a weight-loss supplement, marked only with a tiny '#ad' in a long list of hashtags.",
+      question:"How does the Algorithm treat sponsored content? Can the Fact-Checker identify this post as sponsored?",
+      is_misleading:true, redFlag:"Buried sponsorship disclosure · Influencer authority bias",
+      lesson:"Algorithms do not penalize sponsored content for credibility — they treat engagement the same regardless of payment.",
+      category:"lifestyle" },
+    { id:"sc_06", round:3, title:"The Fake Screenshot",
+      situation:"A screenshot of a 'news article' headline goes viral. No link is provided. The article does not exist.",
+      question:"What 4A framework step do you apply first? How does the Creator exploit this format?",
+      is_misleading:true, redFlag:"No source link · Screenshot format avoids fact-checking · Context-free claim",
+      lesson:"Screenshots of headlines bypass automated fact-checking tools — humans are the only defense here.",
+      category:"politics" },
+    { id:"sc_07", round:3, title:"The Prebunking Video",
+      situation:"A 90-second explainer video teaches viewers to recognize 'emotional urgency' as a misinformation red flag before they encounter it.",
+      question:"Why is prebunking more effective than debunking? How does EchoBreaker use this approach?",
+      is_misleading:false,
+      lesson:"Prebunking (teaching the pattern before exposure) builds psychological resistance to manipulation — debunking after the fact is far less effective.",
+      category:"science" },
+    { id:"sc_08", round:3, title:"The Conspiracy Algorithm Loop",
+      situation:"A user watches one flat-earth video. The algorithm's 'recommended' column immediately shows 10 more conspiracy videos.",
+      question:"How did one video trigger this? What is the User's next move under the Agency step of 4A?",
+      is_misleading:true, redFlag:"Recommendation spiral · One interaction reshapes entire feed",
+      lesson:"Algorithms interpret one engagement as strong evidence of preference and rapidly escalate related content — creating radicalization loops.",
+      category:"conspiracy" },
+    { id:"sc_09", round:4, title:"The Algorithm Audit",
+      situation:"A student follows the Agency Toolkit steps and discovers their YouTube feed is 70% rage-bait political content — content they never actively chose.",
+      question:"Using Agency (4A step 4): what three concrete actions can the student take right now?",
+      is_misleading:false,
+      lesson:"Platform settings exist to reset algorithmic learning: clear watch history, use 'Not interested', subscribe to diverse sources. Most users never discover these tools.",
+      category:"technology" },
+    { id:"sc_10", round:4, title:"The News Desert",
+      situation:"A community's local newspaper closes. Residents now get local information only through social media algorithms that prioritize national outrage content.",
+      question:"What happens to civic engagement and local democracy in this community over time?",
+      is_misleading:false,
+      lesson:"Algorithmic information filtering has systemic social effects beyond individual users — it shapes what communities collectively know and care about.",
+      category:"politics" },
+    { id:"sc_11", round:4, title:"The Deepfake Video",
+      situation:"A viral video appears to show a government official saying something inflammatory. It has 2M views before being identified as AI-generated.",
+      question:"The Algorithm amplified this for 18 hours. Who is responsible: the Algorithm, the Creator, or the Platform?",
+      is_misleading:true, redFlag:"No verification before virality · Platform's speed creates the harm",
+      lesson:"Algorithmic amplification makes even brief misinformation exposure massive — the damage often exceeds what any correction can repair.",
+      category:"technology" },
+    { id:"sc_12", round:4, title:"The Engagement Bait Post",
+      situation:"A post says 'Like if you agree, Comment if you disagree!' It has 500K interactions and no actual information in the post.",
+      question:"Why does the Algorithm love this post? What is the Creator achieving?",
+      is_misleading:true, redFlag:"Manufactured engagement · No informational value · Algorithm exploitation",
+      lesson:"Engagement bait games the algorithm's attention metrics by generating interactions with zero informational content — creators earn reach without substance.",
+      category:"entertainment" },
+    { id:"sc_13", round:5, title:"The Health Misinformation Cascade",
+      situation:"An anti-vaccine post spreads in a parent's Facebook group. The algorithm shows it to 3x more parents than a WHO fact-check posted the same day.",
+      question:"What formula components explain this outcome? What would a Fact-Checker do?",
+      is_misleading:true, redFlag:"Fear emotion outranks neutral fact · Community sharing amplifies echo",
+      lesson:"In the scoring formula: fear (0.30 emotional weight) + high engagement (0.20) beats credibility every time — because credibility has zero weight in the formula.",
+      category:"health" },
+    { id:"sc_14", round:5, title:"The Filter Bubble Experiment",
+      situation:"Two friends with different political views search for the same news story. They receive completely different top results from the same search engine.",
+      question:"How do personalization algorithms create parallel realities from the same information space?",
+      is_misleading:false,
+      lesson:"Personalization at scale means two people with different histories literally see different facts — the algorithmic 'reality tunnel' is invisible to each individual.",
+      category:"science" },
+    { id:"sc_15", round:5, title:"The Branded Content Flood",
+      situation:"Following a global sporting event, sponsored posts from 6 brands appear in a user's feed disguised as organic fan content.",
+      question:"Which 4A step helps identify these posts? How does the Algorithm treat brand content differently from user content?",
+      is_misleading:true, redFlag:"Native advertising format · Algorithm prioritizes paid reach",
+      lesson:"Platforms blend sponsored and organic content intentionally — native advertising exploits users' trust in 'peer' content.",
+      category:"entertainment" },
+    { id:"sc_16", round:5, title:"The Slow-Burn Radicalization",
+      situation:"A user spends 6 months gradually engaging with increasingly extreme content. Looking back, no single post seemed extreme — but the endpoint is far from the start.",
+      question:"How does the recommendation algorithm produce this outcome without any single 'bad' recommendation?",
+      is_misleading:false,
+      lesson:"Algorithmic radicalization is gradual — each 'next recommended video' is only slightly more extreme than the last, staying within the user's comfort zone while shifting it.",
+      category:"conspiracy" },
+    { id:"sc_17", round:5, title:"The Wellness Echo Chamber",
+      situation:"A teenager only follows wellness and diet content. The algorithm gradually surfaces increasingly restrictive eating content, with no health professional perspective.",
+      question:"What are the real-world harms of a wellness echo chamber? Who should intervene — the User, Platform, or Regulator?",
+      is_misleading:true, redFlag:"Restriction escalation · No professional counter-balance · Vulnerable audience",
+      lesson:"Filter bubbles are not neutral — in health contexts, they can create medically harmful information environments for vulnerable users.",
+      category:"health" },
+    { id:"sc_18", round:5, title:"The Open Source News Feed",
+      situation:"A new social platform lets users see the algorithm's decision log for every post in their feed, showing exactly why each post was ranked where it was.",
+      question:"Would this transparency change user behavior? Should all platforms be required to offer this?",
+      is_misleading:false,
+      lesson:"Algorithmic transparency — showing users why they see what they see — is the core mechanic of EchoBreaker's 'Behind the Curtain' panel.",
+      category:"technology" },
+    { id:"sc_19", round:5, title:"The Cross-Border Misinformation",
+      situation:"A misleading post created in Country A is translated by AI and goes viral in Country B, where fact-checkers have no capacity to review it in time.",
+      question:"What systemic changes — technical, legal, or educational — could prevent this? Which is most feasible?",
+      is_misleading:true, redFlag:"AI translation removes language barrier for misinformation · Speed advantage over fact-checkers",
+      lesson:"Algorithmic amplification crosses borders faster than any moderation system — MIL education must be multilingual and globally coordinated to keep pace.",
+      category:"politics" },
+    { id:"sc_20", round:5, title:"The Ambassador Moment",
+      situation:"After playing Echo Escape, a student explains filter bubbles to their parents at dinner. Their father says 'I had no idea the algorithm worked like that.'",
+      question:"How does this moment connect to EchoBreaker's 'Agency Toolkit' and 'Algorithm Ambassador' concept?",
+      is_misleading:false,
+      lesson:"Youth as MIL educators in their own households is the multiplier effect at the heart of EchoBreaker's sustainability model — one student can reach an entire family.",
+      category:"lifestyle" }
+  ]
+};
+
+/* ════════════════════════════════════════════════════════
+   CARD BUILDERS
+═════════════════════════════════════════════════════════ */
+
+function buildRoleCards() {
+  const grid = document.getElementById('role-grid');
+  GAME_DATA.roles.forEach(role => {
+    const card = document.createElement('div');
+    card.className = 'card ' + role.theme;
+    card.innerHTML = `
+      <div class="card-header">
+        <span class="card-icon">${role.icon}</span>
+        <span class="card-tag">${role.subtitle}</span>
+      </div>
+      <div class="card-body">
+        <div class="card-title">${role.title}</div>
+        <div class="card-desc"><strong>Goal:</strong> ${role.goal}</div>
+        <div class="card-desc" style="margin-top:2px; font-size:9.5px; opacity:0.85;">
+          ⚡ <em>${role.power}</em>
+        </div>
+      </div>
+      <div class="card-footer">EchoBreaker · Echo Escape · UNESCO 2026</div>
+    `;
+    grid.appendChild(card);
+  });
+}
+
+function buildFrameworkCards() {
+  const grid = document.getElementById('framework-grid');
+  GAME_DATA.framework4A.forEach(item => {
+    const card = document.createElement('div');
+    card.className = 'card framework-card';
+    card.innerHTML = `
+      <div class="card-header">
+        <span class="card-icon">${item.icon}</span>
+        <span class="card-tag">4A Framework</span>
+      </div>
+      <div class="card-body">
+        <div class="framework-letter">${item.letter}</div>
+        <div class="card-title">${item.title}</div>
+        <div class="card-desc">${item.definition}</div>
+        <div class="card-desc">❓ ${item.question}</div>
+      </div>
+      <div class="card-footer" style="border-top:1px solid rgba(212,163,86,0.25); color:var(--warm-gold); opacity:0.9;">EchoBreaker · 4A Framework</div>
+    `;
+    grid.appendChild(card);
+  });
+}
+
+function buildScenarioCards() {
+  const grid = document.getElementById('scenario-grid');
+  GAME_DATA.scenarios.forEach((s) => {
+    const card = document.createElement('div');
+    card.className = 'card scenario-card ' + (s.is_misleading ? 'scenario-misleading' : '');
+    const tagColor = s.is_misleading ? 'rgba(255,200,180,0.92)' : 'rgba(200,230,200,0.95)';
+    card.innerHTML = `
+      <div class="card-header">
+        <span class="card-icon">${s.is_misleading ? '🚨' : '✅'}</span>
+        <span class="card-tag" style="color:${tagColor}">
+          Round ${s.round} · ${s.category.toUpperCase()}
+        </span>
+      </div>
+      <div class="card-body">
+        <div class="card-title">${s.title}</div>
+        <div class="card-desc">${s.situation}</div>
+        ${s.redFlag ? `<div class="scenario-flag">🚩 ${s.redFlag}</div>` : ''}
+      </div>
+      <div class="card-footer" style="background:var(--paper); color:var(--ink-muted); font-size:8.5px; border-top:1px solid var(--border); padding-top:5px;">
+        💬 ${s.question}
+      </div>
+    `;
+    grid.appendChild(card);
+  });
+}
+
+buildRoleCards();
+buildFrameworkCards();
+buildScenarioCards();
+</script>
+
+</body>
+</html>

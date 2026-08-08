@@ -1,0 +1,1058 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agency Toolkit — Take Back Control | EchoBreaker</title>
+    <meta name="description" content="A practical, gamified guide to auditing your own social media algorithms and reclaiming your digital agency.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- NOTE: Update ?v=XX query param when modifying shared js/css files -->
+    <link rel="stylesheet" href="css/styles.css?v=100">
+    <script src="js/i18n.js?v=100"></script>
+
+    <style>
+        /* ─── ENHANCED DARK THEME (HIGH CONTRAST) FOR TOOLKIT ─────────────── */
+        body { 
+            /* Redefining variables for better readability on dark mode */
+            --news-accent: #EF4444;       /* Bright Red */
+            --news-gold: #D4A356;         /* Warm Gold (dark-theme enhanced) */
+            --machine-text-dim: #94A3B8;  /* Lighter grey */
+            --machine-bg: #0F172A;        /* Deep slate background */
+            --machine-surface: #1E293B;   /* Slate surface */
+            --machine-border: rgba(255,255,255,0.15);
+            
+            background: var(--machine-bg); 
+            color: var(--machine-text); 
+        }
+
+        /* ─── Hero Section ────────────────────────────────────────── */
+        .toolkit-hero {
+            text-align: center;
+            padding: 56px 24px 36px;
+            background: radial-gradient(circle at top center, rgba(168, 65, 46, 0.15) 0%, var(--machine-bg) 75%);
+            border-bottom: 1px solid var(--machine-border);
+        }
+
+        .toolkit-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(168, 65, 46, 0.12);
+            border: 1px solid var(--news-accent);
+            color: var(--news-accent);
+            border-radius: 999px;
+            padding: 6px 18px;
+            font-family: 'Fraunces', sans-serif;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        .toolkit-hero-title {
+            font-family: 'Fraunces', sans-serif;
+            font-size: clamp(32px, 5vw, 54px);
+            font-weight: 800;
+            line-height: 1.15;
+            margin: 0 auto 14px;
+            color: var(--news-accent);
+        }
+
+        .toolkit-hero-sub {
+            font-size: 16px;
+            color: var(--machine-text-dim);
+            max-width: 660px;
+            margin: 0 auto 24px;
+            line-height: 1.6;
+        }
+
+        .toolkit-actions {
+            display: flex;
+            gap: 14px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 16px;
+        }
+
+        .btn-action {
+            background: linear-gradient(135deg, var(--news-accent), #7E301E);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 12px 24px;
+            font-family: 'Fraunces', sans-serif;
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: transform 0.2s;
+        }
+
+        .btn-action:hover { transform: translateY(-2px); }
+
+        .btn-secondary {
+            background: rgba(255,255,255,0.06);
+            border: 1px solid var(--machine-border);
+            color: var(--machine-text);
+            border-radius: 8px;
+            padding: 12px 20px;
+            font-family: 'Fraunces', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* ─── STICKY GAMIFIED PROGRESS BAR ───────────────────────── */
+        .sticky-progress-container {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(11, 13, 16, 0.95);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--machine-border);
+            padding: 12px 24px;
+        }
+
+        .progress-wrapper {
+            max-width: 880px;
+            margin: 0 auto;
+        }
+
+        .progress-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .progress-level-badge {
+            font-family: 'Fraunces', sans-serif;
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--machine-text);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .progress-counter-text {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 13px;
+            color: var(--machine-text-dim);
+        }
+
+        .progress-track-bg {
+            background: rgba(255,255,255,0.08);
+            border-radius: 999px;
+            height: 8px;
+            overflow: hidden;
+        }
+
+        .progress-track-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--news-accent), var(--news-ok));
+            border-radius: 999px;
+            transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            width: 0%;
+        }
+
+        /* ─── MAIN CONTAINER & ACCORDION PLATFORMS ──────────────── */
+        .toolkit-container {
+            max-width: 880px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
+
+        .platform-accordion-box {
+            background: var(--machine-surface);
+            border: 1px solid var(--machine-border);
+            border-radius: 14px;
+            overflow: hidden;
+            margin-bottom: 24px;
+            transition: border-color 0.2s;
+        }
+
+        .platform-accordion-box[data-platform="tiktok"] { border-left: 4px solid #FF0050; }
+        .platform-accordion-box[data-platform="youtube"] { border-left: 4px solid #FF0000; }
+        .platform-accordion-box[data-platform="instagram"] { border-left: 4px solid #C13584; }
+        .platform-accordion-box[data-platform="habits"] { border-left: 4px solid var(--news-ok); }
+
+        .platform-header-row {
+            padding: 18px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+            user-select: none;
+            background: rgba(255,255,255,0.01);
+        }
+
+        .platform-header-left {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .platform-icon-circle {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            background: rgba(255,255,255,0.06);
+        }
+
+        .platform-title-text {
+            font-family: 'Fraunces', sans-serif;
+            font-size: 18px;
+            font-weight: 700;
+            color: white;
+        }
+
+        .platform-time-pill {
+            font-size: 11px;
+            color: var(--machine-text-dim);
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .platform-progress-badge {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--machine-text);
+            background: rgba(168, 65, 46, 0.12);
+            padding: 4px 10px;
+            border-radius: 999px;
+        }
+
+        /* Checklist Items */
+        .checklist-group {
+            border-top: 1px solid var(--machine-border);
+        }
+
+        .checklist-row {
+            padding: 18px 24px;
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            border-bottom: 1px solid rgba(255,255,255,0.04);
+            cursor: pointer;
+            transition: background 0.15s, transform 0.15s;
+        }
+
+        .checklist-row:last-child { border-bottom: none; }
+        .checklist-row:hover { background: rgba(255,255,255,0.03); }
+
+        .checklist-row.checked {
+            background: rgba(16, 185, 129, 0.08);
+        }
+
+        .checkbox-box {
+            width: 24px;
+            height: 24px;
+            border: 2px solid rgba(255,255,255,0.3);
+            border-radius: 6px;
+            flex-shrink: 0;
+            margin-top: 2px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 14px;
+            transition: all 0.2s;
+        }
+        
+        /* Differentiate "Habits/Principles" (round) from "One-time Actions" (square) */
+        .platform-accordion-box[data-platform="habits"] .checkbox-box {
+            border-radius: 50%;
+        }
+
+        .checklist-row.checked .checkbox-box {
+            background: var(--news-ok);
+            border-color: var(--news-ok);
+            color: white;
+        }
+
+        .checklist-details {
+            flex: 1;
+        }
+
+        .checklist-action-title {
+            font-weight: 700;
+            font-size: 15px;
+            color: white;
+            margin-bottom: 4px;
+        }
+
+        .checklist-row.checked .checklist-action-title {
+            text-decoration: line-through;
+            color: var(--machine-text-dim);
+        }
+
+        .why-drawer {
+            margin-top: 6px;
+            font-size: 13px;
+            color: var(--machine-text-dim);
+            line-height: 1.5;
+        }
+
+        .difficulty-chip {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 10px;
+            font-weight: 700;
+            padding: 3px 8px;
+            border-radius: 999px;
+            flex-shrink: 0;
+        }
+
+        .diff-easy { background: rgba(16, 185, 129, 0.2); color: #34D399; }
+        .diff-medium { background: rgba(245, 158, 11, 0.2); color: #FBBF24; }
+        .diff-hard { background: rgba(239, 68, 68, 0.2); color: #F87171; }
+
+        /* ─── INTERACTIVE REFLECTION & EMOJI SCALES ──────────────── */
+        .reflection-card-box {
+            background: var(--machine-surface);
+            border: 1px solid var(--machine-border);
+            border-radius: 14px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+
+        .reflection-question-text {
+            font-family: 'Fraunces', sans-serif;
+            font-size: 16px;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 12px;
+        }
+
+        .emoji-scale-row {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 14px;
+            flex-wrap: wrap;
+        }
+
+        .emoji-btn {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--machine-border);
+            color: var(--machine-text-dim);
+            border-radius: 8px;
+            padding: 8px 16px;
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .emoji-btn:hover, .emoji-btn.active {
+            background: rgba(168, 65, 46, 0.15);
+            border-color: var(--news-accent);
+            color: var(--machine-text);
+        }
+
+        .reflection-notes-input {
+            width: 100%;
+            min-height: 70px;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid var(--machine-border);
+            border-radius: 8px;
+            color: white;
+            font-family: 'Inter', sans-serif;
+            font-size: 13px;
+            padding: 12px;
+            box-sizing: border-box;
+            resize: vertical;
+        }
+
+        .reflection-notes-input:focus {
+            outline: none;
+            border-color: var(--news-accent);
+        }
+
+        /* ─── COMPLETION MODAL / REWARD BANNER ───────────────────── */
+        .completion-reward-box {
+            display: none;
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(239, 68, 68, 0.18));
+            border: 2px solid var(--news-ok);
+            border-radius: 16px;
+            padding: 32px;
+            text-align: center;
+            margin-bottom: 40px;
+            box-shadow: 0 12px 36px rgba(0,0,0,0.5);
+        }
+
+        .completion-reward-box.visible { display: block; }
+
+        /* Toolkit header/nav dark overrides */
+        header.app-header { background: var(--machine-bg) !important; border-bottom-color: var(--machine-border) !important; }
+        .app-header .logo-echo { color: var(--machine-text) !important; }
+        .app-header .logo-bar { display: none; }
+        .app-header .logo-breaker { color: var(--news-accent) !important; }
+        .app-header .btn-curtain { border-color: var(--machine-border) !important; color: var(--machine-text) !important; background: rgba(255,255,255,0.04) !important; }
+        .app-header .btn-curtain:hover { border-color: var(--news-accent) !important; color: var(--news-accent) !important; }
+        .bottom-nav { background: var(--machine-bg) !important; border-top-color: var(--machine-border) !important; }
+        .bottom-nav .nav-item { color: var(--machine-text-dim) !important; }
+        .bottom-nav .nav-item:hover { color: var(--news-accent) !important; }
+
+        /* ─── RTL (ARABIC) SUPPORT FOR TOOLKIT ─────────────── */
+        body.rtl-mode {
+            text-align: right;
+            direction: rtl;
+            font-family: 'Inter', system-ui, sans-serif; /* Fallback for Arabic */
+        }
+        
+        /* Keep Hero section centered in Arabic */
+        body.rtl-mode .toolkit-hero {
+            text-align: center;
+        }
+
+        body.rtl-mode .platform-accordion-box[data-platform="tiktok"] { border-left: none; border-right: 4px solid #FF0050; }
+        body.rtl-mode .platform-accordion-box[data-platform="youtube"] { border-left: none; border-right: 4px solid #FF0000; }
+        body.rtl-mode .platform-accordion-box[data-platform="instagram"] { border-left: none; border-right: 4px solid #C13584; }
+        body.rtl-mode .platform-accordion-box[data-platform="habits"] { border-left: none; border-right: 4px solid var(--news-ok); }
+        
+        body.rtl-mode .checklist-details,
+        body.rtl-mode .why-drawer,
+        body.rtl-mode .reflection-question-text {
+            text-align: right;
+        }
+
+        /* Fix badge spacing and size for Arabic (letter-spacing breaks Arabic joined text) */
+        body.rtl-mode .toolkit-badge,
+        body.rtl-mode .progress-level-badge,
+        body.rtl-mode .audit-stamp {
+            letter-spacing: normal;
+            font-size: 14px;
+            font-family: 'Inter', system-ui, sans-serif;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- APP HEADER -->
+    <header class="app-header">
+        <div class="header-left">
+            <h1 class="logo">
+                <div class="logo-mark" aria-hidden="true"></div>
+                <div class="logo-text-group">
+                    <span class="logo-echo">ECHO</span>
+                    <span class="logo-breaker">BREAKER</span>
+                </div>
+            </h1>
+        </div>
+        <div class="header-right">
+            <!-- Header right actions if any, or leave empty if handled by bottom nav -->
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="toolkit-hero">
+        <div class="toolkit-badge"><span class="toolkit-badge-icon"><span class="eb-icon eb-icon-toolkit"></span></span><span data-i18n="toolkit_badge">Agency Toolkit</span></div>
+        <h1 class="toolkit-hero-title" data-i18n="toolkit_hero_title">Take Back Control</h1>
+        <p class="toolkit-hero-sub" data-i18n="toolkit_hero_sub">
+            The algorithm shapes your feed based on past interactions. Use this step-by-step audit checklist to reset recommendation models and reclaim your digital agency.
+        </p>
+        <div class="toolkit-actions">
+            <button class="btn-action" onclick="window.print()"><span class="eb-icon eb-icon-print"></span> <span data-i18n="btn_print_audit">Print My Audit Sheet</span></button>
+            <a href="game.html" class="btn-secondary"><span class="eb-icon eb-icon-game"></span> <span data-i18n="btn_back_game">Back to Game</span></a>
+            <button class="btn-secondary" onclick="resetProgress()"><span class="eb-icon eb-icon-refresh"></span> <span data-i18n="btn_reset_audit">Reset Audit Progress</span></button>
+        </div>
+    </section>
+
+    <!-- STICKY GAMIFIED PROGRESS BAR -->
+    <div class="sticky-progress-container">
+        <div class="progress-wrapper">
+            <div class="progress-header">
+                <div class="progress-level-badge" id="level-badge">
+                    <span class="level-seedling-icon"><span class="eb-icon eb-icon-seedling"></span></span><span>Novice Auditor</span>
+                </div>
+                <div class="progress-counter-text">
+                    <span id="completed-count">0</span> / 20 <span data-i18n="actions_completed_label">actions completed</span> (<span id="percentage-text">0%</span>)
+                </div>
+            </div>
+            <div class="progress-track-bg">
+                <div class="progress-track-fill" id="progress-fill"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN CONTENT CONTAINER -->
+    <div class="toolkit-container">
+
+        <!-- COMPLETION REWARD BANNER -->
+        <div class="completion-reward-box" id="completion-banner">
+            <div class="completion-trophy-icon"><span class="eb-icon eb-icon-trophy"></span></div>
+            <h2 style="font-family: 'Fraunces', sans-serif; font-size: 24px; font-weight: 700; color: white; margin-bottom: 8px;" data-i18n="reward_title">Audit Completed! You are a Certified Master Algorithm Ambassador</h2>
+            <p style="font-size: 14px; color: var(--machine-text-dim); margin-bottom: 20px; max-width: 600px; margin-left: auto; margin-right: auto;" data-i18n="reward_sub">
+                You have completed all 20 audit actions across TikTok, YouTube, Instagram, and daily habits. Your information environment is now intentionally curated.
+            </p>
+            <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+                <button class="btn-action" onclick="printCertificate()"><span class="eb-icon eb-icon-document"></span> <span data-i18n="btn_print_cert">Print Official Certificate</span></button>
+                <a href="dashboard.html" class="btn-secondary"><span class="eb-icon eb-icon-dashboard"></span> <span data-i18n="btn_view_telemetry">View Global Telemetry</span></a>
+            </div>
+        </div>
+
+        <div class="section-header" style="margin-bottom: 24px;">
+            <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--machine-text-dim); font-weight: 700; text-transform: uppercase;" data-i18n="section_platform_audit">Step-by-Step Platform Audit</div>
+            <h2 style="font-family: 'Fraunces', sans-serif; font-size: 26px; font-weight: 700; color: white; margin: 4px 0 0;" data-i18n="section_platform_actions">Platform Checklists & Actions</h2>
+        </div>
+
+        <!-- 1. TIKTOK BLOCK -->
+        <div class="platform-accordion-box" data-platform="tiktok">
+            <div class="platform-header-row">
+                <div class="platform-header-left">
+                    <div class="platform-icon-circle"><span class="eb-icon eb-icon-music"></span></div>
+                    <div>
+                        <div class="platform-title-text" data-i18n="platform_tiktok_title">TikTok Algorithm Audit</div>
+                        <div class="platform-time-pill"><span class="eb-icon eb-icon-clock"></span> <span data-i18n="platform_tiktok_time">~3 min · 4 Action items</span></div>
+                    </div>
+                </div>
+                <div class="platform-progress-badge" id="badge-tiktok">0 / 4</div>
+            </div>
+            <div class="checklist-group">
+                <div class="checklist-row" id="item-tt-1" onclick="toggleItem('tt-1', 'tiktok')">
+                    <div class="checkbox-box"></div>
+                    <div class="checklist-details">
+                        <div class="checklist-action-title" data-i18n="tt1_title">Clear your watch history</div>
+                        <div class="why-drawer" data-i18n="tt1_desc">Profile → Settings → Content preferences → Clear watch history. Resets the algorithm's short-term recommendation model.</div>
+                    </div>
+                    <span class="difficulty-chip diff-easy" data-i18n="diff_easy_1m">Easy · 1 min</span>
+                </div>
+
+                <div class="checklist-row" id="item-tt-2" onclick="toggleItem('tt-2', 'tiktok')">
+                    <div class="checkbox-box"></div>
+                    <div class="checklist-details">
+                        <div class="checklist-action-title" data-i18n="tt2_title">Mark 3 "Not Interested" videos in non-preferred topics</div>
+                        <div class="why-drawer" data-i18n="tt2_desc">Long-press any video → "Not Interested." Actively signals negative weight for unwanted clickbait.</div>
+                    </div>
+                    <span class="difficulty-chip diff-easy" data-i18n="diff_easy_1m">Easy · 1 min</span>
+                </div>
+
+                <div class="checklist-row" id="item-tt-3" onclick="toggleItem('tt-3', 'tiktok')">
+                    <div class="checkbox-box"></div>
+                    <div class="checklist-details">
+                        <div class="checklist-action-title" data-i18n="tt3_title">Turn off Personalized Ads</div>
+                        <div class="why-drawer" data-i18n="tt3_desc">Settings → Privacy → Ads personalization → Off. Reduces cross-site tracking profiles.</div>
+                    </div>
+                    <span class="difficulty-chip diff-medium" data-i18n="diff_medium_2m">Medium · 2 min</span>
+                </div>
+
+                <div class="checklist-row" id="item-tt-4" onclick="toggleItem('tt-4', 'tiktok')">
+                    <div class="checkbox-box"></div>
+                    <div class="checklist-details">
+                        <div class="checklist-action-title" data-i18n="tt4_title">Follow 2 accounts from categories you normally ignore</div>
+                        <div class="why-drawer" data-i18n="tt4_desc">Follow science or documentary channels to inject category diversity into your recommendation pool.</div>
+                    </div>
+                    <span class="difficulty-chip diff-easy" data-i18n="diff_easy_1m">Easy · 1 min</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2. YOUTUBE BLOCK -->
+        <div class="platform-accordion-box" data-platform="youtube">
+            <div class="platform-header-row">
+                <div class="platform-header-left">
+                    <div class="platform-icon-circle"><span class="eb-icon eb-icon-youtube"></span></div>
+                    <div>
+                        <div class="platform-title-text" data-i18n="platform_youtube_title">YouTube Recommendation Audit</div>
+                        <div class="platform-time-pill"><span class="eb-icon eb-icon-clock"></span> <span data-i18n="platform_youtube_time">~4 min · 5 Action items</span></div>
+                    </div>
+                </div>
+                <div class="platform-progress-badge" id="badge-youtube">0 / 5</div>
+            </div>
+            <div class="checklist-group">
+                <div class="checklist-row" id="item-yt-1" onclick="toggleItem('yt-1', 'youtube')">
+                    <div class="checkbox-box"></div>
+                    <div class="checklist-details">
+                        <div class="checklist-action-title" data-i18n="yt1_title">Pause Watch History in Google Account Settings</div>
+                        <div class="why-drawer" data-i18n="yt1_desc">myaccount.google.com → Data & Privacy → YouTube History → Turn Off. Prevents historical click logging.</div>
+                    </div>
+                    <span class="difficulty-chip diff-medium" data-i18n="diff_medium_2m">Medium · 2 min</span>
+                </div>
+
+                <div class="checklist-row" id="item-yt-2" onclick="toggleItem('yt-2', 'youtube')">
+                    <div class="checkbox-box"></div>
+                    <div class="checklist-details">
+                        <div class="checklist-action-title" data-i18n="yt2_title">Turn off Autoplay switch</div>
+                        <div class="why-drawer" data-i18n="yt2_desc">Disables automatic video progression so YOU choose what to watch next instead of the AI loop.</div>
+                    </div>
+                    <span class="difficulty-chip diff-easy" data-i18n="diff_easy_1m">Easy · 1 min</span>
+                </div>
+
+                <div class="checklist-row" id="item-yt-3" onclick="toggleItem('yt-3', 'youtube')">
+                    <div class="checkbox-box"></div>
+                    <div class="checklist-details">
+                        <div class="checklist-action-title" data-i18n="yt3_title">Remove 5 regretful videos from Watch History</div>
+                        <div class="why-drawer" data-i18n="yt3_desc">History → Remove clickbait videos that led down unhelpful rabbit holes.</div>
+                    </div>
+                    <span class="difficulty-chip diff-medium" data-i18n="diff_medium_2m">Medium · 2 min</span>
+                </div>
+
+                <div class="checklist-row" id="item-yt-4" onclick="toggleItem('yt-4', 'youtube')">
+                    <div class="checkbox-box"></div>
+                    <div class="checklist-details">
+                        <div class="checklist-action-title" data-i18n="yt4_title">Click "Don't Recommend Channel" on 3 outrage channels</div>
+                        <div class="why-drawer" data-i18n="yt4_desc">Three dots next to video → "Don't recommend channel." Stronger negative signal than ignoring.</div>
+                    </div>
+                    <span class="difficulty-chip diff-easy" data-i18n="diff_easy_1m">Easy · 1 min</span>
+                </div>
+
+                <div class="checklist-row" id="item-yt-5" onclick="toggleItem('yt-5', 'youtube')">
+                    <div class="checkbox-box"></div>
+                    <div class="checklist-details">
+                        <div class="checklist-action-title" data-i18n="yt5_title">Subscribe to 1 educational or documentary channel</div>
+                        <div class="why-drawer" data-i18n="yt5_desc">Subscriptions send high-priority signals to YouTube's homepage candidate generator.</div>
+                    </div>
+                    <span class="difficulty-chip diff-easy" data-i18n="diff_easy_1m">Easy · 1 min</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3. INSTAGRAM BLOCK -->
+        <div class="platform-accordion-box" data-platform="instagram">
+            <div class="platform-header-row">
+                <div class="platform-header-left">
+                    <div class="platform-icon-circle"><span class="eb-icon eb-icon-camera"></span></div>
+                    <div>
+                        <div class="platform-title-text" data-i18n="platform_instagram_title">Instagram & Meta Ad Audit</div>
+                        <div class="platform-time-pill"><span class="eb-icon eb-icon-clock"></span> <span data-i18n="platform_instagram_time">~4 min · 5 Action items</span></div>
+                    </div>
+                </div>
+                <div class="platform-progress-badge" id="badge-instagram">0 / 5</div>
+            </div>
+            <div class="checklist-group">
+                <div class="checklist-row" id="item-ig-1" onclick="toggleItem('ig-1', 'instagram')">
+                    <div class="checkbox-box"></div>
+                    <div class="checklist-details">
+                        <div class="checklist-action-title" data-i18n="ig1_title">Turn off "Similar Account Suggestions"</div>
+                        <div class="why-drawer" data-i18n="ig1_desc">Settings → Account → Similar Account Suggestions → Off. Stops profile bubble clustering.</div>
+                    </div>
+                    <span class="difficulty-chip diff-medium" data-i18n="diff_medium_2m">Medium · 2 min</span>
+                </div>
+
+                <div class="checklist-row" id="item-ig-2" onclick="toggleItem('ig-2', 'instagram')">
+                    <div class="checkbox-box"></div>
+                    <div class="checklist-details">
+                        <div class="checklist-action-title" data-i18n="ig2_title">Mute 3 accounts triggering negative feelings</div>
+                        <div class="why-drawer" data-i18n="ig2_desc">Long-press post → Mute. Cleans your feed without the social friction of unfollowing.</div>
+                    </div>
+                    <span class="difficulty-chip diff-easy" data-i18n="diff_easy_1m">Easy · 1 min</span>
+                </div>
+
+                <div class="checklist-row" id="item-ig-3" onclick="toggleItem('ig-3', 'instagram')">
+                    <div class="checkbox-box"></div>
+                    <div class="checklist-details">
+                        <div class="checklist-action-title" data-i18n="ig3_title">Set a daily time limit reminder (e.g. 30 mins)</div>
+                        <div class="why-drawer" data-i18n="ig3_desc">Settings → Your activity → Time spent → Set daily reminder to break infinite scrolling.</div>
+                    </div>
+                    <span class="difficulty-chip diff-easy" data-i18n="diff_easy_1m">Easy · 1 min</span>
+                </div>
+
+                <div class="checklist-row" id="item-ig-4" onclick="toggleItem('ig-4', 'instagram')">
+                    <div class="checkbox-box"></div>
+                    <div class="checklist-details">
+                        <div class="checklist-action-title" data-i18n="ig4_title">Turn off "Ads based on partner data"</div>
+                        <div class="why-drawer" data-i18n="ig4_desc">Settings → Ad preferences → Ads outside Meta → Off. Prevents off-app behavior tracking.</div>
+                    </div>
+                    <span class="difficulty-chip diff-hard" data-i18n="diff_hard_3m">Advanced · 3 min</span>
+                </div>
+
+                <div class="checklist-row" id="item-ig-5" onclick="toggleItem('ig-5', 'instagram')">
+                    <div class="checkbox-box"></div>
+                    <div class="checklist-details">
+                        <div class="checklist-action-title" data-i18n="ig5_title">Mark 3 Explore posts as "Not Interested"</div>
+                        <div class="why-drawer" data-i18n="ig5_desc">Explore grid → Three dots → Not Interested. Trains the recommendation system directly.</div>
+                    </div>
+                    <span class="difficulty-chip diff-easy" data-i18n="diff_easy_1m">Easy · 1 min</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 4. CRITICAL THINKING HABITS -->
+        <div class="platform-accordion-box" data-platform="habits">
+            <div class="platform-header-row">
+                <div class="platform-header-left">
+                    <div class="platform-icon-circle"><span class="eb-icon eb-icon-brain"></span></div>
+                    <div>
+                        <div class="platform-title-text" data-i18n="platform_habits_title">Critical Thinking & Sharing Habits</div>
+                        <div class="platform-time-pill"><span class="eb-icon eb-icon-clock"></span> <span data-i18n="platform_habits_time">~5 min · 6 Action items</span></div>
+                    </div>
+                </div>
+                <div class="platform-progress-badge" id="badge-habits">0 / 6</div>
+            </div>
+            <div class="checklist-group">
+                <div class="checklist-row" id="item-hb-1" onclick="toggleItem('hb-1', 'habits')">
+                    <div class="checkbox-box"></div>
+                    <div class="checklist-details">
+                        <div class="checklist-action-title" data-i18n="hb1_title">Read past the headline before sharing</div>
+                        <div class="why-drawer" data-i18n="hb1_desc">Misleading posts rely on emotional headlines that contradict article body details.</div>
+                    </div>
+                    <span class="difficulty-chip diff-easy" data-i18n="diff_easy_1m">Easy · 1 min</span>
+                </div>
+
+                <div class="checklist-row" id="item-hb-2" onclick="toggleItem('hb-2', 'habits')">
+                    <div class="checkbox-box"></div>
+                    <div class="checklist-details">
+                        <div class="checklist-action-title" data-i18n="hb2_title">Cross-verify claims on trusted fact-check outlets</div>
+                        <div class="why-drawer" data-i18n="hb2_desc">Use Snopes, FactCheck.org, or national fact-checking registries before reposting.</div>
+                    </div>
+                    <span class="difficulty-chip diff-easy" data-i18n="diff_easy_1m">Easy · 1 min</span>
+                </div>
+
+                <div class="checklist-row" id="item-hb-3" onclick="toggleItem('hb-3', 'habits')">
+                    <div class="checkbox-box"></div>
+                    <div class="checklist-details">
+                        <div class="checklist-action-title" data-i18n="hb3_title">Bookmark 1 trusted direct journalism source</div>
+                        <div class="why-drawer" data-i18n="hb3_desc">Access news directly rather than waiting for recommendation feeds to select it for you.</div>
+                    </div>
+                    <span class="difficulty-chip diff-easy" data-i18n="diff_easy_1m">Easy · 1 min</span>
+                </div>
+
+                <div class="checklist-row" id="item-hb-4" onclick="toggleItem('hb-4', 'habits')">
+                    <div class="checkbox-box"></div>
+                    <div class="checklist-details">
+                        <div class="checklist-action-title" data-i18n="hb4_title">Notice emotional outrage before clicking</div>
+                        <div class="why-drawer" data-i18n="hb4_desc">Treat intense anger or fear as an algorithmic alert signal that content is optimizing for attention.</div>
+                    </div>
+                    <span class="difficulty-chip diff-hard" data-i18n="diff_hard_2m">Advanced · 2 min</span>
+                </div>
+
+                <div class="checklist-row" id="item-hb-5" onclick="toggleItem('hb-5', 'habits')">
+                    <div class="checkbox-box"></div>
+                    <div class="checklist-details">
+                        <div class="checklist-action-title" data-i18n="hb5_title">Teach 1 family member what a filter bubble is</div>
+                        <div class="why-drawer" data-i18n="hb5_desc">Teaching someone else is the highest level of learning. Show them the EchoBreaker simulator!</div>
+                    </div>
+                    <span class="difficulty-chip diff-easy" data-i18n="diff_easy_2m">Easy · 2 min</span>
+                </div>
+
+                <div class="checklist-row" id="item-hb-6" onclick="toggleItem('hb-6', 'habits')">
+                    <div class="checkbox-box"></div>
+                    <div class="checklist-details">
+                        <div class="checklist-action-title" data-i18n="hb6_title">Create a 30-minute media-free morning routine</div>
+                        <div class="why-drawer" data-i18n="hb6_desc">Start your day without algorithmic input to protect baseline cognitive clarity.</div>
+                    </div>
+                    <span class="difficulty-chip diff-medium" data-i18n="diff_medium_2m">Medium · 2 min</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- INTERACTIVE REFLECTION SECTION -->
+        <div class="section-header" style="margin-top: 40px; margin-bottom: 24px;">
+            <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--machine-text-dim); font-weight: 700; text-transform: uppercase;" data-i18n="reflection_section_badge">Self Assessment</div>
+            <h2 style="font-family: 'Fraunces', sans-serif; font-size: 26px; font-weight: 700; color: white; margin: 4px 0 0;" data-i18n="reflection_section_title">Interactive Personal Reflection</h2>
+        </div>
+
+        <div class="reflection-card-box">
+            <div class="reflection-question-text" data-i18n="reflection_q1_title">1. How aware are you now of how algorithms shape your feed?</div>
+            <div class="emoji-scale-row">
+                <button class="emoji-btn" onclick="selectEmoji(this, 'q1')" data-i18n="scale_q1_1">1 — Unaware</button>
+                <button class="emoji-btn" onclick="selectEmoji(this, 'q1')" data-i18n="scale_q1_2">2 — Slightly Aware</button>
+                <button class="emoji-btn" onclick="selectEmoji(this, 'q1')" data-i18n="scale_q1_3">3 — Moderately Aware</button>
+                <button class="emoji-btn" onclick="selectEmoji(this, 'q1')" data-i18n="scale_q1_4">4 — Very Aware</button>
+                <button class="emoji-btn" onclick="selectEmoji(this, 'q1')" data-i18n="scale_q1_5">5 — Expert Guardian</button>
+            </div>
+            <textarea id="reflection-q1" class="reflection-notes-input" placeholder="What surprised you most during your feed audit?" data-i18n-ph="reflection_q1_ph"></textarea>
+        </div>
+
+        <div class="reflection-card-box">
+            <div class="reflection-question-text" data-i18n="reflection_q2_title">2. Which category dominates YOUR real social media feed?</div>
+            <div class="emoji-scale-row">
+                <button class="emoji-btn" onclick="selectEmoji(this, 'q2')" data-i18n="cat_sports">Sports</button>
+                <button class="emoji-btn" onclick="selectEmoji(this, 'q2')" data-i18n="cat_health">Health/Wellness</button>
+                <button class="emoji-btn" onclick="selectEmoji(this, 'q2')" data-i18n="cat_politics">Politics</button>
+                <button class="emoji-btn" onclick="selectEmoji(this, 'q2')" data-i18n="cat_tech">Technology</button>
+                <button class="emoji-btn" onclick="selectEmoji(this, 'q2')" data-i18n="cat_outrage">Conspiracy/Outrage</button>
+            </div>
+            <textarea id="reflection-q2" class="reflection-notes-input" placeholder="Describe one action you will take to diversify your feed..." data-i18n-ph="reflection_q2_ph"></textarea>
+        </div>
+
+        <div class="reflection-card-box" style="border:1px solid var(--news-gold); background:rgba(184,134,46,0.08);">
+            <div class="reflection-question-text" style="color:var(--news-gold);">
+                <span class="meta-audit-icon"><span class="eb-icon eb-icon-masks"></span></span>
+                <span data-i18n="reflection_q3_title">3. Meta-Audit: The Irony of Persuasive Design</span>
+            </div>
+            <p style="font-size:14px; color:var(--machine-text-dim); margin-bottom:16px;" data-i18n="reflection_q3_desc">
+                Did you notice the glowing badges, the 3D flip cards, and the "Live" pulsing dots in this app? 
+                We intentionally used <strong>standard persuasive design (gamification)</strong> to keep you engaged while teaching you how to resist it. 
+                <br><br>
+                How does it feel to recognize these emotional triggers working on you right now? Is using persuasive design to teach algorithmic literacy acceptable, or concerning?
+            </p>
+            <textarea id="reflection-q3" class="reflection-notes-input" style="border-color:rgba(245,158,11,0.3);" placeholder="Reflect on your own emotional reaction to the badges and levels in this app..." data-i18n-ph="reflection_q3_ph"></textarea>
+        </div>
+
+        <div style="text-align:center; font-size:12px; color:var(--machine-text-dim); margin-top:24px; opacity:0.85; line-height:1.7; padding:0 20px;" data-i18n="privacy_notice">
+            <span class="privacy-lock-icon"><span class="eb-icon eb-icon-lock"></span></span>
+            <strong>Your written reflections</strong> (the text you type above) are saved <strong>locally on your device only</strong> and are never transmitted to any server. However, when you complete the simulator's impact questionnaire on the Feed page, <strong>anonymous numerical metrics</strong> (time to echo chamber, dominant category, and your multiple-choice answers — no text) may be submitted to our secure Firebase database for aggregated impact measurement. No personal identifiers are ever collected. See the Command Center page for full transparency.
+        </div>
+
+    </div>
+
+    <!-- JAVASCRIPT LOGIC WITH LOCALSTORAGE PERSISTENCE -->
+    <script>
+    const TOTAL_ITEMS = 20;
+    const platformTotals = { tiktok: 4, youtube: 5, instagram: 5, habits: 6 };
+    let checkedItems = new Set();
+
+    // Restore from LocalStorage on page load
+    function setupReflectionPersistence() {
+        const ids = ['reflection-q1', 'reflection-q2', 'reflection-q3'];
+        ids.forEach(id => {
+            const el = document.getElementById(id);
+            if (el) {
+                const savedText = localStorage.getItem('echobreaker_' + id);
+                if (savedText) el.value = savedText;
+                
+                el.addEventListener('input', (e) => {
+                    localStorage.setItem('echobreaker_' + id, e.target.value);
+                });
+            }
+        });
+    }
+
+    function initProgress() {
+        setupReflectionPersistence();
+        const saved = localStorage.getItem('echobreaker_toolkit_checked');
+        if (saved) {
+            try {
+                const arr = JSON.parse(saved);
+                checkedItems = new Set(arr);
+                arr.forEach(id => {
+                    const row = document.getElementById('item-' + id);
+                    if (row) {
+                        row.classList.add('checked');
+                        row.querySelector('.checkbox-box').textContent = '✓';
+                    }
+                });
+            } catch (e) {
+                console.error("Failed restoring toolkit progress", e);
+            }
+        }
+        updateUI();
+    }
+
+    function toggleItem(id, platform) {
+        const row = document.getElementById('item-' + id);
+        if (!row) return;
+
+        if (checkedItems.has(id)) {
+            checkedItems.delete(id);
+            row.classList.remove('checked');
+            row.querySelector('.checkbox-box').textContent = '';
+        } else {
+            checkedItems.add(id);
+            row.classList.add('checked');
+            row.querySelector('.checkbox-box').textContent = '✓';
+        }
+
+        // Save to LocalStorage
+        localStorage.setItem('echobreaker_toolkit_checked', JSON.stringify(Array.from(checkedItems)));
+        updateUI();
+    }
+
+    function updateUI() {
+        if (typeof i18n !== 'undefined' && i18n.applyLanguage) {
+            i18n.applyLanguage(i18n.currentLang);
+        }
+
+        const completed = checkedItems.size;
+        const percent = Math.round((completed / TOTAL_ITEMS) * 100);
+
+        document.getElementById('completed-count').textContent = completed;
+        document.getElementById('percentage-text').textContent = percent + '%';
+        document.getElementById('progress-fill').style.width = percent + '%';
+
+        // Update Level Badge Stamp
+        const badgeEl = document.getElementById('level-badge');
+        let stampKey = 'stamp_novice';
+        if (completed === TOTAL_ITEMS) stampKey = 'stamp_master';
+        else if (completed >= 15) stampKey = 'stamp_expert';
+        else if (completed >= 10) stampKey = 'stamp_guardian';
+        else if (completed >= 5) stampKey = 'stamp_aware';
+
+        const stampText = (typeof i18n !== 'undefined' && i18n.t) ? i18n.t(stampKey) : 'STAMP: NOVICE AUDITOR';
+        badgeEl.innerHTML = `<span class="audit-stamp ${completed >= 15 ? '' : 'stamp-warning'}">${stampText}</span>`;
+        badgeEl.style.color = 'inherit';
+
+        // Update Platform Badges
+        const counts = { tiktok: 0, youtube: 0, instagram: 0, habits: 0 };
+        checkedItems.forEach(id => {
+            if (id.startsWith('tt')) counts.tiktok++;
+            if (id.startsWith('yt')) counts.youtube++;
+            if (id.startsWith('ig')) counts.instagram++;
+            if (id.startsWith('hb')) counts.habits++;
+        });
+
+        Object.keys(counts).forEach(p => {
+            const badge = document.getElementById('badge-' + p);
+            if (badge) {
+                badge.textContent = `${counts[p]} / ${platformTotals[p]}`;
+            }
+        });
+
+        // Toggle Completion Banner
+        const banner = document.getElementById('completion-banner');
+        if (completed >= TOTAL_ITEMS) {
+            banner.classList.add('visible');
+        } else {
+            banner.classList.remove('visible');
+        }
+    }
+
+    function selectEmoji(btn, qGroup) {
+        const parent = btn.parentElement;
+        parent.querySelectorAll('.emoji-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+    }
+
+    function resetProgress() {
+        showResetModal();
+    }
+
+    function showResetModal() {
+        let modal = document.getElementById("custom-reset-modal");
+        const titleText = (typeof i18n !== 'undefined' && i18n.t) ? i18n.t('reset_modal_title') : 'Reset Audit Progress?';
+        const descText = (typeof i18n !== 'undefined' && i18n.t) ? i18n.t('reset_modal_desc') : 'This will clear all completed audit checklist items and reset your progress badge.';
+        const cancelText = (typeof i18n !== 'undefined' && i18n.t) ? i18n.t('btn_cancel') : 'Cancel';
+        const confirmText = (typeof i18n !== 'undefined' && i18n.t) ? i18n.t('btn_confirm_reset') : 'Reset All Progress';
+
+        if (!modal) {
+            modal = document.createElement("div");
+            modal.id = "custom-reset-modal";
+            modal.style.cssText = "position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(6,8,19,0.85); backdrop-filter:blur(10px); display:flex; align-items:center; justify-content:center; z-index:9999;";
+            modal.innerHTML = `
+                <div style="background:#0D1726; border:1px solid rgba(255,255,255,0.15); border-radius:14px; padding:28px; max-width:420px; width:90%; text-align:center; box-shadow:0 16px 40px rgba(0,0,0,0.6);">
+                    <div class="reset-modal-icon"><span class="eb-icon eb-icon-refresh"></span></div>
+                    <h3 style="font-family:'Fraunces',sans-serif; font-size:20px; color:white; margin-bottom:8px;">${titleText}</h3>
+                    <p style="font-size:13px; color:#94A3B8; margin-bottom:20px; line-height:1.5;">${descText}</p>
+                    <div style="display:flex; gap:12px; justify-content:center;">
+                        <button onclick="closeResetModal()" style="background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); color:white; padding:10px 18px; border-radius:8px; font-weight:600; cursor:pointer;">${cancelText}</button>
+                        <button onclick="confirmResetAction()" style="background:#EF4444; color:white; border:none; padding:10px 18px; border-radius:8px; font-weight:700; cursor:pointer;">${confirmText}</button>
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(modal);
+        } else {
+            modal.style.display = "flex";
+        }
+    }
+
+    function closeResetModal() {
+        const modal = document.getElementById("custom-reset-modal");
+        if (modal) modal.style.display = "none";
+    }
+
+    function confirmResetAction() {
+        checkedItems.clear();
+        localStorage.removeItem('echobreaker_toolkit_checked');
+        document.querySelectorAll('.checklist-row').forEach(row => {
+            row.classList.remove('checked');
+            row.querySelector('.checkbox-box').textContent = '';
+        });
+        updateUI();
+        closeResetModal();
+    }
+
+    function printCertificate() {
+        var area = document.getElementById('certificate-print-area');
+        if (!area) {
+            area = document.createElement('div');
+            area.id = 'certificate-print-area';
+            area.style.display = 'none';
+            area.innerHTML = buildCertificateHTML();
+            document.body.appendChild(area);
+        } else {
+            area.innerHTML = buildCertificateHTML();
+        }
+        document.body.classList.add('certificate-print-mode');
+        setTimeout(function() {
+            window.print();
+            setTimeout(function() {
+                document.body.classList.remove('certificate-print-mode');
+            }, 500);
+        }, 300);
+    }
+
+    function buildCertificateHTML() {
+        var today = new Date();
+        var dateStr = today.toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' });
+        var namePromptText = (typeof i18n !== 'undefined' && i18n.t) ? i18n.t('cert_name_prompt') : 'Enter your name for the certificate (or leave blank):';
+        var holderName = localStorage.getItem('echobreaker_cert_name');
+        if (!holderName) {
+            try { holderName = prompt(namePromptText, '') || ''; } catch(e) { holderName = ''; }
+            if (holderName) localStorage.setItem('echobreaker_cert_name', holderName);
+        }
+        var displayName = holderName ? holderName : '　';
+        return '' +
+            '<div class="cert-seal">UNESCO<br>MIL HACKATHON<br>2026</div>' +
+            '<div class="cert-title">Certificate of Achievement</div>' +
+            '<div class="cert-subtitle">Master Algorithm Ambassador</div>' +
+            '<div class="cert-name">' + displayName + '</div>' +
+            '<div class="cert-body">' +
+              'Has successfully completed the EchoBreaker <strong>20-step Agency Audit</strong>, ' +
+              'demonstrating proficiency in algorithmic literacy, filter-bubble awareness, ' +
+              'media &amp; information literacy self-defense, and digital agency building. ' +
+              '<br><br>' +
+              'Issued in recognition of the pledge to practice <strong>4A-framework critical thinking</strong> ' +
+              '(Algorithm · Amplification · Attention · Agency) in daily digital life.' +
+            '</div>' +
+            '<div class="cert-date">' +
+              '<div class="cert-sign-line"><div>Date</div><div style="margin-top:4px;font-weight:600;">' + dateStr + '</div></div>' +
+              '<div class="cert-sign-line" style="text-align:right;"><div style="text-align:right;">EchoBreaker UNESCO</div><div style="margin-top:4px;font-family:Fraunces,serif;font-weight:700;color:#A8412E;">Officially Verified</div></div>' +
+            '</div>' +
+            '<div class="cert-footer">ECHOBREAKER  ·  UNESCO YOUTH MIL HACKATHON 2026  ·  AGENCY TOOLKIT</div>';
+    }
+
+    window.toggleItem = toggleItem;
+    window.resetProgress = resetProgress;
+    window.closeResetModal = closeResetModal;
+    window.confirmResetAction = confirmResetAction;
+    window.selectEmoji = typeof selectEmoji !== 'undefined' ? selectEmoji : function(){};
+    window.printCertificate = printCertificate;
+
+    window.addEventListener('languageChanged', () => {
+        if (typeof updateUI === 'function') updateUI();
+    });
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initProgress);
+    } else {
+        initProgress();
+    }
+    </script>
+
+    <!-- BOTTOM NAV FOR MOBILE -->
+    <nav class="bottom-nav">
+        <a href="index.html" class="nav-item">
+            <span class="eb-icon eb-icon-feed"></span>
+            <span class="nav-label">Feed</span>
+        </a>
+        <a href="game.html" class="nav-item">
+            <span class="eb-icon eb-icon-game"></span>
+            <span class="nav-label">Game</span>
+        </a>
+        <a href="toolkit.html" class="nav-item">
+            <span class="eb-icon eb-icon-toolkit"></span>
+            <span class="nav-label">Toolkit</span>
+        </a>
+        <a href="dashboard.html" class="nav-item">
+            <span class="eb-icon eb-icon-dashboard"></span>
+            <span class="nav-label">Dashboard</span>
+        </a>
+    </nav>
+
+</body>
+</html>
